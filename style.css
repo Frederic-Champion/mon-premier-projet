@@ -6,6 +6,16 @@ body {
     margin: 0 auto;
     padding: 40px 20px;
 }
+nav {
+    background-color: #0f0f0f;
+    gap: 30px;
+    display: flex;
+    padding: 15px 30px;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+}
 header {
     text-align: center;
     border-bottom: 2px solid #e94560;
@@ -40,4 +50,8 @@ ul {
 }
 .carte:hover {
     transform: translateY(-5px);
+}
+.region {
+    font-size: 16px;
+    color : #cdd0cf;
 }
