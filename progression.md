@@ -166,3 +166,8 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 
 *Dernière mise à jour : 26 avril 2026 — Session 5*
 *Total d'heures estimées : ~8h de formation*
+
+Session 6 — Découverte JavaScript
+Vu et compris : variables (let/const), types (string/number/boolean), fonctions, template literals, aperçu du scope. Pas encore maîtrisé — nécessite beaucoup de pratique.
+Session 6 (suite) — JavaScript bases
+Découvert et pratiqué : conditions, boucles for, let/const/var, tableaux, objets. Pas encore maîtrisé — nécessite répétition. Prochaine étape : le DOM.
