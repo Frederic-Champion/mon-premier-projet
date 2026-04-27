@@ -48,3 +48,11 @@ console.log(`${projet.nom}`)
 console.log(`${projet.technos}`)
 console.log(`${projet.description}`)
 console.log(`${projet.termine}`)
+
+const titre = document.getElementById("titre-principal");
+console.log(titre);
+titre.textContent = "Frédéric - Dev FullStack";
+titre.style.fontSize = "38px";
+
+const aPropos = document.querySelector("section p");
+aPropos.textContent = "Actuellement Opticien, je me passionne pour le code et j'aimerai en faire mon métier !"
