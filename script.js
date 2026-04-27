@@ -1,16 +1,3 @@
-console.log("Bonjour depuis JavaScript !")
-let prenom = "Frédéric";
-let age = 35;
-const metier = "Opticien";
-let enReconversion = true;
-let anneesExperience = 15;
-
-console.log(prenom);
-console.log(age);
-console.log(metier);
-console.log(enReconversion);
-console.log(anneesExperience);
-
 function sePresenter(prenom, age, metier) {
     console.log(`je m'appelle ${prenom}, j'ai ${age} ans et je suis ${metier}.`)
 }
@@ -25,19 +12,6 @@ function evaluerNiveau(heures) {
         console.log("Avancé")
     }
 }
-evaluerNiveau(11);
-
-for (let i = 0; i <= 10; i++) {
-    if (i % 2 == 1) {
-        console.log(i)
-    }
-}
-
-const competences = ["HTML", "CSS", "Python", "Rien"];
-for (let j = 0; j < competences.length; j++) {
-    console.log(`${j + 1} - ${competences[j]}`)
-}
-
 const projet = {
     nom : "Mon premier projet",
     technos : ["HTML", "CSS", "Python", "Rien"],
@@ -56,3 +30,32 @@ titre.style.fontSize = "38px";
 
 const aPropos = document.querySelector("section p");
 aPropos.textContent = "Actuellement Opticien, je me passionne pour le code et j'aimerai en faire mon métier !"
+
+const bouton = document.getElementById("mon-bouton");
+bouton.addEventListener("click", function(){
+    titre.textContent = "ça fonctionne !";
+    bouton.textContent = "Cliqué !";
+    bouton.style.color = "red";
+});
+
+const competenceObjet =  [
+    { nom : "HTML", categorie : "web"},
+    { nom : "CSS", categorie : "web"},
+    { nom : "Javascript", categorie : "Backend"},
+    { nom : "VS Studio", categorie : "outil"},
+    { nom : "Python", categorie : "Backend"},
+    { nom : "Git", categorie : "outil"},
+]
+const comp = document.getElementById("liste-competences");
+for (let i = 0; i < competenceObjet.length; i++) {
+    const liste = document.createElement("li");
+    liste.textContent = `${competenceObjet[i].nom} : ${competenceObjet[i].categorie}`;
+    comp.appendChild(liste)
+}
+const boutonWeb = document.getElementById("bouton-web");
+const boutonBackend = document.getElementById("bouton-backend");
+const boutonOutils = document.getElementById("bouton-outils");
+
+boutonWeb.addEventListener("click", function() {
+    
+})
