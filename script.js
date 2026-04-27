@@ -42,10 +42,21 @@ const competenceObjet =  [
     { nom : "HTML", categorie : "web"},
     { nom : "CSS", categorie : "web"},
     { nom : "Javascript", categorie : "Backend"},
-    { nom : "VS Studio", categorie : "outil"},
+    { nom : "VS Studio", categorie : "outils"},
     { nom : "Python", categorie : "Backend"},
-    { nom : "Git", categorie : "outil"},
+    { nom : "Git", categorie : "outils"},
 ]
+function trier(categorie) {
+    comp.innerHTML="";
+    for (let k = 0; k < competenceObjet.length; k++) {
+        if (competenceObjet[k].categorie == categorie) {
+            const liste = document.createElement("li");
+            liste.textContent = `${competenceObjet[k].nom} : ${competenceObjet[k].categorie}`;
+            comp.appendChild(liste);
+        }
+    }
+}
+
 const comp = document.getElementById("liste-competences");
 for (let i = 0; i < competenceObjet.length; i++) {
     const liste = document.createElement("li");
@@ -56,6 +67,6 @@ const boutonWeb = document.getElementById("bouton-web");
 const boutonBackend = document.getElementById("bouton-backend");
 const boutonOutils = document.getElementById("bouton-outils");
 
-boutonWeb.addEventListener("click", function() {
-    
-})
+boutonWeb.addEventListener("click", function() {trier("web");});
+boutonBackend.addEventListener("click", function() {trier("Backend");});
+boutonOutils.addEventListener("click", function() {trier("outils");});

@@ -1,24 +1,5 @@
 # 📋 Progression de Frédéric Champion — Formation Dev Fullstack + IA
 
-## 👤 Profil
-- **Nom** : Frédéric Champion
-- **Métier actuel** : Opticien depuis 15 ans — 39k€ brut/an
-- **Objectif** : Devenir développeur Fullstack Web + Mobile avec intégration IA
-- **Motivation** : Reconversion complète, n'aime plus son métier actuel
-- **Localisation** : Châteauroux / Tours, France
-- **Compte GitHub** : Frederic-Champion (email Google)
-
----
-
-## 🎯 Objectifs définis ensemble
-- Être opérationnel en tant que **junior dev** en **9 mois**
-- **15h/semaine** : 2h × 5 soirs + 5h le dimanche
-- ~585h de pratique effective sur 9 mois
-- Cible : postes junior (35-42k€) ou freelance (300-400€/j) via Malt
-- **Niche différenciante** : secteur optique / santé (connaît le métier de l'intérieur)
-
----
-
 ## 🗺️ Roadmap définie — 3 phases sur 9 mois
 
 ### Phase 1 (Mois 1-3) — Socle Web (~180h)
@@ -32,6 +13,24 @@ OpenAI API, Anthropic API, TypeScript (base), 3 projets déployés
 
 ### Après 9 mois (Mois 10+)
 React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
+
+---
+
+## 💡 Qualités observées chez Frédéric
+- **Curieux et analytique** : pose toujours des questions de compréhension avant d'avancer
+- **Bonne intuition** : fait le lien Python → CSS/JS spontanément
+- **Honnête sur ses lacunes** : n'hésite pas à dire quand il ne comprend pas
+- **Expérimentation** : teste des choses par lui-même sans qu'on lui demande (ex: hover avec font-size)
+- **Rigueur** : veut comprendre chaque symbole (`:root`, `@media`, `--variable`, `.classe`)
+
+---
+
+## 📌 Méthode de travail avec Claude
+- Claude joue le rôle de **mentor / pair programmer**
+- Frédéric envoie des screenshots pour montrer son écran
+- Claude explique chaque concept **avant ou après** le code, pas juste le code
+- Les exercices en autonomie sont privilégiés pour ancrer la mémorisation
+- Format : cours + explication + exercice seul + correction
 
 ---
 
@@ -63,7 +62,7 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 
 ## ✅ Concepts maîtrisés
 
-### Git & GitHub
+### Git & GitHub (à approfondir)
 - `git clone` — récupérer un repo
 - `git add .` — préparer les fichiers
 - `git commit -m "message"` — sauvegarder une version
@@ -71,7 +70,7 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 - Configuration identité (`user.name`, `user.email`)
 - Comprend la différence Git (local) vs GitHub (distant)
 
-### HTML
+### HTML (à approfondir)
 - Structure de base : `<!DOCTYPE>`, `<html>`, `<head>`, `<body>`
 - Balises sémantiques : `<header>`, `<nav>`, `<section>`, `<footer>`
 - Balises de contenu : `<h1>`-`<h2>`, `<p>`, `<ul>`, `<li>`, `<div>`, `<a>`
@@ -79,7 +78,7 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 - Liaison CSS (`<link rel="stylesheet">`) et JS (`<script src="">`)
 - Sélecteurs descendants : `nav a`
 
-### CSS
+### CSS (à approfondir)
 - Propriétés de base : `color`, `background-color`, `font-size`, `font-family`
 - Box model : `margin` vs `padding` (différence bien comprise)
 - `border` et ses variantes : `border-top`, `border-bottom`, `solid`, `dashed`, `dotted`
@@ -95,7 +94,7 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 - `display: block` vs `display: flex` vs `display: inline` — compris
 - Conventions de nommage : kebab-case en CSS vs snake_case Python vs camelCase JS
 
-### Outils
+### Outils (à approfondir)
 - **Live Server** : comprend l'intérêt du rechargement automatique
 - **Console Chrome (DevTools)** : sait l'ouvrir avec F12, naviguer entre les onglets
 - **`console.log()`** : équivalent de `print()` en Python — compris
@@ -130,32 +129,6 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 
 ---
 
-## 💡 Qualités observées chez Frédéric
-- **Curieux et analytique** : pose toujours des questions de compréhension avant d'avancer
-- **Bonne intuition** : fait le lien Python → CSS/JS spontanément
-- **Honnête sur ses lacunes** : n'hésite pas à dire quand il ne comprend pas
-- **Expérimentation** : teste des choses par lui-même sans qu'on lui demande (ex: hover avec font-size)
-- **Rigueur** : veut comprendre chaque symbole (`:root`, `@media`, `--variable`, `.classe`)
-
----
-
-## 📌 Méthode de travail avec Claude
-- Claude joue le rôle de **mentor / pair programmer**
-- Frédéric envoie des screenshots pour montrer son écran
-- Claude explique chaque concept **avant ou après** le code, pas juste le code
-- Les exercices en autonomie sont privilégiés pour ancrer la mémorisation
-- Format : cours + explication + exercice seul + correction
-
----
-
-## 🗓️ Prochaines étapes immédiates
-1. Finir les bases JavaScript : variables, fonctions, conditions, boucles
-2. Manipulation du DOM (modifier la page avec JS)
-3. Événements (réagir aux clics)
-4. Premier projet interactif complet
-
----
-
 ## 📚 Ressources recommandées (pas encore utilisées)
 - The Odin Project
 - roadmap.sh
@@ -167,7 +140,35 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 *Dernière mise à jour : 26 avril 2026 — Session 5*
 *Total d'heures estimées : ~8h de formation*
 
-Session 6 — Découverte JavaScript
-Vu et compris : variables (let/const), types (string/number/boolean), fonctions, template literals, aperçu du scope. Pas encore maîtrisé — nécessite beaucoup de pratique.
-Session 6 (suite) — JavaScript bases
-Découvert et pratiqué : conditions, boucles for, let/const/var, tableaux, objets. Pas encore maîtrisé — nécessite répétition. Prochaine étape : le DOM.
+Mise à jour : ajout ~5h :
+📊 Bilan complet — Sessions 6 & 7
+🟢 Maîtrisé (70-100%)
+Git/GitHub — 75%
+Push spontané à chaque fin de session, bons réflexes. Nécessite encore de la pratique sur les branches.
+
+🟡 Compris mais pas encore maîtrisé (40-70%)
+Variables let / const / var — 65%
+Tu comprends la différence, tu sais quand utiliser l'un ou l'autre. La notion de scope est comprise. Manque de réflexe automatique à l'écriture.
+Types de données — 60%
+String, number, boolean bien identifiés. Tu fais le lien avec Python naturellement. Pas encore instinctif à l'écriture.
+Fonctions — 55%
+Structure comprise, paramètres compris. Tu as eu le bon réflexe de tester sans paramètres pour comprendre le scope global. Syntaxe pas encore automatique.
+Template literals — 65%
+Équivalence f-strings Python bien ancrée. Tu l'utilises spontanément. Attention à ne pas oublier les backticks.
+Conditions if / else if / else — 60%
+Logique comprise, structure correcte. Erreur classique sur les doubles comparaisons (50 <= x <= 200). Différence < vs <= à surveiller.
+Boucles for — 60%
+Structure globalement comprise. Erreurs fréquentes : let manquant, virgule au lieu de ;. Logique i++ bien assimilée.
+Tableaux — 55%
+Création correcte, accès par index compris, .length et .push() assimilés. Nécessite plus de pratique.
+Objets — 50%
+Structure tableau d'objets comprise après explication. Confusion fréquente entre : et =. Accès aux propriétés avec . compris. Nécessite beaucoup de répétition.
+
+🔴 Découvert — À consolider (0-40%)
+DOM — 40%
+getElementById, querySelector, textContent, style, createElement, appendChild, innerHTML vus et pratiqués. Compréhension de la logique globale. Syntaxe pas encore instinctive — nécessite beaucoup de pratique.
+Événements — 35%
+addEventListener avec callback compris et pratiqué. La notion de callback est ancrée. Manque de pratique sur les cas variés.
+Principe DRY — 30%
+Découvert — tu as réécrit une fonction trier() pour éviter la répétition. Concept compris intellectuellement, pas encore un réflexe.
+
