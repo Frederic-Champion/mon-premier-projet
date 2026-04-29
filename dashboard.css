@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(234, 237, 245);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+header {
+    display: flex;
+    background-color: rgb(7, 7, 54);
+    border-radius: 24px;
+    flex: 1;
+    margin: 35px auto;
+    padding: 5px 25px;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 {
+    font-size: 24px;
+}
+nav{
+    display: flex;
+    gap: 25px;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+}
+nav a:hover {
+    color: red;
+}
+.cartes {
+    display: flex;
+    margin: 35px auto;
+    gap: 20px;
+}
+.carte{
+    flex: 1;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 4px 8px rgba(25, 25, 26, 0.199);
+    padding: 24px 8px;
+}
+h3 {
+    color: rgb(146, 146, 146);
+    font-size: 16px;
+    margin: 1px 0 9px 0;
+} 
+.carte p {
+    font-size : 44px;
+    margin: 0 0 12px 0;
+}
+.badge-vert{
+    background-color: green;
+}
+.badge-orange{
+    background-color: orange;
+}
+span {
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 3px 5px;
+}
+.liste-projet {
+    background-color: white;
+    box-shadow: 1px 4px 8px rgba(25, 25, 26, 0.199);
+    padding: 35px 25px;
+    border-radius: 20px;
+}
+h2 {
+    font-size: 18px;
+    color: rgb(146, 146, 146);
+}
+ul {
+    display: block;
+    gap: 20px;
+}
+ul span {
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 3px 5px;
+}
