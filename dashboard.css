@@ -64,23 +64,56 @@ span {
     border-radius: 12px;
     font-size: 14px;
     padding: 3px 5px;
+    color: white;
 }
 .liste-projet {
     background-color: white;
     box-shadow: 1px 4px 8px rgba(25, 25, 26, 0.199);
     padding: 35px 25px;
     border-radius: 20px;
+    margin: 20px auto;
 }
 h2 {
     font-size: 18px;
     color: rgb(146, 146, 146);
 }
-ul {
+.liste-projet ul {
     display: block;
     gap: 20px;
 }
-ul span {
+ul li {
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;;
+    align-items: center;
+    padding: 12px 0;
+    list-style: none;
+}
+ul li span {
     border-radius: 12px;
     font-size: 14px;
     padding: 3px 5px;
+    color: white;
+}
+.badge-bleu {
+    background-color: blue;
+}
+.badge-cian {
+    background-color: rgb(143, 243, 243);
+    color: blue;
+}
+.gauche {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.droite {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+.soustitre {
+    color: rgb(153, 152, 152);
+    font-size: 14px;
+    margin: 0
 }
