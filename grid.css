@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    justify-content: center;
+}
+.cartes {
+    display: grid;
+    max-width: 800px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    gap: 30px;
+}
+.carte {
+    background-color: rgb(224, 252, 252);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 24px;
+    padding: 12px 10px;
+    text-align: center;
+    align-items: center;
+}
+.feu {grid-column: span 2; background-color: #ffe8e8;}
+.vide {grid-column: -1/1;}
+.glace {background-color: #b0fffb;}
+.eau {background-color: #6d6eb8;}
+
+@media (max-width: 768px) {
+    .cartes{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+@media (max-width: 480px) {
+    .cartes {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .feu, .vide {
+        grid-column: span 1;
+    }
+    header h1 {
+        font-size: 20px;
+    }
+}

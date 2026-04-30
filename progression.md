@@ -172,3 +172,75 @@ addEventListener avec callback compris et pratiqué. La notion de callback est a
 Principe DRY — 30%
 Découvert — tu as réécrit une fonction trier() pour éviter la répétition. Concept compris intellectuellement, pas encore un réflexe.
 
+
+Mise à jour : ajout ~8h:
+session 8 à 11 :
+🔵 DÉCOUVERT — vu pour la première fois
+Formulaires HTML
+
+Structure <form>, <label>, <input>, <textarea>, <button>
+Attributs for, id, placeholder, type
+Différence type="submit" vs type="button"
+<meta name="viewport"> — indispensable pour le responsive
+
+CSS avancé
+
+box-sizing: border-box et sélecteur universel *
+Pseudo-classe :focus
+box-shadow avec rgba
+display: grid, grid-template-columns, repeat(), unité fr
+grid-column: span, grid-column: 1 / -1
+grid-row: span
+Media queries @media (max-width: ...)
+
+Concepts
+
+<span> inline vs <div> bloc
+<div> vs <section> vs balises sémantiques
+Attribut alt sur les images
+Les 3 façons d'écrire du CSS (externe, interne, inline)
+<link rel="stylesheet" href=""> et chemins relatifs
+Emojis avec Windows + .
+
+
+🟡 VU ET COMPRIS — pas encore instinctif
+HTML
+
+Liaison label/for/id — compris, quelques hésitations
+Différence id vs class — compris après debugging (70%)
+Balises sémantiques header, nav, main, section — compris (65%)
+
+CSS
+
+Héritage CSS et principe DRY — compris, pas encore réflexe (60%)
+margin vs padding vs gap — compris, encore quelques confusions (65%)
+flex: 1 pour égaliser les colonnes — compris (70%)
+margin: auto pour centrer — compris (75%)
+Reset des propriétés Grid dans les media queries — compris après erreurs (60%)
+grid-template-columns vs grid-column — confus au début, compris (65%)
+
+
+🟢 MAÎTRISÉ — réflexe acquis
+HTML
+
+Structure de base complète — (90%)
+Formulaire complet from scratch — (80%)
+<span> pour les badges — (85%)
+
+CSS
+
+Flexbox (display: flex, gap, justify-content, align-items) — (80%)
+box-shadow, border-radius — (85%)
+box-sizing: border-box sur * — (85%)
+display: grid + repeat(3, 1fr) — (80%)
+Media queries basiques — (70%)
+Debugging avec DevTools — (75%)
+
+Outils
+
+DevTools pour inspecter et débugger — (75%)
+Live Server — (90%)
+
+
+📈 Score global de maîtrise HTML/CSS
+DomaineScoreStructure HTML85%Formulaires75%Flexbox80%CSS Grid70%Responsive65%Debugging75%Global HTML/CSS75%
