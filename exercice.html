@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Exercice1</title>
+    </head>
+    <body>
+        <h1>PAGE BLANCHE QUI SERT A RIEN</h1>
+        <script>
+            function presenterMonture(marque, prix) {
+                console.log(`Cette monture est une ${marque}, elle côute ${prix}€ !`)
+            }
+            function calculerRemise(remise, prix) {
+                prix = prix - remise
+                console.log(`Prix après remise : ${prix}`)
+            }
+            function afficherClient(nom, age) {
+                console.log(`Client : ${nom}, âge ${age} ans.`)
+            }
+
+            afficherClient("Frédéric", 35);
+            presenterMonture("RayBan", 140);
+            calculerRemise(15, 140);
+            
+            const clients = [
+                {nom : "Frédéric", age : 35},
+                {nom : "Coraline", age : 30},
+                {nom : "Léandre", age : 1},
+                {nom : "Hervé", age : 63},
+                {nom : "Franck", age : 60}
+            ];
+            for (let client of clients) {
+                if (client.age < 18) {
+                    console.log(`${client.nom} - mineur`)
+                }else {
+                    console.log(`${client.nom} - majeur`)
+                }
+            }
+
+            const cabinet = {
+                nom : "Alliance",
+                ville : "Tours",
+                nombreDePatient : 1000
+            };
+            cabinet.specialiste = "ophtalmologue"
+            const ordonnance = ["vision de loin", "vision de près", "verres progressifs"]
+            ordonnance.push("lentilles de contact")
+
+            console.log(`Cabinet : ${cabinet.nom}, ${cabinet.ville}, ${cabinet.nombreDePatient} patients`);
+            console.log(`spécialité : ${cabinet.specialiste}`)
+            console.log(`Nombre d'ordonnances : ${ordonnance.length}`)
+            for (let ordo of ordonnance) {
+                console.log(ordo)
+            }
+
+        </script>
+    </body>
+</html>

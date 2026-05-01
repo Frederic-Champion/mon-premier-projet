@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>liste de courses</title>
+        <style>
+            * {box-sizing: border-box;}
+            body {margin: 0 auto; max-width: 500px;}
+        </style>
+    </head>
+    <body>
+        <header><h1>LISTE DE COURSE</h1></header>
+        <main>
+            <section>
+                <label for="article">article :</label>
+                <input id="article" type="text" placeholder="Ecrit ici">
+                <button id="add" type="submit">Ajouter au panier</button>
+            </section>
+            <section>
+                <ul></ul>
+                <p></p>
+            </section>
+            <script>
+                const article = document.querySelector("#article");
+                const ajouter = document.querySelector("#add");
+                const compteur = document.querySelector("p");
+                const abc = document.querySelector("ul");
+                let stock = 0
+                ajouter.addEventListener("click", function () {
+                    const valeurArticle = article.value ;
+                    const liste = document.createElement("li") ;
+                    liste.textContent = valeurArticle ;
+                    article.value = "" ;
+                    const bouton = document.createElement("button") ;
+                    bouton.textContent = "❌" ;
+                    liste.appendChild(bouton);
+                    abc.appendChild(liste);
+                    stock += 1
+                    if (stock <= 1) {
+                        compteur.textContent = `${stock} article dans le panier.`
+                    } else {
+                        compteur.textContent = `${stock} articles dans le panier.`
+                    }
+                    bouton.addEventListener("click", function () {
+                        abc.removeChild(liste) ;
+                        stock -=1 ;
+                        if (stock <= 1) {
+                            compteur.textContent = `${stock} article dans le panier.`
+                        } else {
+                            compteur.textContent = `${stock} articles dans le panier.`
+                        };
+                    });
+                });
+            </script>
+        </main>
+    </body>
+</html>

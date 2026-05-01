@@ -1,0 +1,47 @@
+<!--Exercice sur les Evenements-->
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>ExerciceEvenement</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="titre">Stock de montures</h1>
+        </header>
+        <main>
+            <p id="compteur">0 montures en stock</p>
+            <button id="btn-ajouter">Ajouter une monture</button>
+            <button id="btn-retirer">Retirer une monture</button>
+        </main>
+        <script>
+            const compteur = document.querySelector("#compteur");
+            const ajouter = document.querySelector("#btn-ajouter");
+            const retirer = document.querySelector("#btn-retirer");
+            let stock = 0
+            function mettreAJour() {
+                compteur.textContent = `${stock} montures en stock`;
+                if (stock === 0) {
+                    compteur.style.color = "red";
+                } else {
+                    compteur.style.color = "green";
+                }
+            }
+
+            ajouter.addEventListener("click", function () {
+                stock += 1;
+                mettreAJour();
+            })
+
+            retirer.addEventListener("click", function () {
+                if (stock >= 1) {
+                    stock -= 1;
+                    mettreAJour();
+                }
+            })
+        </script>
+    </body>
+</html>
+
+
+
+

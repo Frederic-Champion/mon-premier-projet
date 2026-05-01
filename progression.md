@@ -137,42 +137,6 @@ React Native, TypeScript avancé, Tests, Docker, RAG/LangChain, GraphQL
 
 ---
 
-*Dernière mise à jour : 26 avril 2026 — Session 5*
-*Total d'heures estimées : ~8h de formation*
-
-Mise à jour : ajout ~5h :
-📊 Bilan complet — Sessions 6 & 7
-🟢 Maîtrisé (70-100%)
-Git/GitHub — 75%
-Push spontané à chaque fin de session, bons réflexes. Nécessite encore de la pratique sur les branches.
-
-🟡 Compris mais pas encore maîtrisé (40-70%)
-Variables let / const / var — 65%
-Tu comprends la différence, tu sais quand utiliser l'un ou l'autre. La notion de scope est comprise. Manque de réflexe automatique à l'écriture.
-Types de données — 60%
-String, number, boolean bien identifiés. Tu fais le lien avec Python naturellement. Pas encore instinctif à l'écriture.
-Fonctions — 55%
-Structure comprise, paramètres compris. Tu as eu le bon réflexe de tester sans paramètres pour comprendre le scope global. Syntaxe pas encore automatique.
-Template literals — 65%
-Équivalence f-strings Python bien ancrée. Tu l'utilises spontanément. Attention à ne pas oublier les backticks.
-Conditions if / else if / else — 60%
-Logique comprise, structure correcte. Erreur classique sur les doubles comparaisons (50 <= x <= 200). Différence < vs <= à surveiller.
-Boucles for — 60%
-Structure globalement comprise. Erreurs fréquentes : let manquant, virgule au lieu de ;. Logique i++ bien assimilée.
-Tableaux — 55%
-Création correcte, accès par index compris, .length et .push() assimilés. Nécessite plus de pratique.
-Objets — 50%
-Structure tableau d'objets comprise après explication. Confusion fréquente entre : et =. Accès aux propriétés avec . compris. Nécessite beaucoup de répétition.
-
-🔴 Découvert — À consolider (0-40%)
-DOM — 40%
-getElementById, querySelector, textContent, style, createElement, appendChild, innerHTML vus et pratiqués. Compréhension de la logique globale. Syntaxe pas encore instinctive — nécessite beaucoup de pratique.
-Événements — 35%
-addEventListener avec callback compris et pratiqué. La notion de callback est ancrée. Manque de pratique sur les cas variés.
-Principe DRY — 30%
-Découvert — tu as réécrit une fonction trier() pour éviter la répétition. Concept compris intellectuellement, pas encore un réflexe.
-
-
 Mise à jour : ajout ~8h:
 session 8 à 11 :
 🔵 DÉCOUVERT — vu pour la première fois
@@ -241,6 +205,51 @@ Outils
 DevTools pour inspecter et débugger — (75%)
 Live Server — (90%)
 
-
 📈 Score global de maîtrise HTML/CSS
 DomaineScoreStructure HTML85%Formulaires75%Flexbox80%CSS Grid70%Responsive65%Debugging75%Global HTML/CSS75%
+
+---
+
+Mise à jour Session 12 :
+~ 5h :
+✅ Ce qu'on a validé aujourd'hui
+Bloc 1 — Variables, types, fonctions
+
+let vs const — la vraie distinction (valeur fixe vs variable)
+Template literals — backticks + ${} — analogie f-string Python ancrée
+Syntaxe fonction JavaScript — function nom(param) {} — plus de réflexe Python def et :
+
+Bloc 2 — Conditions & boucles
+
+=== vs == — toujours utiliser le triple égal
+if / else if / else — structure propre
+Boucle for classique et for...of — les deux maîtrisés
+Parcourir un tableau d'objets avec une condition — exercice réussi
+
+Bloc 3 — Objets & tableaux
+
+Différence objet {} vs tableau [] — confusion levée
+Ajouter une propriété à un objet — objet.propriete = valeur
+.push() — ajouter à un tableau
+.length — longueur d'un tableau
+Tableau d'objets — structure comprise
+
+Bloc 4 — DOM
+
+querySelector et getElementById — cibler des éléments HTML
+textContent et style.color — modifier le contenu et le style
+createElement + appendChild — créer des éléments dynamiquement
+CSS vs JS — camelCase — background-color → backgroundColor
+classList.add/remove/toggle — la méthode pro pour gérer les styles
+
+Bloc 5 — Événements
+
+addEventListener("click", function() {}) — syntaxe ancrée
+Callback — concept compris et appliqué
+Arrow function () => {} — vue
+Objet event et event.target — vu
+Principe DRY appliqué naturellement sur le projet stock
+
+
+📊 Niveau estimé après cette session
+NotionAvantAprèsVariables / types65%80%Fonctions55%75%Conditions / boucles60%78%Objets & tableaux50%70%DOM40%68%Événements35%65%
