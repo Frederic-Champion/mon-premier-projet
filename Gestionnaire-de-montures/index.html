@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestionnaire de montures</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+
+        <header>
+            <div class="conteneur">
+                <h1>👓 Gestionnaire de montures</h1>
+                <p><span id="compteur">0</span> Montures en stock. </p>
+            </div>
+        </header>
+
+        <form id="section-formulaire" class="conteneur">
+            <div class="form-group">
+                <label for="marque">Marque :</label>
+                <input id="marque" type="text" placeholder="RayBan, Persol, etc...">
+            </div>
+            <div class="form-group">
+                <label for="reference">Référence :</label>
+                <input id="reference" type="text" placeholder="Wayfarer, RB2132, etc...">
+            </div>
+            <div class="form-group">
+                <label for="prix">Tarif :</label>
+                <input id="prix" type="number" placeholder="Prix €">
+            </div>
+            <button type="button" id="add-button">Ajouter</button>
+        </form>
+
+
+        <section class="conteneur">
+            <ul id="liste-montures"></ul>
+        </section>
+    </body>
+</html>
