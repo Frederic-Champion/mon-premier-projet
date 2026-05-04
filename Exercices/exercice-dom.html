@@ -1,0 +1,68 @@
+<!--Exercice autonome-->
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Exercice DOM</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                display: flex;
+                justify-content: center;
+                padding-top: 30px;
+            }
+            p {
+                font-size : 30px
+            }
+            section {
+                display: flex;
+                justify-content: center;
+
+            }
+            button {
+                background-color: rgb(219, 235, 235);
+                width: 100px;
+                height: 50px;
+                font-size: 24px;
+                margin: 14px
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <p>Compteur : <span id="compteur">0</span></p>
+        </header>
+        <main>
+            <section>
+                <button id="less" type="button">-</button>
+                <button id="reset" type="button">reset</button>
+                <button id="add" type="button">+</button>
+            </section>
+        </main>
+        <script>
+
+            const less = document.querySelector("#less")
+            const reset = document.querySelector("#reset")
+            const add = document.querySelector("#add")
+            const span = document.querySelector("#compteur")
+            
+            let nombre = 0
+            less.addEventListener("click", () => {
+                nombre -= 1;
+                span.textContent = nombre
+            });
+            add.addEventListener("click", () => {
+                nombre += 1;
+                span.textContent = nombre
+            });
+            reset.addEventListener("click", () => {
+                nombre = 0;
+                span.textContent = nombre
+            });
+            
+        </script>
+    </body>
+</html>

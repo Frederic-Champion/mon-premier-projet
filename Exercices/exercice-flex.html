@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>exo</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background-color: aliceblue;
+                height: 100vh;
+            }
+            nav {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 25px;
+                background-color: rgb(6, 4, 24);
+                height: 60px;
+                align-items: center;
+                color: white
+            }
+            #cartes {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                align-items: center;
+            }
+            .carte {
+                width: 100px;
+                height: 100px;
+                background-color: rgb(255, 255, 255);
+                margin: 15px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.103);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a>Accueil</a>
+                <a>A Propos</a>
+                <a>Service</a>
+                <a>Contact</a>
+            </nav>
+        </header>
+        <main id="cartes">
+            <div id="red" class="carte">salamèche</div>
+            <div id="blue" class="carte">carapuce</div>
+            <div id="green" class="carte">bulbizarre</div>
+        </main>        
+    </body>
+</html>
