@@ -4,8 +4,8 @@
     padding: 0;
 }
 body {
-    max-width: 1000px;
-    background-color: aliceblue;
+    max-width: 600px;
+    background-color: rgb(255, 241, 240);
     margin: 0 auto;
 }
 nav {
@@ -38,4 +38,28 @@ p {
     font-size : 28px;
     margin: 40px auto;
     text-align: center;
+}
+.cartes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px    
+}
+.carte {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 208, 186);
+    padding: 8px;
+    width: 110px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 24px
+}
+.boutonLiberer {
+    margin: 3px;
+    align-self: end;
+    margin-top: auto; 
+    border-radius: 6px;
+    padding: 3px;
+    border: 1px solid
 }

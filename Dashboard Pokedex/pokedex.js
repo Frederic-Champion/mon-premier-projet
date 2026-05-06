@@ -9,6 +9,8 @@ const ajouterPokemon = () => {
     if (pokemonName.value === "") { return }
     const carte = document.createElement("div");
     const boutonLiberer = document.createElement("button");
+    carte.className = "carte";
+    boutonLiberer.className = "boutonLiberer";
     carte.textContent = pokemonName.value ;
     boutonLiberer.textContent = "Libéré"
     boutonLiberer.addEventListener("click", () => {
