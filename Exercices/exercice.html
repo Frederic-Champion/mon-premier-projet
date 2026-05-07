@@ -6,51 +6,25 @@
     <body>
         <h1>PAGE BLANCHE QUI SERT A RIEN</h1>
         <script>
-            function presenterMonture(marque, prix) {
-                console.log(`Cette monture est une ${marque}, elle côute ${prix}€ !`)
-            }
-            function calculerRemise(remise, prix) {
-                prix = prix - remise
-                console.log(`Prix après remise : ${prix}`)
-            }
-            function afficherClient(nom, age) {
-                console.log(`Client : ${nom}, âge ${age} ans.`)
-            }
 
-            afficherClient("Frédéric", 35);
-            presenterMonture("RayBan", 140);
-            calculerRemise(15, 140);
-            
-            const clients = [
-                {nom : "Frédéric", age : 35},
-                {nom : "Coraline", age : 30},
-                {nom : "Léandre", age : 1},
-                {nom : "Hervé", age : 63},
-                {nom : "Franck", age : 60}
-            ];
-            for (let client of clients) {
-                if (client.age < 18) {
-                    console.log(`${client.nom} - mineur`)
-                }else {
-                    console.log(`${client.nom} - majeur`)
+            const analyserNotes = (notes) => {
+                for (let note of notes) {
+                    if (note === -1) {
+                        break;
+                    }
+                    if (note < 0 || note > 20) {
+                        continue;
+                    }
+                    if (note >= 18) {
+                        return "Très Bien !";
+                    }
                 }
-            }
-
-            const cabinet = {
-                nom : "Alliance",
-                ville : "Tours",
-                nombreDePatient : 1000
+                return "pas de mention TB"
             };
-            cabinet.specialiste = "ophtalmologue"
-            const ordonnance = ["vision de loin", "vision de près", "verres progressifs"]
-            ordonnance.push("lentilles de contact")
+            console.log(analyserNotes([12, 25, 15, 18, 10]));
+            console.log(analyserNotes([12, -1, 19, 10]));
+            console.log(analyserNotes([12, 15, 10]));
 
-            console.log(`Cabinet : ${cabinet.nom}, ${cabinet.ville}, ${cabinet.nombreDePatient} patients`);
-            console.log(`spécialité : ${cabinet.specialiste}`)
-            console.log(`Nombre d'ordonnances : ${ordonnance.length}`)
-            for (let ordo of ordonnance) {
-                console.log(ordo)
-            }
 
         </script>
     </body>
