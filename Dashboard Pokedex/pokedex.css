@@ -21,7 +21,8 @@ nav {
     padding: 8px;
 }
 #form {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     margin-top: 30px
 }
@@ -62,4 +63,9 @@ p {
     border-radius: 6px;
     padding: 3px;
     border: 1px solid
+}
+#pasOk {
+    background-color: rgb(241, 28, 28);
+    border-radius: 10px;
+    grid-column: 1 / -1;
 }

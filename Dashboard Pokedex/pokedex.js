@@ -4,20 +4,37 @@ const pokemonName = document.querySelector("#pokemonName");
 const btnAjouter = document.querySelector("#btn");
 const cartes = document.querySelector(".cartes");
 const compteur = document.querySelector("#compteur");
+const pasOk = document.querySelector("#pasOk");
+
+const messageStop = () => {
+    const NoNoNo = document.createElement("p");
+    NoNoNo.textContent = "Vous ne pouvez pas ajouter ce POKEMON !";
+    pasOk.appendChild(NoNoNo);
+    setTimeout(() => {pasOk.removeChild(NoNoNo)}, 2000)
+    };
 
 const ajouterPokemon = () => {
-    if (pokemonName.value === "") { return }
+    if (pokemonName.value === "") { return };
+    const toutesLesCartes = cartes.querySelectorAll("span");
+    for (let laCarte of toutesLesCartes) {
+        if (pokemonName.value === laCarte.textContent) {
+            messageStop();
+            return
+        };
+    };
     const carte = document.createElement("div");
+    const nom = document.createElement("span");
     const boutonLiberer = document.createElement("button");
     carte.className = "carte";
     boutonLiberer.className = "boutonLiberer";
-    carte.textContent = pokemonName.value ;
+    nom.textContent = pokemonName.value ;
     boutonLiberer.textContent = "Libéré"
     boutonLiberer.addEventListener("click", () => {
         nombre -= 1 ;
         cartes.removeChild(carte);
         compteur.textContent = nombre ;
     });
+    carte.appendChild(nom);
     carte.appendChild(boutonLiberer);
     cartes.appendChild(carte);
     nombre += 1 ;
@@ -36,3 +53,4 @@ btnReset.addEventListener("click", () => {
     nombre = 0 ;
     compteur.textContent = nombre ;
 });
+
