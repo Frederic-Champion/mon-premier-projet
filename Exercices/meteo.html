@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Exercice</title>
+    </head>
+
+    <body>
+        <header><h1>Mini app Météo</h1></header>
+        <input id="champ" type="text" placeholder="Ville ..." >
+        <button id="search" type="button">Rechercher</button>
+        <section class="cartes"></section>
+        <script>
+
+            const champ = document.querySelector("#champ") ;
+            const search = document.querySelector("#search") ;
+            const cartes = document.querySelector(".cartes") ;
+
+            async function infoMeteo(ville) {
+                try {
+                    const reponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=4a6b2f55f93b400db4509a913b6d09ae&units=metric&lang=fr`) ;
+                    const data = await reponse.json() ;
+                    cartes.innerHTML = ""
+                    const carte = document.createElement("div") ;
+                    carte.innerHTML = `
+                        <h2>${data.name}</h2>
+                        <p>${Math.round(data.main.temp)}°C</p>
+                        <p>${data.weather[0].description}</p>
+                    `;
+                    cartes.appendChild(carte) ;
+                }catch(erreur) {
+                    console.log("il y a une erreur, erreur") ;
+                }
+            }
+            search.addEventListener("click", function() {
+                infoMeteo(champ.value)
+            });
+        </script>
+    </body>
+</html>

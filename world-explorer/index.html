@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>world-explorer</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header><h1>🌍 World Explorer</h1></header>
+        <main>
+            <section>
+                <input id="search" type="text" placeholder="Pays...">
+                <button id="searchBtn" type="submit" >Rechercher</button>
+                <button id="random" type="button">🎲</button>
+                <select id="parametre" >
+                    <option value="All">All</option>
+                    <option value="Africa">Afrique</option>
+                    <option value="Americas">Amérique</option>
+                    <option value="Asia">Asie</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceanie</option>
+                </select>
+                <div id="cards-container"></div>
+            </section>
+        </main>
+    </body>
+</html>
