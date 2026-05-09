@@ -8,22 +8,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div id="cadre">
         <header><h1>🌍 World Explorer</h1></header>
-        <main>
-            <section>
-                <input id="search" type="text" placeholder="Pays...">
-                <button id="searchBtn" type="submit" >Rechercher</button>
-                <button id="random" type="button">🎲</button>
-                <select id="parametre" >
-                    <option value="All">All</option>
-                    <option value="Africa">Afrique</option>
-                    <option value="Americas">Amérique</option>
-                    <option value="Asia">Asie</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Oceania">Oceanie</option>
-                </select>
-                <div id="cards-container"></div>
-            </section>
-        </main>
+            <main>
+                <section>
+                    <input id="search" type="text" placeholder="Pays...">
+                    <select id="parametre" >
+                        <option value="All">All</option>
+                        <option value="Africa">Afrique</option>
+                        <option value="Americas">Amérique</option>
+                        <option value="Asia">Asie</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceanie</option>
+                    </select>
+                    <button id="random" type="button">🎲</button>
+                    <button id="searchBtn" type="submit" >🔍</button>
+                    <div id="cartes"></div>
+                </section>
+            </main>
+        </div>
     </body>
 </html>
