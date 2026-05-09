@@ -17,7 +17,7 @@
 
             async function infoMeteo(ville) {
                 try {
-                    const reponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=4a6b2f55f93b400db4509a913b6d09ae&units=metric&lang=fr`) ;
+                    const reponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${TA_CLE_A_METTRE_ICI}&units=metric&lang=fr`) ;
                     const data = await reponse.json() ;
                     cartes.innerHTML = ""
                     const carte = document.createElement("div") ;
