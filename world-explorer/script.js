@@ -40,10 +40,17 @@ searchBtn.addEventListener("click", function() {
     recherchePays(search.value)
     search.value = "" ;
 })
+search.addEventListener("keydown", function(touche) {
+    if (touche.key === "Enter") {
+        cartes.innerHTML= "" ;
+        recherchePays(search.value)
+        search.value = "" ;
+    }
+});
 
 async function filtrerParRegion() {
     try {
-        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags");
+        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
         const data = await reponse.json();
         const resultat = data.filter((unPays) =>  unPays.region === parametre.value);
         cartes.innerHTML = "";

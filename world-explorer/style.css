@@ -11,16 +11,57 @@ body {
     align-items: center;
     margin-top: 20px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #cadre {
     background-color: rgb(30, 30, 31);
     padding: 40px;
     border-radius: 16px;
-    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+    max-width: 600px;
 }
 section {
     margin: 30px;
 }
 input, select, button {
     font-size: 18px;
+    border-radius: 6px;
+    padding: 0 6px;
+    transition: 0.5s;
+}
+button:hover {
+    background-color: rgb(135, 186, 231);
+}
+#cartes {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+    overflow-y: scroll;
+    max-height: 600px;
+    width: 100%;
+}
+.carte {
+    justify-self: center; 
+    background-color: rgb(45, 45, 50);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    width: 350px;
+}
+.carte img {
+    width: 150px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.carte p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width: 480px) {
+    #cadre {
+        display:block;
+        margin: 8px auto;
+    }
 }
