@@ -6,20 +6,72 @@ const cartes = document.querySelector("#cartes") ;
 
 async function recherchePays(p) {
     try {
-        const reponse = await fetch(`https://restcountries.com/v3.1/name/${p}`);
+        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
         const data = await reponse.json();
-        const carte = document.createElement("span") ;
-        carte.textContent = data[0].name.common ;
-        cartes.appendChild(carte);        
+        const resultat = data.filter(function(unPays) {
+            return unPays.translations.fra.common.toLowerCase().includes(p.toLowerCase())
+        })
+        cartes.innerHTML = ""
+        for (let unPays of resultat) {
+            afficherPays(unPays)
+        }
+    } catch(erreur) {
+        console.log('il y a un problème', erreur)
+    }
+}
+
+function afficherPays(unPays) {
+    const carte = document.createElement("div") ;
+    carte.className = "carte" ;
+    carte.innerHTML = `
+        <p>Pays : ${unPays.translations.fra.common}</p>
+        <p>Capital : ${unPays.capital[0]}</p>
+        <p>Population : ${unPays.population} habitants</p>
+        <p>Region : ${unPays.region}</p>
+        <p>Langue : ${Object.values(unPays.languages)}</p>
+        <p>Monnaie : ${Object.values(unPays.currencies)[0].name}</p>
+        <img src="${unPays.flags.png}" alt="drapeau de ${unPays.name.common}">
+    `;
+    cartes.appendChild(carte); 
+}
+
+searchBtn.addEventListener("click", function() {
+    cartes.innerHTML= "" ;
+    recherchePays(search.value)
+    search.value = "" ;
+})
+
+async function filtrerParRegion() {
+    try {
+        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags");
+        const data = await reponse.json();
+        const resultat = data.filter((unPays) =>  unPays.region === parametre.value);
+        cartes.innerHTML = "";
+        for (let unPays of resultat) {
+            afficherPays(unPays)
+        }
+    }catch(erreur){
+        console.log('il y a un problème', erreur) ;
+    } 
+}
+
+parametre.addEventListener("change", function (unPays) {
+    filtrerParRegion()
+})
+
+async function paysAleatoire() {
+    try {
+        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
+        const data = await reponse.json();
+        search.value = "" ;
+        const alea = Math.floor((Math.random()) * data.length) ;
+        const paysAleatoire = data[alea] ;
+        search.value = paysAleatoire.translations.fra.common ;
     }catch(erreur){
         console.log('il y a un problème', erreur) ;
     }
 }
 
-function afficherPays() {
-    //fonction à créer la prochaine fois pour l'intégrer dans recherchePays(p)
-}
-
-searchBtn.addEventListener("click", function() {
-    recherchePays(search.value)
+random.addEventListener("click", function () {
+    paysAleatoire()
 })
