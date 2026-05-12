@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@layer components {
+  .badge {
+    @apply px-3 py-1 rounded-full text-white text-sm w-24;
+  }
+}
