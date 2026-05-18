@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice scroll</title>
+    <style>
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            transition: background-color 0.5s;
+            background-color: transparent;
+        }
+        body {
+            background-color: rgb(15, 23, 42);
+            transition: background-color 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>Mon Portfolio</nav>
+    <div style="height: 2000px;"></div>
+
+    <script>
+        const nav = document.querySelector("nav");
+
+        window.addEventListener("scroll", function() { 
+            const opacite =  Math.min(window.scrollY / 300, 1);
+            nav.style.backgroundColor = `rgba(15, 23, 42, ${opacite})`;
+        });
+
+        const body = document.querySelector("body");
+
+        window.addEventListener("scroll", () => {
+            const couleur = Math.min(window.scrollY / 500, 1);
+            body.style.backgroundColor = `rgb(${15 + (couleur * 15)}, ${23 + (couleur * 35)}, ${42 + (couleur * 96)})`;
+        });
+        //rgb(15, 23, 42)
+        //rgb(30, 58, 138)
+        
+    </script>
+
+</body>
+</html>
