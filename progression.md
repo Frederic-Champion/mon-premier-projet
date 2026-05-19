@@ -160,3 +160,15 @@ Repo GitHub portfolio-fred créé et pushé.
 Niveau Tailwind : 70%. Niveau JS global : 65%.
 Prochain : session JS pure (callbacks, APIs natives) +
 navbar burger + mode jour/nuit.
+
+## Session 21 — Effets scroll navbar
+Durée : ~2h
+Thème : JS pur — scroll events, DOM, débogage
+Ce qui a été fait : hide/show navbar au scroll (window.scrollY, 
+comparaison scrollInitial), section:not(#hero), z-50, fusion DRY 
+des listeners, glassmorphism (backdrop-blur, bg-black/25), 
+classList.toggle expliqué.
+Ce qui a accroché : scope let dans callback, classList.add() vs =, 
+window vs élément pour le scroll.
+Niveau estimé : JS DOM 75% / DevTools 70%
+Prochaine session : Navbar burger — HTML + CSS mobile + toggle JS.
