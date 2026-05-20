@@ -172,3 +172,15 @@ Ce qui a accroché : scope let dans callback, classList.add() vs =,
 window vs élément pour le scroll.
 Niveau estimé : JS DOM 75% / DevTools 70%
 Prochaine session : Navbar burger — HTML + CSS mobile + toggle JS.
+
+## Session 22 — Navbar burger + Responsive mobile
+Durée : ~2h
+Thème : Burger menu JS + passe responsive complète
+Ce qui a été fait : burger HTML (3 traits CSS), md:hidden,
+classList.toggle, menu fixed sous header, passe responsive
+toutes sections, flex-col md:flex-row, tailles fixes corrigées,
+logique mobile first ancrée.
+Ce qui a accroché : tailles fixes qui cassent le layout mobile
+— réflexe à développer.
+Niveau estimé : Responsive 75% / JS DOM 75%
+Prochaine session : Retouches responsive + Dark mode toggle JS.
