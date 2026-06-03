@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        color: rgb(100, 100, 100);
+        }
+
+        #resultat {
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            border-radius: 8px;
+            gap: 16px;
+        }
+        .custom {
+            background-color: rgb(14, 22, 22);
+            padding: 16px;
+            margin-inline: 32px;
+            border-radius: 32px
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="tape">
+    <div id="resultat"></div>
+
+    <script>
+
+        const input = document.querySelector("input");
+        const resultat = document.querySelector("#resultat");
+        let data = [];
+
+        async function tableauUser() {
+        const reponse = await fetch("https://jsonplaceholder.typicode.com/users");
+        data = await reponse.json();
+        afficher(data);
+        }
+
+        function afficher(liste) {
+        resultat.innerHTML = "";
+        for (let chaque of liste) {
+            const divv = document.createElement("div");
+            divv.className = "custom";
+            divv.innerHTML = `
+            <p>${chaque.name}</p>
+            <p>${chaque.email}</p>
+            <p>${chaque.company.name}</p>
+            `;
+            resultat.appendChild(divv);
+        }
+        }
+
+        tableauUser();
+
+        input.addEventListener("input", () => {
+        const filtre = data.filter(chaque => chaque.name.toLowerCase().includes(input.value.toLowerCase()));
+        afficher(filtre);
+        });
+
+    </script>
+</body>
+</html>
