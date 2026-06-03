@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Observer Demo</title>
+  <style>
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-family: sans-serif;
+    }
+    #intro    { background: #1a1a2e; color: white; }
+    #montures { background: #16213e; color: white; }
+    #verres   { background: #0f3460; color: white; }
+    #contact  { background: #533483; color: white; }
+  </style>
+</head>
+<body>
+  <section id="intro">Section Intro</section>
+  <section id="montures">Section Montures</section>
+  <section id="verres">Section Verres</section>
+  <section id="contact">Section Contact</section>
+
+  <script>
+    const vigile = new IntersectionObserver((fiches) => {
+      for (let fiche of fiches) {
+        if (fiche.isIntersecting) {
+          fiche.target.style.backgroundColor = "#2ecc71";
+          console.log("✅ VISIBLE :", fiche.target.id);
+        } else {
+          console.log("❌ SORTI :", fiche.target.id);
+        }
+      }
+    });
+
+    vigile.observe(document.querySelector("#intro"));
+    vigile.observe(document.querySelector("#montures"));
+    vigile.observe(document.querySelector("#verres"));
+    vigile.observe(document.querySelector("#contact"));
+  </script>
+</body>
+</html>
