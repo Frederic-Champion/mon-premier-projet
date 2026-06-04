@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        color: rgb(100, 100, 100);
+        }
+
+        #resultat {
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            border-radius: 8px;
+            gap: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <input type="text" placeholder="tape">
+        <div id="resultat"></div>
+    </main>
+
+    <script>
+
+        const input = document.querySelector('input');
+        const resultat = document.querySelector('#resultat');
+        let data = [];
+
+        function afficher(liste) {    
+            resultat.innerHTML = ""; 
+            for (let requete of liste) {  
+                const carte = document.createElement("div");
+                carte.innerHTML = `
+                    <p>${requete.name.common}</p>
+                    <p>${requete.capital[0]}</p>
+                    <p>${requete.population.toLocaleString()}</p>
+                `;
+            resultat.appendChild(carte)
+            }
+        }    
+
+        async function recherche() {
+            const reponse = await fetch("https://restcountries.com/v3.1/region/europe");
+            data = await reponse.json();
+            afficher(data);
+        }
+
+        recherche();
+            
+
+        input.addEventListener("input", () => {
+            const filtre = data.filter(truc => truc.name.common.toLowerCase().includes(input.value.toLowerCase())); 
+            afficher(filtre)
+        });
+
+    </script>
+</body>
+</html>

@@ -286,3 +286,33 @@ reduce() (double return), ternaire dans affectation (double =)
 - Tailwind : 🟡 70%
 **À repratiquer** : fetch, includes(), filter/reduce en autonomie
 **Prochaine session** : À définir — fetch + includes, ou finitions portfolio, ou session JS prévue (IntersectionObserver, !, :not(), .target)
+
+## Session 25 — Observer + fetch/includes (sur 2 jours)
+**Durée** : ~4h (midi + soir + soir)
+**Thème** : Révision IntersectionObserver, :not(), fetch + includes
+
+**Ce qui a été fait** :
+- Cours complet event vs entry (callback, .target, le navigateur remplit le paramètre)
+- Observer : démo 4 sections console, exercice animation scroll (classList.add/remove "visible")
+- :not() — sélecteur CSS d'exclusion, validé premier coup
+- fetch + includes : exercice recherche users (hier), exercice recherche pays Europe (aujourd'hui)
+- Concepts ancrés : paramètre = juste un nom, new = créer un objet,
+  addEventListener vs new IntersectionObserver, className vs classList,
+  style.background en JS, let vs const, "input" vs "keydown", toLocaleString(),
+  fonction réutilisable avec paramètre (afficher(liste))
+
+**Ce qui a accroché** :
+- Observer : le mécanisme callback/fiches/boucle — compris après démo visuelle
+- fetch : structurer les 3 blocs (fetch, afficher, listener) séparément
+- Fonction avec paramètre réutilisable (afficher(data) vs afficher(filtre))
+- Bug * { display: flex } sur style — compris
+
+**Niveau estimé** :
+- IntersectionObserver : 🟡 55%
+- fetch + async/await : 🟡 55%
+- filter + includes : 🟡 65%
+- :not() : ✅ 80%
+- event vs entry : 🟡 60%
+
+**À repratiquer** : fetch et Observer — encore 2-3 exercices chacun
+**Prochaine session** : Nouvel exercice fetch ou Observer, ou les deux combinés
