@@ -316,3 +316,35 @@ reduce() (double return), ternaire dans affectation (double =)
 
 **À repratiquer** : fetch et Observer — encore 2-3 exercices chacun
 **Prochaine session** : Nouvel exercice fetch ou Observer, ou les deux combinés
+
+## Session 26 — fetch + Observer combinés (midi + soir)
+**Durée** : ~3h
+**Thème** : Exercice complet fetch + filter + includes + Observer + CSS avancé
+
+**Ce qui a été fait** :
+- Exercice recherche pays Europe (fetch + filter + includes + toLowerCase)
+- Exercice complet 100 posts : fetch, affichage grid 5 colonnes, recherche,
+  line-clamp CSS (tronquer/déplier au clic), Observer animation scroll
+- Concepts ancrés : let vs const (réassignation), fonction réutilisable avec
+  paramètre (afficher(liste)), "input" vs "keydown", toLocaleString() (pas maitrisé),
+  -webkit-line-clamp (4 propriétés : pas du tout maitrisé), .deplie .body-texte (sélecteur descendant),
+  spécificité CSS, position absolute/relative pour flotter sans pousser,
+  z-index, opacity 0→1, transition, classList.add vs classList = 
+- Observer intégré sur des cartes créées dynamiquement par fetch
+- slice() expliqué (pas maîtrisé) 
+
+**Ce qui a accroché** :
+- Observer : noms de variables mélangés (fiche/carte), placement du vigile
+  (dans vs hors de la boucle), classList = vs classList.add
+- fetch : structurer les 3 blocs séparés (encore besoin d'un modèle)
+- position absolute/relative : compris mais pas instinctif
+
+**Niveau estimé** :
+- fetch + async/await : 🟡 60%
+- IntersectionObserver : 🟡 55%
+- filter + includes : 🟡 70%
+- CSS position : 🔴 50%
+- -webkit-line-clamp : 🟡 45%
+
+**À faire** : exercices dédiés position CSS/Tailwind
+**Prochaine session** : Encore un exercice fetch + Observer, ou nouvelle notion

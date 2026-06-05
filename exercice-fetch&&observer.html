@@ -6,23 +6,77 @@
     <title>Exercice</title>
     <style>
 
+        /* simple esthétique */
         * {margin: 0; padding: 0; box-sizing: border-box;}
         body {background-color: rgb(193, 195, 196); font-weight: 300; display: flex; flex-direction: column;}
+        #visuel {height: 100vh; display: flex; flex-direction: column; gap: 36px; text-align: center; justify-content: center;}
         input {width: 500px; margin-top: 30px; padding: 8px ;align-self: center;}
-        .carte {background-color: white; margin: 16px; border-radius: 8px; font-size: large; padding: 0 8px;}
+        p {font-size: x-large; font-weight: 500;}
+        #cartes {display: grid; grid-template-columns: repeat(5, 1fr); align-items: start;}
+
+        /* code plus complexe à connaitre */
+
+        .carte {
+            background-color: white;
+            margin: 16px;
+            border-radius: 8px;
+            font-size: large;
+            padding: 0 8px;
+            position: relative;
+            transition: opacity 1s, transform 1s;
+            transform: translateY(40px);
+            opacity: 0;
+        }
+
+        .body-texte {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .deplie {
+             z-index: 10;             
+        }
+
+        .deplie .body-texte {
+        -webkit-line-clamp: unset;
+        position: absolute;      
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .visible {
+            opacity: 1;
+            transform:translateY(0px) ;
+        }
 
     </style>
 </head>
 <body>
-
-    <input type="text" placeholder="tape">
+    <div id="visuel">
+        <input type="text" placeholder="tape">
+        <p>Scroll vers le bas ⏬</p>
+    </div>
     <div id="cartes"></div>
 
     <script>
 
+        function mission(fiches) {
+            for (let fiche of fiches) {
+                if (fiche.isIntersecting) {
+                    fiche.target.classList.add('visible');
+                }
+            }
+        }
+
         const input = document.querySelector("input");
         const cartes = document.querySelector("#cartes");
         let data = [];
+        const vigile = new IntersectionObserver(mission)
 
         function creerCarte(listes) {
             cartes.innerHTML = "";
@@ -31,9 +85,13 @@
                 carte.className = "carte";
                 carte.innerHTML = `
                     <p>titre : ${liste.title}</p>
-                    <p>body : ${liste.body}</p>
                     <p>identifiant : ${liste.userId}</p>
-                `;
+                    <p class="body-texte">${liste.body}</p>
+                    `;
+                carte.addEventListener("click", () => {
+                    carte.classList.toggle("deplie");
+                });
+                vigile.observe(carte)
                 cartes.appendChild(carte)
             }
         }
@@ -50,6 +108,8 @@
             const dataFiltrees = data.filter(post => post.title.toLowerCase().includes(input.value.toLowerCase()));
             creerCarte(dataFiltrees);
         });
+
+
 
     </script>
     
