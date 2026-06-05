@@ -28,7 +28,7 @@
     const vigile = new IntersectionObserver((fiches) => {
       for (let fiche of fiches) {
         if (fiche.isIntersecting) {
-          fiche.target.style.backgroundColor = "#2ecc71";
+          //fiche.target.style.backgroundColor = "#2ecc71";
           console.log("✅ VISIBLE :", fiche.target.id);
         } else {
           console.log("❌ SORTI :", fiche.target.id);
