@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; font-family: sans-serif; }
+    .carte {
+      height: 250px;
+      margin: 100px auto;
+      width: 300px;
+      background: #1e293b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      /* état de départ : invisible + décalée vers le bas */
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    /* état final : à atteindre quand la classe "visible" est ajoutée */
+    .carte.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="carte">Ray-Ban Aviator</div>
+  <div class="carte">Persol 649</div>
+  <div class="carte">Oakley Holbrook</div>
+  <div class="carte">Tom Ford FT5</div>
+
+  <script>
+    
+    const carte = document.querySelectorAll(".carte");
+
+    function affichage(montures) {
+        for (let monture of montures) {
+            if (monture.isIntersecting) {
+                monture.target.classList.add("visible");
+            }
+        }
+    }
+
+    const vigile = new IntersectionObserver(affichage)
+
+    for (let une of carte) {
+        vigile.observe(une)
+    }
+    
+  </script>
+</body>
+</html>
