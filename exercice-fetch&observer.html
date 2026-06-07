@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #0f172a; }
+    h1 { color: white; text-align: center; padding: 40px 0 20px; }
+    .recherche {
+      display: block;
+      width: 320px;
+      margin: 0 auto 40px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    .carte {
+      width: 320px; margin: 80px auto; padding: 24px;
+      background: #1e293b; color: white; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .carte.visible { opacity: 1; transform: translateY(0); }
+    .carte h3 { margin: 0 0 12px; }
+    .carte p { margin: 4px 0; color: #94a3b8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Fichier clients — Optique Champion</h1>
+  <input type="text" class="recherche" placeholder="Rechercher un client...">
+  <div id="conteneur"></div>
+
+  <script>
+
+    const conteneur = document.querySelector("#conteneur");
+    const input = document.querySelector("input");
+    let data = []
+
+    const observer = new IntersectionObserver((entries) => {
+        for (let entry of entries) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible")
+            }
+        }
+    })
+
+    function afficher(donnees) {
+        conteneur.innerHTML = "";
+        for (const donnee of donnees) {
+            const ficheClient = document.createElement("div");
+            ficheClient.classList = 'carte';
+            ficheClient.innerHTML = `
+                <h3>${donnee.name}</h3>
+                <p>${donnee.email}</p>
+                <p>${donnee.address.city}</p>
+                <p>${donnee.company.name}</p>
+            `;
+            observer.observe(ficheClient)
+            conteneur.appendChild(ficheClient);
+        }
+    };
+
+    async function clients() {
+        const reponse = await fetch("https://jsonplaceholder.typicode.com/users");
+        data = await reponse.json();
+        afficher(data)
+    }
+
+    clients();
+
+    input.addEventListener("input", () => {
+        const donneesFiltrees = data.filter(client => client.name.toLowerCase().includes(input.value.toLowerCase()));
+        afficher(donneesFiltrees)
+    })
+
+  </script>
+</body>
+</html>

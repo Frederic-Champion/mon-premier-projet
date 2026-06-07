@@ -348,3 +348,35 @@ reduce() (double return), ternaire dans affectation (double =)
 
 **À faire** : exercices dédiés position CSS/Tailwind
 **Prochaine session** : Encore un exercice fetch + Observer, ou nouvelle notion
+
+## Session 27 — fetch + Observer + méthodes de tableau + position CSS
+**Durée** : ~3h15 (dimanche aprèm, suite midi)
+**Thème** : Consolidation JS (fetch/Observer/arrays) + intro position CSS
+
+**Ce qui a été fait** :
+- Exercice fetch + Observer (clients jsonplaceholder) : 3 blocs séparés en autonomie
+- .target expliqué (entry = rapport, pas l'élément)
+- Recherche temps réel : filter + includes + toLowerCase + stockage data (scope OK)
+- Arrow functions : aller-retour version longue ↔ courte maîtrisé
+- "for caché" dans filter/map/reduce : déclic
+- map / find / some / forEach : cours + exo console (4 lignes)
+- className vs classList = vs classList.add : reclarifié
+- const vs let dans for...of : nouvelle variable par tour
+- position relative/absolute : cours + exo badge dans carte + micro-test réussi
+
+**Ce qui a accroché (résolu)** :
+- Pourquoi .target / pourquoi const dans for...of / la syntaxe arrow .filter(element => element ...)
+
+**Niveau estimé** :
+- fetch + async/await : 🟡 70% (était 60%)
+- IntersectionObserver : 🟡 70% (était 55%)
+- filter + includes : 🟡 80%
+- arrow functions : 🟡 75%
+- map / find / some : 🟡 60-65% (nouveaux, à repratiquer)
+- forEach : 🟡 65%
+- position relative/absolute : 🟡 65% (était 🔴 50%)
+
+**À repratiquer** : map/find/some en autonomie, position CSS (1-2 exos),
+fixed/sticky (pas encore retravaillés), reduce()
+
+**Prochaine session** : pratique position CSS OU combo fetch+Observer+map en autonomie totale
