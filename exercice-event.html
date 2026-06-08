@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Exercice1</title>
+        <style>
+
+            .clique {
+                background-color: green;
+                
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <button class="monture">Aviator</button>
+        <button class="monture">Wayfarer</button>
+        <button class="monture">Clubmaster</button>
+
+        <input id="recherche" placeholder="Tape puis Entrée..." />
+
+        <script>
+            
+            const boutons = document.querySelectorAll("button");
+
+            for (let b of boutons) {
+                b.addEventListener("click", (e) => {
+                  e.target.style.backgroundColor = "green";
+                  e.target.textContent = "✓ Sélectionnée"  
+                })
+            }
+
+            const search = document.querySelector("#recherche");
+
+            search.addEventListener("keydown", (e) => {
+                e.key === "Enter" ? console.log("🔍 Recherche lancée !") : console.log(`${e.key}`);
+            })
+            
+
+        </script>
+    </body>
+</html>
