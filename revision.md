@@ -257,12 +257,12 @@
 - [x] window.scrollY — 7/10 (stable)
 - [ ] classList.add(classe) plutôt que .style en dur — à appliquer
 
-## 🎯 Bloc C — Méthodes de tableau (EN COURS)
-- [ ] reduce() accumulateur objet — 5/10 (le plus fragile)
-- [ ] slice() et splice() — 1/10
-- [ ] .push() — 4/10
-- [ ] Object.values() — 4/10
-- [ ] for...in — 3/10
+## 🎯 Bloc C — Méthodes de tableau (fait le 09/06 et 10/06, 3h15)
+- [x] reduce() accumulateur objet — 5/10 (le plus fragile) → 7/10
+- [x] slice() et splice() — 1 → 7/10
+- [x] .push() — 4 → 7/10
+- [x] Object.values() — 4 → 7/10
+- [x] for...in — 3  → 7/10
 
 ## Bloc D — Outils JS du quotidien
 - [ ] console.log() en mode debug F12 — 0/10

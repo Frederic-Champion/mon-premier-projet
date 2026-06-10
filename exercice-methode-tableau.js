@@ -18,3 +18,9 @@ const auMoinUn = clients.some(x => x.lunettes === true);  //retourne un true/fal
 clients.forEach(client => {
   console.log(`${client.nom} a ${client.age}.`)
 })
+
+//-----//
+
+Object.keys(r);     // ["monture", "verre"]   → les NOMS (clés)
+Object.values(r);   // [320, 80]              → les VALEURS
+Object.entries(r);  // [["monture",320],["verre",80]] → les PAIRES [nom, valeur]
