@@ -26,7 +26,7 @@ function afficherPays(unPays) {
     carte.innerHTML = `
         <p>Pays : ${unPays.translations.fra.common}</p>
         <p>Capital : ${unPays.capital[0]}</p>
-        <p>Population : ${unPays.population} habitants</p>
+        <p>Population : ${(unPays.population).toLocaleString("fr-FR")} habitants</p>
         <p>Region : ${unPays.region}</p>
         <p>Langue : ${Object.values(unPays.languages)}</p>
         <p>Monnaie : ${Object.values(unPays.currencies)[0].name}</p>

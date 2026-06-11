@@ -295,3 +295,11 @@
 
 ## ⏳ Plus tard — niveau pro
 - [ ] response.ok / throw (1)
+
+
+
+
+## 🔧 À réparer plus tard
+- World Explorer : API RestCountries v3.1 **dépréciée** (réponse "deprecated", migrer vers v5)
+  → mini-projet de révision : lire la doc de migration v5, adapter les noms de champs dans le fetch
+  → bon exercice : fetch + lecture de doc + debug sur un cas réel
