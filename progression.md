@@ -473,3 +473,23 @@ sorti d'instinct.
 **À repratiquer** : classList.add(classe) plutôt que .style en dur (vu, à appliquer) ;
 contains() dans un vrai "clic dehors"
 **Prochaine session** : Bloc C — méthodes de tableau (reduce objet, slice/splice, push, Object.values, for...in)
+
+## Sessions — Bloc C : méthodes de tableau (08-09/06/2026)
+**Durée** : ~2h (soir du 08) + ~1h (midi du 09)
+**Thème** : slice/splice, push, reduce (somme/objet/imbriqué), Object.values, for...in
+**Ce qui a été fait** :
+- slice (copie, fin exclue, n'abîme pas) vs splice (modifie en place, retire) —
+  distinction par l'INTENTION + mnémo sécurisé/sabote
+- reduce : déclic via le "=" qui CRÉE ou REMPLACE une case d'objet ; carnet/accumulateur
+  transmis par return ; filet || 0 (somme) / || [] (liste) / || {nombre,total} (imbriqué)
+- le comptage se FABRIQUE avec +1 (pas dans les données)
+- Object.values/keys/entries = pont objet → tableau (récupère les méthodes de tableau)
+- for...in (clés d'un OBJET) vs for...of (éléments d'un TABLEAU, ordonné)
+- crochets obligatoires quand la clé est dans une variable (acc[m.marque], compte[v])
+**Ce qui a accroché (résolu)** : "comment JS compte sans quantité" → +1 fabriqué ;
+le "=" qui crée/remplace une case (débloqué en isolant hors de reduce) ;
+piège du reduce sur-compliqué pour une simple somme (Object.values + acc+v.montant suffit)
+**Validation** : mini-examen 5 questions enchaînées réussi en autonomie ✅
+**Niveaux** : slice/splice 1→7 · push 4→7 · reduce objet 5→7 · Object.values 4→7 · for...in 3→7
+**À entretenir** : reduce en échauffement (instinct), for...in (peu intuitif)
+**Prochaine session** : Bloc D — console.log debug F12, setTimeout, toLocaleString/toFixed
