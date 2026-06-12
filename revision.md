@@ -175,131 +175,130 @@
 - trouverMax
 - compterMot
 
-# 🗺️ Feuille de route — révisions fin de Phase 1
-*Établie le 08 juin 2026, à partir de l'auto-évaluation (134/142 notions, moyenne 5.8/10).*
-*Règle : toute notion < 6/10 est à réviser jusqu'à maîtrise. Ordre = du plus fondamental (socle React) au nettoyage.*
+/*----  ----*/
 
-## Bloc A — Fondations JS conceptuelles 🎯 (priorité absolue, exercice)
-- [ ] Valeur vs référence (2/10) — le socle
-- [ ] Scope des variables (5/10)
-- [ ] Scope dans les callbacks (3/10)
-
-## Bloc B — L'objet event (exercice, enchaîne sur A)
-- [ ] event.target (3/10)
-- [ ] event.key / event.type (3/10)
-- [ ] element.contains() (2/10)
-- [ ] scroll / window.scrollY (5/10)
-
-## Bloc C — Méthodes de tableau (exercice)
-- [ ] reduce() accumulateur objet (5/10) — le plus fragile
-- [ ] slice() et splice() (1/10)
-- [ ] .push() (4/10)
-- [ ] Object.values() (4/10)
-- [ ] for...in (3/10)
-
-## Bloc D — Outils JS du quotidien (exercice + débogage)
-- [ ] console.log() en mode debug avec F12 (0/10)
-- [ ] setTimeout (2/10)
-- [ ] toLocaleString() / toFixed() (3/10)
-
-## Bloc E — Détails fetch / Observer
-- [ ] ?fields= dans l'URL (1/10)
-- [ ] threshold / isIntersecting (2/10)
-
-## Bloc F — CSS rouillé à rafraîchir (court : explication + petit test)
-- [ ] Variables CSS --nom / var() (1/10) + :root (5/10)
-- [ ] Media queries brut (2/10) + mobile first brut (5/10) + reset en media query (4/10)
-- [ ] height: 100vh / min-height (2/10)
-- [ ] margin: auto (5/10)
-- [ ] box-shadow rgba (5/10)
-- [ ] meta viewport (2/10)
-- [ ] div vs section vs article (4/10)
-- [ ] Spécificité CSS (à ancrer en pratique)
-- [ ] animation burger → croix (4/10)
-
-## Bloc G — CSS à pratiquer une fois (geste réel mais niche)
-- [ ] glassmorphism / backdrop-blur (2/10)
-- [ ] -webkit-line-clamp (0/10)
-- [ ] Grid CSS brut (3/10) — optionnel, entretien CSS pur
-
-## Bloc H — Setup, à consolider doucement
-- [ ] Créer un projet from scratch / scaffolding (2/10) — à sécuriser avant Phase 2
-- [ ] npm commandes de base — à fiabiliser sans urgence
-
-## ✋ Laissé de côté volontairement
-- forEach + index (choix assumé : for...of préféré)
-- git init/clone + config identité (commandes one-shot, repos en place)
-- PowerShell ExecutionPolicy (fait une fois)
-- Raccourcis VS Code (confort)
-
-## ⏳ Plus tard — niveau pro (Phase 2/3)
-- response.ok / throw (1/10)
+# 🗺️ RÉVISION — Bilan de fin de Phase 1
+*Auto-éval initiale : 08/06/2026 (134/142 notions, moyenne 5.8/10).*
+*Révisions menées du 08 au 12/06/2026 — règle appliquée : toute notion < 6/10 révisée jusqu'à maîtrise.*
 
 ---
-**Travail incompressible : A → B → C → D.** Blocs E à H = rafraîchissement court ou vocabulaire.
-**En cours : Bloc A** (démarré le 08/06/2026).
 
+## 📊 ÉTAT GLOBAL : les 8 blocs de révision sont TERMINÉS ✅
+Point de départ : moyenne 5.8/10, plusieurs trous conceptuels (reduce, valeur/référence, scope).
+À ce jour : tous les blocs A→H bouclés. Le travail incompressible (A→D) est fait et validé.
+👉 Au prochain gros point : **refaire le quiz d'auto-évaluation** pour mesurer la nouvelle moyenne.
 
-# 🗺️ Révision — feuille de route fin de Phase 1
-*Auto-éval du 08/06/2026 (134/142 notions, moyenne 5.8/10).*
-*Règle : toute notion < 6/10 à réviser jusqu'à maîtrise.*
+---
 
-## ✅ Bloc A — Fondations JS conceptuelles (fait le 08/06, 14h-17h30)
-- [x] Valeur vs référence — 2 → 7/10
-- [x] Scope des variables — 5 → 7/10
-- [x] Scope dans les callbacks / closures — 3 → 6/10
-- [ ] spread `...` — découvert, à rendre instinctif (React)
+## ✅ BLOC A — Fondations JS conceptuelles (08/06, 14h-17h30)
+- [x] Valeur vs référence — 2 → **7/10**
+- [x] Scope des variables — 5 → **7/10**
+- [x] Scope dans les callbacks / closures (var vs let) — 3 → **6/10**
+> Clé : `=` simple copie l'étiquette (référence) ; objet/tableau = même tiroir.
+> Scope = sens unique (intérieur voit extérieur). var = 1 tiroir réécrit / let = 1 tiroir par tour.
 
-## ✅ Bloc B — L'objet event (fait le 08/06, 22h-23h40)
-- [x] event.target — 3 → 7/10
-- [x] event.key / event.type — 3 → 7/10
-- [x] element.contains() — 2 → 6/10
-- [x] window.scrollY — 7/10 (stable)
-- [ ] classList.add(classe) plutôt que .style en dur — à appliquer
+## ✅ BLOC B — L'objet event (08/06, 22h-23h40)
+- [x] event.target — 3 → **7/10**
+- [x] event.key / event.type — 3 → **7/10**
+- [x] element.contains() — 2 → **6/10**
+- [x] window.scrollY — 5 → **7/10**
+> event = "rapport d'incident" rempli par le navigateur. target = élément cliqué (auto-désigné).
+> contains : grand.contains(petit). !menu.contains(e.target) = clic en dehors.
 
-## 🎯 Bloc C — Méthodes de tableau (fait le 09/06 et 10/06, 3h15)
-- [x] reduce() accumulateur objet — 5/10 (le plus fragile) → 7/10
-- [x] slice() et splice() — 1 → 7/10
-- [x] .push() — 4 → 7/10
-- [x] Object.values() — 4 → 7/10
-- [x] for...in — 3  → 7/10
+## ✅ BLOC C — Méthodes de tableau (09-10/06, ~3h)
+- [x] reduce() accumulateur objet — 5 → **7/10**
+- [x] slice() et splice() — 1 → **7/10**
+- [x] .push() — 4 → **7/10**
+- [x] Object.values() — 4 → **7/10**
+- [x] for...in — 3 → **7/10**
+> Déclic reduce : le `=` CRÉE ou REMPLACE une case d'objet. Carnet transmis par `return acc`.
+> Filets : || 0 (somme), || [] (liste), || {…} (objet). Le comptage se FABRIQUE avec +1.
+> slice = copie (fin exclue), splice = modifie en place. for...of (tableau) / for...in (objet).
+> Mini-examen 5 questions réussi en autonomie ✅
 
-## Bloc D — Outils JS du quotidien
-- [ ] console.log() en mode debug F12 — 0/10
-- [ ] setTimeout — 2/10
-- [ ] toLocaleString() / toFixed() — 3/10
+## ✅ BLOC D — Outils JS du quotidien (10-12/06)
+- [x] console.log() en mode debug F12 — 0 → **7/10**
+- [x] setTimeout — 2 → **7/10**
+- [x] toLocaleString() / toFixed() — 3 → **7/10**
+> Debug : étiqueter (console.log("label:", val)), enquêter DANS la boucle, lire l'écart.
+> undefined = propriété inexistante / NaN = calcul avec non-nombre. Log de debug = temporaire.
+> setTimeout(fonction, délai) — NON-BLOQUANT (A→C→B), porte d'entrée de l'asynchrone.
+> toFixed renvoie une CHAÎNE (afficher only). toLocaleString("fr-FR", {style, currency}).
 
-## Bloc E — Détails fetch / Observer
-- [ ] ?fields= dans l'URL — 1/10
-- [ ] threshold / isIntersecting — 2/10
+## ✅ BLOC E — Détails fetch / Observer (12/06)
+- [x] ?fields= dans l'URL — 1 → **7/10**
+- [x] threshold / isIntersecting — 2 → **7/10**
+> ?fields= filtre les champs renvoyés. Mécanisme universel des URLs (? params, = valeur, & enchaîne).
+> threshold = seuil 0→1 (je règle) / isIntersecting = booléen renvoyé. threshold accepte un tableau.
 
-## Bloc F — CSS rouillé à rafraîchir (court)
-- [ ] Variables CSS --nom / var() (1) + :root (5)
-- [ ] Media queries brut (2) + mobile first (5) + reset en media query (4)
-- [ ] height 100vh / min-height (2)
-- [ ] margin auto (5)
-- [ ] box-shadow rgba (5)
-- [ ] meta viewport (2)
-- [ ] div vs section vs article (4)
-- [ ] spécificité CSS (à ancrer)
-- [ ] animation burger → croix (4)
+## ✅ BLOC F — CSS rouillé à rafraîchir (12/06)
+- [x] Variables CSS --nom / var() (1→**7**) + :root (5→**7**)
+- [x] Media queries (2→**7**) + mobile first (5→**7**) + reset en media query (4→**7**)
+- [x] height 100vh / min-height — 2 → **7/10**
+- [x] margin: auto — 5 → **7/10**
+- [x] box-shadow rgba — 5 → **7/10**
+- [x] meta viewport — 2 → **7/10**
+- [x] div vs section vs article — 4 → **7/10**
+- [x] Spécificité CSS — confirmée **7/10**
+- [x] animation burger → croix — 4 → **6/10**
+> `--` pour déclarer / var() pour utiliser. max-width = petits écrans (≤) / min-width = grands (≥).
+> margin auto : block + largeur (sinon rien) ; parent flex = centre 2 axes.
+> box-shadow : x, y, flou, [étalement], couleur rgba. Spécificité : #id > .classe > balise.
+> div (neutre) / section (thématique avec titre) / article (autonome, réutilisable ailleurs).
 
-## Bloc G — CSS à pratiquer une fois (niche)
-- [ ] glassmorphism / backdrop-blur (2)
-- [ ] -webkit-line-clamp (0)
-- [ ] Grid CSS brut (3) — optionnel
+## ✅ BLOC G — CSS niche, à pratiquer une fois (12/06)
+- [x] glassmorphism / backdrop-blur — 2 → **7/10**
+- [x] -webkit-line-clamp — 0 → **6/10**
+- [x] Grid CSS brut — 3 → **6/10**
+> glassmorphism = bg rgba + backdrop-filter: blur() (floute DERRIÈRE, pas l'élément).
+> line-clamp = tronquer à N lignes (syntaxe à chercher, ou line-clamp-3 en Tailwind).
+> Grid : display:grid, grid-template-columns, fr, repeat(n,1fr), gap. grid-cols-3 = repeat(3,1fr).
+> Colonnes inégales : col-span-X ou valeur arbitraire Tailwind [1fr_1fr_2fr].
 
-## Bloc H — Setup à consolider
-- [ ] scaffolding projet from scratch (2) — avant Phase 2
-- [ ] npm commandes de base
+## ✅ BLOC H — Setup / scaffolding (12/06)
+- [x] Créer un projet from scratch — 2 → **7/10**
+- [x] npm commandes de base — 0 → **6/10**
+> Séquence : mkdir + cd → npm init -y → npm install tailwindcss @tailwindcss/cli
+> → src/input.css (@import "tailwindcss") + dist/ → .gitignore (node_modules/ + dist/)
+> → npm run dev (script package.json) → index.html (link vers dist/output.css) → git init.
+> On ignore tout ce qui est RÉGÉNÉRABLE. Phase 2 : create-next-app automatisera tout ça.
 
-## ⏳ Plus tard — niveau pro
-- [ ] response.ok / throw (1)
+---
 
+## 🔁 À ENTRETENIR / RENDRE INSTINCTIF (vu, pas encore réflexe)
+*Pas des trous — des choses comprises à faire mûrir par la répétition.*
+- [ ] spread `...` (clone objet/tableau) — sera un réflexe quotidien en React
+- [ ] classList.add("classe") plutôt que .style en dur dans le JS
+- [ ] reduce() en échauffement de temps en temps (pour l'instinct)
+- [ ] for...in (peu intuitif, à recroiser)
+- [ ] placement Grid (col-span, grid-column 1/-1) — à rafraîchir quand un projet l'exige
+- [ ] animation burger : réglage fin des translate (en pratique sur le portfolio)
 
+## ✋ LAISSÉ DE CÔTÉ VOLONTAIREMENT (avec raison)
+- forEach + index — choix assumé, for...of préféré
+- git init/clone + config identité — commandes one-shot, repos déjà en place
+- PowerShell ExecutionPolicy — fait une fois, réglé
+- Raccourcis VS Code — confort, s'apprend au fil de l'usage
 
+## ⏳ PLUS TARD — niveau pro / Phase 2-3
+- [ ] response.ok / throw (1/10) — gestion d'erreur fetch niveau pro
+- [ ] Git remote (git remote add + push vers GitHub) — À DÉTAILLER quand on connectera un vrai projet
+- [ ] Dark mode Tailwind (dark: + toggle classe sur <html>) — pas encore fait
+- [ ] tailwind.config.js (customisation) — pas encore abordé
+- [ ] Algo : sommeTableau / trouverMax / compterMot — échauffement, non commencé
 
-## 🔧 À réparer plus tard
+## 🔧 À RÉPARER PLUS TARD
 - World Explorer : API RestCountries v3.1 **dépréciée** (réponse "deprecated", migrer vers v5)
-  → mini-projet de révision : lire la doc de migration v5, adapter les noms de champs dans le fetch
-  → bon exercice : fetch + lecture de doc + debug sur un cas réel
+  → mini-projet de révision : lire la doc de migration v5, adapter les noms de champs du fetch
+  → bon exercice complet : fetch + lecture de doc + debug sur un cas réel
+
+---
+
+## 📋 AUTO-ÉVALUATION DE RÉFÉRENCE — 08/06/2026 (photo "avant", figée)
+*Moyenne globale de départ : 5.8/10 — à comparer au prochain passage du quiz.*
+*Points forts : DOM 8.6 · Tailwind 6.4 · HTML 6.2 / Points faibles : Outils 2.8 · Tableaux&objets 4.8.*
+*(scores d'origine conservés ci-dessous comme base de comparaison — NE PAS modifier)*
+
+- Git/GitHub 5.4 · HTML 6.2 · CSS boîte 6.0 · CSS flex/grid 5.0 · CSS position 5.0 ·
+  CSS sélecteurs 5.6 · Tailwind 6.4 · JS bases 6.2 · JS tableaux/objets 4.8 · JS HOF 6.0 ·
+  JS DOM 8.6 · JS événements 5.0 · JS fetch 5.7 · JS APIs natives 5.2 · Outils 2.8

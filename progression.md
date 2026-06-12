@@ -413,26 +413,22 @@ reponse.ok / throw (niveau pro), refacto en petites fonctions
 **Prochaine session** : roadmap + finitions portfolio (dark mode, back-to-top,
 responsive, Formspree, déploiement Vercel)
 
-## Auto-évaluation — 08 juin 2026 (post session 28)
-**Notions évaluées** : 134/142  ·  **Moyenne globale** : 5.8/10
-Git / GitHub — moyenne 5.4/10 (5/6)
-HTML — moyenne 6.2/10 (9/9)
-CSS — Boîte & affichage — moyenne 6.0/10 (5/5)
-CSS — Flexbox & Grid — moyenne 5.0/10 (6/6)
-CSS — Positionnement & effets — moyenne 5.0/10 (10/10)
-CSS — Sélecteurs, variables, responsive — moyenne 5.6/10 (9/10)
-Tailwind CSS — moyenne 6.4/10 (12/14)
-JavaScript — Bases & syntaxe — moyenne 6.2/10 (15/15)
-JavaScript — Tableaux & objets — moyenne 4.8/10 (8/9)
-JavaScript — Méthodes de tableau (HOF) — moyenne 6.0/10 (10/10)
-JavaScript — DOM — moyenne 8.6/10 (11/11)
-JavaScript — Événements — moyenne 5.0/10 (6/6)
-JavaScript — Fetch & Async — moyenne 5.7/10 (10/10)
-JavaScript — APIs natives & avancé — moyenne 5.2/10 (12/12)
-Outils & environnement — moyenne 2.8/10 (6/6)
-# 🗺️ Feuille de route — révisions fin de Phase 1
-*Établie le 08 juin 2026, à partir de l'auto-évaluation (134/142 notions, moyenne 5.8/10).*
-*Règle : toute notion < 6/10 est à réviser jusqu'à maîtrise. Ordre = du plus fondamental (socle React) au nettoyage.*
+## 📍 08 juin 2026 (post-session 28) — AUTO-ÉVALUATION + lancement des révisions
+
+**Bilan quiz** : 134/142 notions auto-évaluées · **moyenne globale 5.8/10**
+
+Moyennes par domaine (du plus fort au plus faible) :
+- JS DOM : 8.6 🟢
+- Tailwind : 6.4 · HTML : 6.2 · JS bases : 6.2 · CSS boîte : 6.0 · JS HOF : 6.0
+- JS fetch : 5.7 · CSS sélecteurs : 5.6 · Git : 5.4 · JS APIs natives : 5.2
+- CSS flex/grid : 5.0 · CSS position : 5.0 · JS événements : 5.0 · JS tableaux/objets : 4.8
+- Outils : 2.8 🔴
+
+**Décision** : réviser toute notion < 6/10 jusqu'à maîtrise, organisée en 8 blocs (A→H),
+du plus fondamental (socle React) au simple nettoyage.
+**Détail complet** : voir `revision.md`.
+**→ Démarrage Bloc A juste après.**
+
 
 ## Session — Bloc A : fondations JS (valeur/référence + scope + closures)
 **Durée** : ~ 08/06/2026 — 14h00-17h30 (~3h30)
@@ -493,3 +489,97 @@ piège du reduce sur-compliqué pour une simple somme (Object.values + acc+v.mon
 **Niveaux** : slice/splice 1→7 · push 4→7 · reduce objet 5→7 · Object.values 4→7 · for...in 3→7
 **À entretenir** : reduce en échauffement (instinct), for...in (peu intuitif)
 **Prochaine session** : Bloc D — console.log debug F12, setTimeout, toLocaleString/toFixed
+
+## Sessions — Blocs D + E : outils JS quotidien + détails fetch/Observer (10-11/06/2026)
+**Durée** : ~2h (soir 10) + reprise courte (matin 11)
+**Thème** : console.log debug, setTimeout, toLocaleString/toFixed, ?fields=, threshold/isIntersecting
+
+**Bloc D :**
+- console.log DEBUG : étiqueter (console.log("label:", valeur)), enquêter DANS la boucle,
+  lire l'écart objet vs valeur ; undefined = propriété inexistante, NaN = calcul avec non-nombre ;
+  log de debug = temporaire (on nettoie) ; distinguer "erreur de mon code" vs bruit navigateur
+  → débogué 2 exos (1 bug simple prixHT, 1 multi-bugs articles/commande.articles)
+- setTimeout(fonction, délai_ms) : fonction d'abord, délai ensuite ; NON-BLOQUANT (A→C→B) ;
+  porte d'entrée de l'asynchrone ; effet "message qui disparaît" recréé (arrow courte spontanée)
+- toFixed(n) : fixe n décimales, RENVOIE UNE CHAÎNE (afficher only, jamais avant calcul)
+- toLocaleString("fr-FR", { style:"currency", currency:"EUR" }) : prix FR "2 770,00 €" ;
+  2e argument = objet d'options (style ≠ CSS, coïncidence de mot)
+
+**Bloc E :**
+- ?fields=name,capital,... : filtre les champs renvoyés par l'API (allège/obligatoire) ;
+  mécanisme universel des URLs (? démarre params, = valeur, & enchaîne) ;
+  VÉCU EN DIRECT : World Explorer cassé → API RestCountries v3.1 DÉPRÉCIÉE (à migrer v5)
+- threshold (0 à 1, seuil de visibilité qu'on règle) vs isIntersecting (booléen renvoyé)
+
+**Bonus du jour** : 1er merge Git multi-machines (git pull → auto-merge 'ort' → push) ;
+sortie de vim (Échap + :wq) ; incident API géré sans paniquer
+
+**Niveaux** : console.log debug 0→7 · setTimeout 2→7 · toFixed/toLocaleString 3→7 ·
+?fields= 1→7 · threshold/isIntersecting 2→7
+
+**Prochaine étape** : Blocs F/G/H (CSS rouillé, CSS niche, setup) — plus légers,
+OU migration World Explorer v5 comme mini-projet
+
+## Sessions — Blocs F + G + H : CSS rouillé + CSS niche + setup (12/06/2026)
+**Durée** : ~2-3h (midi + après-midi)
+**Thème** : finalisation de la révision globale de Phase 1
+
+**Bloc F (CSS rouillé) :**
+- Variables CSS : -- pour DÉCLARER, var() pour UTILISER ; :root = racine (html), portée globale
+- Media queries : @media (max-width) = petits écrans (≤), (min-width) = grands (≥) ;
+  md: Tailwind = min-width:768px ; 768px = convention iPad, pas obligatoire
+- "reset en media query" = réécrire une propriété pour mobile (ex span 3 → span 1)
+- height 100vh vs min-height (préférer min-height : peut grandir si contenu déborde)
+- margin auto : centre un BLOCK avec largeur ; inline → rien ; parent flex → centre 2 axes
+- box-shadow : x, y, flou, [étalement], couleur rgba (subtil = petit décalage + gros flou + faible opacité)
+- div (neutre/style) vs section (thématique, a un titre) vs article (autonome, réutilisable ailleurs)
+- spécificité : #id > .classe > balise (cause n°1 des "CSS qui s'applique pas")
+
+**Bloc G (CSS niche) :**
+- glassmorphism = effet verre : bg rgba + backdrop-filter: blur() (backdrop = floute DERRIÈRE,
+  filter = floute l'élément lui-même)
+- -webkit-line-clamp = tronquer à N lignes + "…" (syntaxe à chercher, ou line-clamp-3 Tailwind)
+- Grid brut : display:grid, grid-template-columns, fr (proportion), repeat(n, 1fr), gap ;
+  grid-cols-3 Tailwind = repeat(3,1fr) ; col-span-X = colonnes inégales ;
+  valeur arbitraire Tailwind [1fr_1fr_2fr] (crochets + _ pour les espaces)
+
+**Bloc H (setup) :**
+- scaffolding complet d'un projet Tailwind from scratch (architecture src/dist) :
+  mkdir + cd → npm init -y (package.json) → npm install tailwindcss @tailwindcss/cli
+  → src/input.css (@import "tailwindcss") + dist/ → .gitignore (node_modules/ + dist/)
+  → npx @tailwindcss/cli -i ... -o ... --watch → index.html (link vers dist/output.css)
+  → git init → script "dev" dans package.json
+- on ignore tout ce qui est RÉGÉNÉRABLE (node_modules, dist) ; on versionne la source
+- npm run dev = raccourci d'un script défini dans package.json
+- Phase 2 : create-next-app automatisera tout ce scaffolding
+
+**Marché (vérifié) :** Tailwind domine (~65% des offres front, +40%/an, défaut Next.js) MAIS
+c'est du CSS déguisé → garder le CSS sous-jacent solide. Freelance = encore + exigeant en CSS.
+
+**Niveaux** : variables CSS 1→7 · media queries 2→7 · margin auto 5→7 · box-shadow 5→7 ·
+div/section/article 4→7 · spécificité 7 · glassmorphism 2→7 · line-clamp 0→6 · grid brut 3→6 ·
+scaffolding 2→7 · npm 0→6
+
+**Reste pour plus tard (optionnel)** : placement Grid (col-span, grid-column) ;
+animation burger fine ; migration World Explorer v5
+
+## 🏁 12 juin 2026 — FIN DES RÉVISIONS (Blocs A→H bouclés)
+
+**Toute la feuille de route de fin de Phase 1 est terminée.** Les 8 blocs validés en ~5 jours.
+
+**Trous comblés** (notions < 6/10 au départ → maîtrisées) :
+- JS conceptuel : valeur/référence 2→7 · scope 5→7 · closures var/let 3→6
+- L'objet event : target/key/type 3→7 · contains 2→6
+- Méthodes de tableau : reduce objet 5→7 · slice/splice 1→7 · Object.values 4→7 · for...in 3→7
+- Outils : console.log debug 0→7 · setTimeout 2→7 · npm/scaffolding 0-2→6-7
+- CSS rouillé : variables 1→7 · media queries 2→7 · + tout le bloc F à 7
+- CSS niche : glassmorphism 2→7 · line-clamp 0→6 · grid brut 3→6
+
+**Acquis transversaux** : méthode de debug (enquêter, lire l'écart) · distinguer
+"comprendre" vs "chercher la syntaxe" · monter un projet Tailwind de zéro · 1er merge Git multi-machines.
+
+**Reste en suspens** : entretien `...` spread / classList en React · migration World Explorer v5 ·
+Git remote à détailler · dark mode + tailwind.config (non abordés).
+
+**→ Prochaine grande étape : refaire le quiz d'auto-éval pour mesurer la nouvelle moyenne,
+puis attaquer la Phase 2 (React).**
