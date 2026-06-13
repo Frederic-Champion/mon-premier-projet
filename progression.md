@@ -583,3 +583,28 @@ Git remote à détailler · dark mode + tailwind.config (non abordés).
 
 **→ Prochaine grande étape : refaire le quiz d'auto-éval pour mesurer la nouvelle moyenne,
 puis attaquer la Phase 2 (React).**
+
+## Session 29 — Bouton back-to-top (version production)
+**Durée** : ~2h le 13/06/2026
+**Thème** : JS scroll + DOM + gestion de la cascade CSS (layers Tailwind)
+**Ce qui a été fait** :
+- Bouton back-to-top from scratch : `<button>` enfant direct de `<body>` (pas dans le header → évite le piège backdrop-filter/fixed)
+- Affichage piloté par toggle de 2 utilities (opacity-0 ↔ opacity-100) en JS, PAS par une classe @apply (qui perdait le combat de layer face à l'utility)
+- État initial géré en dur dans le HTML (opacity-0) → suppression du flash au F5
+- Refacto DRY : logique sortie dans une fonction nommée majBackToTop(), appelée au scroll ET au chargement (pattern "état initial" qui resservira en React)
+- Icône : emoji 🔼 → SVG Heroicon (currentColor conservé pour le futur dark mode, taille via classe Tailwind size-)
+- Accessibilité : aria-label="Retour en haut", vrai <button>
+- Cohérence visuelle : couleurs alignées sur le thème (carte À propos)
+**Concepts (re)travaillés** :
+- Layers Tailwind theme → base → components → utilities : à spécificité égale, la layer la plus tardive gagne → une utility bat un @apply
+- position: fixed capturé par un parent en transform/filter/backdrop-filter
+- Ordre temporel au chargement : peinture du navigateur PUIS JS defer → cause des "flash" + rôle de la transition
+- currentColor sur un SVG
+- Devicon (logos de marques) ≠ Heroicons/Lucide (icônes d'UI)
+**Niveau estimé** :
+- JS DOM / events : 🟢 80% (stable)
+- Cascade CSS / layers Tailwind : 🟡 70% (consolidé en conditions réelles)
+- position fixed + contexte parent : 🟡 65%
+**Reste "plus tard" (noté, non bloquant)** :
+- z-10 → z-50 sur le bouton (cohérence, aucun bug actuel)
+**Prochaine session (dimanche, 5h)** : WorldExplorer — 1) vérifier/réparer l'API RestCountries (dépréciée d'après le journal), 2) le rendre visuellement pro.
