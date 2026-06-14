@@ -608,3 +608,34 @@ puis attaquer la Phase 2 (React).**
 **Reste "plus tard" (noté, non bloquant)** :
 - z-10 → z-50 sur le bouton (cohérence, aucun bug actuel)
 **Prochaine session (dimanche, 5h)** : WorldExplorer — 1) vérifier/réparer l'API RestCountries (dépréciée d'après le journal), 2) le rendre visuellement pro.
+
+## Session — WorldExplorer : réparation API + refonte visuelle
+**Durée** : ~3h (après-midi)
+**Thème** : migration de source de données (API dépréciée → dataset open data) + CSS pur "version pro"
+
+**Ce qui a été fait** :
+- DIAGNOSTIC : RestCountries v3.1 confirmée dépréciée (lu dans la réponse brute de l'API). Analyse de la v5 : ce n'est PAS un changement d'URL — clé API obligatoire, CORS à whitelister, pagination (max 100/requête), structure data.objects, response_fields, quota 500/mois
+- DÉCISION stratégique : option "dataset open data sans clé" plutôt que v5 avec clé (évite l'exposition de clé côté client sur repo public — leçon GitGuardian) ; la v5 à clé + backend proxy est repoussée en Phase 2
+- MIGRATION vers mledoze/countries (via CDN jsdelivr) : structure quasi identique à v3.1 (c'est la source historique). 5 champs inchangés (translations.fra.common, capital[0], region, languages, currencies). 2 vrais changements : population retirée (ligne supprimée) + drapeau = construire l'URL SVG depuis cca3.toLowerCase()
+- REFONTE VISUELLE (CSS pur, pas Tailwind) : police Inter + variables CSS d'accent + ombre bleue (lueur) ; contrôles domptés (fond sombre, bordure bleue, lisibles) ; regroupement select+bouton+loupe dans un conteneur flex (même ligne, même hauteur via stretch) ; loupe centrée (button en display:flex) ; scrollbar overflow-y:auto + scrollbar-width/color ; cartes accordées au thème ; nom du pays en <h3> titre + labels en <span class="label"> gris (hiérarchie visuelle)
+- Nouvelle screenshot propre (France, 1 carte, sans scrollbar) pour la carte portfolio
+**Concepts (re)travaillés** :
+- Migration d'API : lire l'erreur brute, comparer ancienne/nouvelle structure avant de réécrire
+- Sécurité : pourquoi une clé API n'a rien à faire dans du JS client sur repo public → backend proxy (Phase 2)
+- Propriétés CSS "inertes sans leur compagne" : border-color a besoin de border-style ; align-items a besoin de display:flex (réflexe transversal de debug)
+- Opacité couleur : pas de "/50" en CSS pur → 4e valeur du rgba (0 à 1), ≠ propriété opacity (qui affecte tout l'élément)
+- overflow-y: auto (barre au besoin) vs scroll (toujours)
+- Scrollbar : syntaxe standard (scrollbar-width/color, Firefox) vs ::-webkit (Chrome) — tester un seul navigateur ne prouve rien
+- Hiérarchie de titres HTML (h1>h2>h3) = sens/accessibilité, pas taille ; <span> = conteneur inline pour styler un bout de texte
+- Design : alignement de référence (ne pas mélanger gauche/centre sur une ligne) ; "fini = on ne peut plus rien retirer", anti-perfectionnisme
+**Niveau estimé** :
+- CSS position / flex (centrage, alignement de groupes) : 🟡 70% (gros progrès, était le point faible)
+- fetch + structure de données : 🟢 80%
+- CSS variables / box-shadow / overflow : 🟢 80%
+- Migration / lecture de doc API : 🟡 nouveau, bien géré en autonomie
+**Reste "plus tard" (noté, non bloquant)** :
+- min-width: 600px + cartes en width fixe 350px → casseront sur mobile : passe RESPONSIVE à faire (préférer width:100% + max-width)
+- Population : récupérable seulement en changeant de source (risque perte des traductions FR) ou en fusionnant 2 datasets → reporté en Phase 2 (backend = proxy API à clé OU fusion côté serveur, bon argument CV)
+- Bloc ::-webkit-scrollbar (cosmétique, optionnel)
+
+**Reste pour finir le livrable** : push WorldExplorer + nouvelle preview portfolio. Passe responsive WorldExplorer (prochaine session courte).

@@ -6,7 +6,7 @@ const cartes = document.querySelector("#cartes") ;
 
 async function recherchePays(p) {
     try {
-        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
+        const reponse = await fetch("https://cdn.jsdelivr.net/gh/mledoze/countries@master/countries.json");
         const data = await reponse.json();
         const resultat = data.filter(function(unPays) {
             return unPays.translations.fra.common.toLowerCase().includes(p.toLowerCase())
@@ -20,17 +20,18 @@ async function recherchePays(p) {
     }
 }
 
+//<p>Population : ${(unPays.population).toLocaleString("fr-FR")} habitants</p>
 function afficherPays(unPays) {
     const carte = document.createElement("div") ;
     carte.className = "carte" ;
     carte.innerHTML = `
-        <p>Pays : ${unPays.translations.fra.common}</p>
-        <p>Capital : ${unPays.capital[0]}</p>
-        <p>Population : ${(unPays.population).toLocaleString("fr-FR")} habitants</p>
-        <p>Region : ${unPays.region}</p>
-        <p>Langue : ${Object.values(unPays.languages)}</p>
-        <p>Monnaie : ${Object.values(unPays.currencies)[0].name}</p>
-        <img src="${unPays.flags.png}" alt="drapeau de ${unPays.name.common}">
+        <h3>${unPays.translations.fra.common}</h3>
+        <p><span class="label">Capital :</span> ${unPays.capital[0]}</p>
+        
+        <p><span class="label">Région :</span> ${unPays.region}</p>
+        <p><span class="label">Langue :</span> ${Object.values(unPays.languages)}</p>
+        <p><span class="label">Monnaie :</span> ${Object.values(unPays.currencies)[0].name}</p>
+        <img src="https://cdn.jsdelivr.net/gh/mledoze/countries@master/data/${unPays.cca3.toLowerCase()}.svg" alt="drapeau de ${unPays.name.common}">
     `;
     cartes.appendChild(carte); 
 }
@@ -50,7 +51,7 @@ search.addEventListener("keydown", function(touche) {
 
 async function filtrerParRegion() {
     try {
-        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
+        const reponse = await fetch("https://cdn.jsdelivr.net/gh/mledoze/countries@master/countries.json");
         const data = await reponse.json();
         const resultat = data.filter((unPays) =>  unPays.region === parametre.value);
         cartes.innerHTML = "";
@@ -68,7 +69,7 @@ parametre.addEventListener("change", function (unPays) {
 
 async function paysAleatoire() {
     try {
-        const reponse = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,languages,currencies,flags,translations");
+        const reponse = await fetch("https://cdn.jsdelivr.net/gh/mledoze/countries@master/countries.json");
         const data = await reponse.json();
         search.value = "" ;
         const alea = Math.floor((Math.random()) * data.length) ;

@@ -6,6 +6,9 @@
         <script src="script.js" defer></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="cadre">
@@ -13,16 +16,22 @@
             <main>
                 <section>
                     <input id="search" type="text" placeholder="Pays...">
-                    <select id="parametre" >
-                        <option value="All">All</option>
-                        <option value="Africa">Afrique</option>
-                        <option value="Americas">Amérique</option>
-                        <option value="Asia">Asie</option>
-                        <option value="Europe">Europe</option>
-                        <option value="Oceania">Oceanie</option>
-                    </select>
-                    <button id="random" type="button">🎲</button>
-                    <button id="searchBtn" type="submit" >🔍</button>
+                    <div id="conteneur">
+                        <select id="parametre" >
+                            <option value="All">All</option>
+                            <option value="Africa">Afrique</option>
+                            <option value="Americas">Amérique</option>
+                            <option value="Asia">Asie</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Oceania">Oceanie</option>
+                        </select>
+                        <button id="random" type="button">Aléatoire</button>
+                        <button id="searchBtn" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </button>
+                    </div>
                     <div id="cartes"></div>
                 </section>
             </main>
