@@ -609,7 +609,7 @@ puis attaquer la Phase 2 (React).**
 - z-10 → z-50 sur le bouton (cohérence, aucun bug actuel)
 **Prochaine session (dimanche, 5h)** : WorldExplorer — 1) vérifier/réparer l'API RestCountries (dépréciée d'après le journal), 2) le rendre visuellement pro.
 
-## Session — WorldExplorer : réparation API + refonte visuelle
+## Session 30 — WorldExplorer : réparation API + refonte visuelle
 **Durée** : ~3h (après-midi)
 **Thème** : migration de source de données (API dépréciée → dataset open data) + CSS pur "version pro"
 
@@ -640,7 +640,7 @@ puis attaquer la Phase 2 (React).**
 
 **Reste pour finir le livrable** : push WorldExplorer + nouvelle preview portfolio. Passe responsive WorldExplorer (prochaine session courte).
 
-## Session — Dark mode portfolio (architecture Tailwind v4 sémantique)
+## Session 31 — Dark mode portfolio (architecture Tailwind v4 sémantique)
 **Durée** : ~3h30 le 15/06
 **Thème** : dark mode pro avec tokens sémantiques + compréhension profonde de l'architecture Tailwind v4
 
