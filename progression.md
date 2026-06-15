@@ -639,3 +639,44 @@ puis attaquer la Phase 2 (React).**
 - Bloc ::-webkit-scrollbar (cosmétique, optionnel)
 
 **Reste pour finir le livrable** : push WorldExplorer + nouvelle preview portfolio. Passe responsive WorldExplorer (prochaine session courte).
+
+## Session — Dark mode portfolio (architecture Tailwind v4 sémantique)
+**Durée** : ~3h30 le 15/06
+**Thème** : dark mode pro avec tokens sémantiques + compréhension profonde de l'architecture Tailwind v4
+
+**Ce qui a été fait** :
+- Favicon ajouté (logo perso) sur les onglets + corrige l'erreur 404 favicon.ico
+- Dark mode COMPLET en architecture sémantique (pattern shadcn/ui, standard React/Next.js Phase 2) :
+  - @custom-variant dark (&:where(.dark, .dark *)) pour piloter par classe (pas par OS)
+  - class="dark" en dur sur <html> → démarre en sombre (Cas A)
+  - Tokens sémantiques nommés par RÔLE : background, surface, text, muted, accent (pas par mode bgLight/bgDark)
+  - @theme = valeurs claires par défaut ; @layer theme { .dark {} } = override sombre
+  - HTML migré : bg-background text-text (PLUS de dark: dans le markup, tout centralisé en CSS)
+  - Toggle JS réactivé : querySelectorAll(".darkButton") + classList.toggle('dark') sur <html>
+- cursor: pointer sur tous les boutons (@layer base { button {} })
+- Tous les composants migrés vers les tokens (nav, cartes, formulaire, burger, btn-secondary)
+
+**Concepts (re)travaillés EN PROFONDEUR** (grosse session théorique, à l'initiative de Frédéric) :
+- Les 4 layers Tailwind : theme → base → components → utilities (ordre = priorité, le plus tardif gagne)
+- @theme = directive qui CRÉE des variables ET génère les classes utilitaires (≈ var() + usine à classes)
+- @layer = range du CSS au bon niveau de priorité, ne crée rien
+- @apply = utiliser des classes Tailwind dans une règle CSS (vs CSS natif écrit directement)
+- utilities = toutes les classes Tailwind de base, remplies auto par Tailwind, étage le plus prioritaire
+- Propriété native (font-family, cursor) ≠ variable créée (--color-x)
+- Nommer un token par RÔLE (background, accent) jamais par VALEUR (bleu) → le nom reste vrai si la teinte change
+- DEBUG : une erreur dans le terminal watch GÈLE toute la compilation → output.css figé, les changements CSS ne s'appliquent plus. TOUJOURS surveiller le terminal du watch.
+
+**Niveau estimé** :
+- Architecture Tailwind v4 (theme/layers/apply/tokens) : 🟢 75-80% (compréhension réelle, pas du copier-coller)
+- Dark mode sémantique : 🟢 75% (appliqué de bout en bout en autonomie)
+- Debug CSS / lecture terminal : 🟢 progrès net (réflexe terminal acquis)
+
+**Reste à faire (prochaine session ~2h)** :
+- Visuel section Compétences (.comp)
+- Lune en mode sombre : pattern 2 SVG (soleil dark:hidden / lune hidden dark:block) sur les .darkButton
+- Revoir/affiner la palette du mode clair (ajustements à l'œil)
+- WorldExplorer responsive (TOUJOURS en attente — min-width 600px + cartes largeur fixe cassent sur mobile)
+- localStorage pour mémoriser le choix de thème (Cas B) — bon prétexte pour apprendre localStorage
+- Favicon : renommer "logo Fredi.png" → "logo-fredi.png" (espace = fragile au déploiement) + type="image/png"
+
+**Note pédagogique** : Frédéric a exigé de comprendre toute l'architecture AVANT de coder (excellent réflexe). Session très théorique mais fondations solides pour React (shadcn/ui utilise exactement ce pattern).
