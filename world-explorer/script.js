@@ -83,3 +83,7 @@ async function paysAleatoire() {
 random.addEventListener("click", function () {
     paysAleatoire()
 })
+
+document.querySelectorAll("*").forEach(el => {
+  if (el.offsetWidth > document.documentElement.clientWidth) console.log(el);
+});

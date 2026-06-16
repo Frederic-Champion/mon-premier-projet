@@ -27,7 +27,6 @@ body {
     padding: 40px;
     border-radius: 16px;
     max-width: 480px;
-    min-width: 480px;
 }
 section {
     display: flex;
@@ -77,14 +76,15 @@ button:hover {
     border-radius: 12px;
     padding: 15px;
     text-align: center;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
 }
 .carte h3 {margin-bottom: 8px;}
 
 .carte .label { color: #94a3b8; } 
 
 .carte img {
-    width: 150px;
+    max-width: 150px;
     margin-top: 10px;
     border-radius: 8px;
 }
@@ -95,8 +95,10 @@ button:hover {
 }
 @media (max-width: 480px) {
     #cadre {
-        display:block;
-        margin: 8px auto;
+        margin: 8px 0;
+        padding: 20px;
+    }
+    body {
+        overflow-x: hidden;
     }
 }
-
