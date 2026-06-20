@@ -789,3 +789,49 @@ puis attaquer la Phase 2 (React).**
 **À ne pas oublier (dette technique)** :
 
 - Liens "Voir le projet" / GitHub encore vides sur certaines cartes projet (Gestionnaire de montures, Vitrine Tailwind)
+
+## Session 33 — Revue de code + responsive compétences + espacement — 20/06
+
+**Durée** : ~3h
+**Thème** : revue de code complète (2 passes), homogénéisation espacement, effet reveal corrigé, responsive compétences en flex-wrap
+
+**Ce qui a été fait** :
+
+- REVUE DE CODE complète (HTML + CSS) : corrections appliquées par Frédéric
+  - favicon type="image/png" (était "png", invalide)
+  - liens vides href="" → href="#" (href="" recharge la page !)
+  - .badge nettoyé : bg-surface au lieu de #f8fafc en dur, dégradé radial entièrement en dark: (plus de code mort en clair)
+  - .champ créé pour DRY des 4 inputs du formulaire (mêmes classes répétées → 1 classe)
+  - text-text redondants retirés (hérités du body)
+  - classes MORTES retirées des wrappers non-flex : items-center/gap inertes sans display:flex (sections Compétences/Projets/Contact)
+  - mb-40 géant supprimé, id décoratifs → commentaires de section (Ctrl+/)
+- ESPACEMENT : py-20 uniforme sur toutes les sections (au lieu de py-12 + mb-40 incohérent) → rythme régulier
+- EFFET REVEAL corrigé : appliqué sur le DIV intérieur (.sectionReveal) et non la <section>, sinon le fond (bg) translatait aussi. JS observe maintenant .sectionReveal au lieu de section:not(#hero)
+- RESPONSIVE COMPÉTENCES : grid grid-cols-2 → flex flex-wrap justify-center (grid pas adapté pour des icônes de tailles variables). Largeur fixe w-24 sur .comp pour aligner les colonnes (le texte de largeur variable décalait le centrage par ligne). 3 badges/ligne sur mobile.
+- Icône carte IA ajoutée (Heroicons cpu-chip, SVG inline currentColor)
+
+**Concepts (re)travaillés** :
+
+- Échelle Tailwind : le chiffre = unité d'échelle, PAS des pixels. chiffre × 4 = px (w-24 = 96px, size-18 = 72px). Exceptions : w-full/w-1/2/max-w-5xl ont leur propre logique
+- transform (déplace/scale/rotate, le QUOI) ≠ transition (adoucit le changement, le COMMENT). transition-transform sur l'élément en permanence + transform appliqué au moment voulu (hover/scroll). transform SEUL = inutile en v4
+- flex-wrap centre chaque LIGNE indépendamment → colonnes pas alignées si largeurs différentes. Pour aligner : largeur fixe sur les cellules. grid = colonnes rigides (aligné mais orphelin), flex-wrap = souple (pas d'orphelin mais désaligné) — compromis à choisir
+- id décoratifs = mauvaise pratique (un id a une fonction technique). Pour se repérer : commentaires de section (Ctrl+/), Outline VS Code, Ctrl+Maj+O
+- Raccourcis VS Code : Ctrl+/ (commenter), Ctrl+Maj+O (navigation symboles)
+
+**Niveau estimé** :
+
+- CSS positionnement (ex-point faible) : 🟡 75-80% — gros progrès, identifie seul les classes mortes, comprend flex vs grid vs leurs limites
+- Revue/nettoyage de code : 🟢 bon réflexe (a demandé la revue lui-même, corrige en autonomie)
+- Tailwind v4 : 🟢 80%
+
+**RGPD noté** : Frédéric a identifié seul le besoin d'une case de consentement (cadre légal RGPD). À faire avec Formspree : checkbox + label + JS pour désactiver le bouton Envoyer tant que non cochée. Bon réflexe "produit/conformité".
+
+**Reste à faire portfolio** :
+
+- Formspree + case RGPD/consentement (bouton conditionnel)
+- Liens projets vides (Gestionnaire montures, Vitrine Tailwind) + LinkedIn
+- Effet translate-x au scroll (cadres alternés G/D)
+- localStorage thème (Cas B) — bientôt, avant Phase 2
+- WorldExplorer responsive (dernier détail)
+
+**Reporté Phase 2** : Vercel, LinkedIn actif, <DarkToggle /> React, grande séance "outils" + audit
