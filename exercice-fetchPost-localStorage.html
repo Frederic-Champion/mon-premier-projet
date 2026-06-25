@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background-color: antiquewhite;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        padding: 24px;
+      }
+    </style>
+
+    <title>Exercice FETCH Post</title>
+  </head>
+  <body>
+    <form id="formDevis">
+      <label for="nom">NOM</label>
+      <input id="nom" name="nom" placeholder="écrit ton nom" type="text" />
+      <label for="ref">référence</label>
+      <input id="ref" name="ref" placeholder="référence monture" type="text" />
+      <button type="submit" id="btn">Envoyer</button>
+      <p id="message"></p>
+    </form>
+    <script>
+      const formDevis = document.querySelector("#formDevis");
+      const message = document.querySelector("#message");
+      const nom = document.querySelector("#nom");
+
+      const valeur = localStorage.getItem("nomClient");
+      if (valeur) {
+        nom.value = valeur;
+      }
+
+      formDevis.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          const data = new FormData(formDevis);
+          const reponse = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              method: "POST",
+              body: data,
+              headers: { Accept: "application/json" },
+            },
+          );
+          if (reponse.ok) {
+            message.textContent = "ça marche reponse OK vaut true";
+            localStorage.setItem("nomClient", nom.value);
+            console.log("test", nom.value);
+          } else {
+            message.textContent = "visiblement ça plante";
+          }
+        } catch (error) {
+          message.textContent = "visiblement ça plante";
+          console.log("ceci est une erreur", error);
+        }
+      });
+    </script>
+  </body>
+</html>

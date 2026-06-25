@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background-color: antiquewhite;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        padding: 24px;
+      }
+    </style>
+
+    <title>Exercice FETCH Post</title>
+  </head>
+  <body>
+    <form id="formSearch">
+      <p>Un compteur : <span id="compteur"></span></p>
+      <label for="ref">référence</label>
+      <input id="ref" name="ref" placeholder="recherche" type="text" />
+      <button type="submit" id="btn">Envoyer</button>
+      <p id="message"></p>
+    </form>
+    <script>
+      const formSearch = document.querySelector("#formSearch");
+      const compteur = document.querySelector("#compteur");
+      const recherche = document.querySelector("#ref");
+      const message = document.querySelector("#message");
+
+      formSearch.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          const data = new FormData(formSearch);
+          const reponse = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              method: "POST",
+              body: data,
+              headers: { accept: "application/json" },
+            },
+          );
+          message.textContent = "ça marche !!! ;)";
+          localStorage.setItem("recherche", recherche.value);
+        } catch (error) {
+          message.textContent = "ça BUG !!! ;)";
+          console.log("erreur : ", error);
+        }
+      });
+
+      let valeur = localStorage.getItem("recherche");
+      if (valeur) {
+        recherche.value = valeur;
+      }
+      let comptage = Number(localStorage.getItem("compteur"));
+      comptage += 1;
+      localStorage.setItem("compteur", comptage);
+      compteur.textContent = comptage;
+    </script>
+  </body>
+</html>

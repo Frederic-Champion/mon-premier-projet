@@ -835,3 +835,100 @@ puis attaquer la Phase 2 (React).**
 - WorldExplorer responsive (dernier détail)
 
 **Reporté Phase 2** : Vercel, LinkedIn actif, <DarkToggle /> React, grande séance "outils" + audit
+
+## Session 34 — Formulaire fonctionnel (Formspree + RGPD + fetch POST) + intro localStorage — 21/06
+
+**Durée** : ~4h
+**Thème** : rendre le formulaire de contact réellement fonctionnel + premier fetch POST + découverte de localStorage
+
+**Ce qui a été fait** :
+
+- FORMSPREE branché : distinction **constructeur visuel** (Typeform/Tally) vs **backend de formulaire** (Formspree/Web3Forms) ; endpoint créé ; `action` + `method="POST"` sur le `<form>`
+- `name` sur les **inputs** (pas le label) — leçon du colis : `id` = interne (label/JS/CSS), `name` = ce qui voyage au serveur ; valeurs en ASCII sans accent
+- CASE RGPD : checkbox (id/name/value) + label de consentement conforme (finalité + pas de cession) ; case décochée par défaut = consentement actif
+- BOUTON conditionnel : `.checked` (booléen), événement `change`, `disabled = !consent.checked` (DRY, un booléen pilote l'autre) ; attribut HTML `disabled` vs classe Tailwind `disabled:opacity-50 disabled:cursor-not-allowed`
+- PREMIER fetch POST : `preventDefault()` (couper le départ auto = quitter la page), `new FormData(form)` (ramasse les champs ayant un `name`), 2e argument de fetch (method/body/headers), `headers: { Accept: "application/json" }` (= réponds en données, pas en page) ; pas de Content-Type avec FormData
+- GESTION réponse : `try` / `if (reponse.ok)` / `else` / `catch` — 2 familles d'erreurs : serveur répond "non" (`reponse.ok` false) vs requête qui n'aboutit pas (catch)
+- MESSAGE succès/erreur dans un `<p id="formMessage">` : `className =` (remplace) vs `classList.add()` (empile) ; couleurs `text-green-500`/`text-red-500` (texte porte l'info, couleur en bonus = accessibilité daltonisme)
+- `form.reset()` (vide + décoche → bouton re-disabled) ; "Envoi en cours" + `finally` (nettoyage garanti) ; `setTimeout` non-bloquant pour effacer le message succès après 5s
+- LOCALSTORAGE entamé : `setItem`/`getItem`/`removeItem`, paires clé/valeur, **stocke que du texte**, `getItem` → `null` si clé absente, **persistance prouvée en console** (survit au F5) ; sauvegarde du thème (étape A) en if/else : `toggle` + `classList.contains("dark")` + `setItem("theme", ...)`
+
+**Concepts (re)travaillés** :
+
+- fetch n'est pas que pour LIRE une API : GET (lire) vs POST (envoyer), même outil, direction différente
+- `preventDefault()` = méthode sans argument ; parenthèses = "go" même vides
+- `headers` = métadonnées de la requête, sous forme d'objet (paires nom:valeur)
+- try/catch vs if(reponse.ok) = 2 problèmes distincts (lettre arrivée qui dit "non" vs lettre jamais arrivée)
+- `className` remplace / `classList.add()` empile (résidu)
+- Cohérence projet : Tailwind partout, pas de CSS brut isolé au milieu
+- localStorage = mémoire qui survit au rechargement (vs variable JS = effacée)
+
+**Niveau estimé** :
+
+- formulaires HTML (name/action/method) : 🟢 compris
+- fetch POST : 🟡 nouveau, bien géré en autonomie
+- try/catch/finally : 🟡 70% (finally nouveau)
+- checkbox / `.checked` / événement change : 🟢
+- localStorage : 🔴 entamé, concept pas encore instinctif (de son propre aveu — normal)
+- ⚠️ `=` vs `===` (assigner vs comparer) : revenu 3× ce soir → point de vigilance à entretenir
+
+**Reste à faire** :
+
+- localStorage **étape B** : restauration du thème au chargement (+ gérer le cas `null` du 1er visiteur) — demain
+- 1-2 **exercices de pratique** fetch POST + localStorage (demandés) — univers optique
+- Reporté Phase 2 : Vercel, refacto formulaire + dark mode en composants React, grande séance "outils"
+  **Prochaine session** : finir localStorage (étape B) + exercices pratique fetch POST / localStorage
+
+  ## Session 35 — Pratique fetch POST + localStorage (2 exercices) + event change — 22-23/06
+
+  **Durée** : ~4h réparties (30min midi + 1h30 soir + 2h midi suivant)
+  **Thème** : repratiquer en autonomie totale fetch POST et localStorage (rien n'était considéré acquis) + mini-cours event change
+
+**Ce qui a été fait** :
+
+- FINITION localStorage thème : restauration au chargement (étape B) — `getItem("theme") === "light"` → remove dark, sinon add dark ; cas null = sombre par défaut ; compris pourquoi `=== "light"` nécessaire (getItem renvoie texte/null, pas un booléen) ; le `dark` en dur dans le HTML = anti-FOUC, le JS impose le bon état (add inoffensif si déjà présent)
+- EXERCICE 1 "demande de devis" : form 2 champs + fetch POST (jsonplaceholder) + try/catch/reponse.ok + message + localStorage (mémorise le nom, pré-remplit au chargement) — recodé DE MÉMOIRE, en cherchant seul, refus du copier-coller
+- EXERCICE 2 "compteur visites + dernière recherche" : POST + 2 clés localStorage ; NOUVEAU = compteur incrémenté à chaque chargement (lire → Number → +1 → setItem → afficher)
+- MINI-COURS event change : quand il se déclenche selon le champ (checkbox/radio = au clic, select = au choix, input texte = à la perte de focus, PAS à chaque lettre) ; change (choix finalisé) vs input (chaque caractère)
+
+**Concepts (re)travaillés / clarifiés** :
+
+- `new` vs `const` : `new` FABRIQUE un objet-outil du navigateur (FormData, IntersectionObserver), `const` RANGE le résultat — pas concurrents. `new` pour objets complexes, pas pour valeurs simples (nombre, texte)
+- FormData : ramasse les champs ayant un `name`, dans le `<form>` passé — pas de `.value` à la main
+- setItem prend 2 arguments MAX (1 clé, 1 valeur) → 2 infos = 2 appels ; setItem écrase la valeur précédente d'une clé
+- getItem("clé") : clé entre guillemets (texte), pas une variable ; renvoie la valeur OU null ; pas de `.value` derrière (c'est déjà la valeur)
+- Number("5") vs parseInt("5") : convertir texte→nombre (localStorage ne stocke que du texte) ; Number(null) = 0 (gère le 1er visiteur tout seul)
+- `if (valeur)` au lieu de `=== null` + else : null/"" sont "falsy" → test d'existence d'une valeur (réflexe récurrent)
+- MÉTHODE vs PROPRIÉTÉ : action (verbe, parenthèses, prend des arguments) vs caractéristique (nom, point, pas de parenthèses) → quiz 6/6 réussi
+- headers HTTP : ne se mémorisent pas, se retrouvent (doc du service OU MDN Reference/Headers) ; Accept = format reçu, Content-Type = format envoyé (auto avec FormData)
+- usages pro de POST (CRUD : create/update/delete, auth, paiements, upload) et localStorage (préférences, brouillons, panier — JAMAIS de données sensibles)
+
+**Niveau estimé** :
+
+- fetch POST : 🟡 75% — recodé 2x de mémoire en autonomie, pas encore réflexe pur (de son propre aveu)
+- localStorage : 🟡 65-70% — était 🔴, gros progrès, setItem/getItem compris en profondeur
+- try/catch/reponse.ok : 🟡 75%
+- méthode vs propriété : 🟢 distinction comprise (quiz 6/6)
+- event change vs input : 🟡 clarifié
+- ⚠️ `=` vs `===` : encore apparu cette session → reste le point de vigilance n°1
+
+**Acquis transversaux** :
+
+- A REFUSÉ le copier-coller pour forcer la reconstruction de mémoire (excellent réflexe d'ancrage)
+- Débogue seul au console.log pour trouver une syntaxe (bonne méthode)
+- Demande systématiquement le "pourquoi" et les usages pro (curiosité = point fort)
+
+**Décisions actées (portfolio)** :
+
+- Habillage message contact → ANNULÉ (suffisant tel quel)
+- Liens projets vides → reportés (quand vrais projets dispos)
+- Effet translate-x → ABANDONNÉ (layout centré, pas zigzag)
+- Portfolio = EN PAUSE PROPRE, plus de tâche active
+
+**Reste à faire (clôture Phase 1)** :
+
+- Refaire le quiz d'auto-éval (mesurer progrès depuis 5.8/10)
+- Intro TypeScript (bases : types, interfaces) avant React
+- Reporté Phase 2 : déploiement Vercel, LinkedIn actif, WorldExplorer responsive, refacto React, grande séance "outils"
+
+**Prochaine session** : quiz d'auto-éval OU intro TypeScript
