@@ -1,0 +1,945 @@
+Format suggéré pour chaque entrée dans progression.md :
+
+## Session ... — date
+
+**Durée** : ~ h
+**Thème** : ...
+**Ce qui a été fait** : ...
+**Ce qui a accroché** : ...
+**Niveau estimé après session** : ...
+**Prochaine session** : ...
+
+Session 6 — Découverte JavaScript
+Vu et compris : variables (let/const), types
+(string/number/boolean), fonctions, template literals,
+aperçu du scope. Pas encore maîtrisé — nécessite
+beaucoup de pratique.
+
+Session 6 (suite) — JavaScript bases
+Découvert et pratiqué : conditions, boucles for,
+let/const/var, tableaux, objets. Pas encore maîtrisé
+— nécessite répétition. Prochaine étape : le DOM.
+
+Session 7 — Introduction au DOM
+Compris : cibler des éléments HTML avec getElementById
+et querySelector, modifier textContent et style depuis
+JS. Pas encore maîtrisé — nécessite beaucoup de
+pratique. Prochaine étape : les événements (réagir
+aux clics).
+
+Session 7 (suite) — Événements et exercice de synthèse
+Pratiqué : addEventListener, callbacks, génération de
+HTML depuis JS, filtrage dynamique avec fonction
+réutilisable (principe DRY). Exercice de synthèse
+complet réalisé autonomement avec indices.
+
+## Sessions 8-11 — Consolidation HTML & CSS complète
+
+### Formulaires HTML (Session 8)
+
+Découvert et maîtrisé : structure form, label/for/id,
+input (text, email), textarea, button type submit,
+placeholder. CSS : box-sizing border-box, sélecteur \*,
+pseudo-classe :focus, box-shadow rgba, héritage via body,
+principe DRY en CSS. Premier formulaire complet réalisé
+en autonomie.
+
+### Mini page profil + formulaire (Session 9)
+
+Réalisé from scratch : carte de profil avec image,
+badges span, bio, formulaire intégré. Compris :
+div vs section, span vs div, alt sur images,
+flex:1 pour égaliser les colonnes, margin auto
+pour centrer.
+
+### Exercice reproduction Dashboard (Sessions 9-10)
+
+Reproduction complète d'un dashboard : nav flex,
+3 cartes statistiques, liste de projets avec
+div gauche/droite imbriquées. Compris : id vs class
+(erreur trouvée seul avec DevTools), flex-direction
+column, list-style none, debugging DevTools.
+Score : 75% de maîtrise globale.
+
+### CSS Grid + Responsive (Session 11)
+
+Appris et pratiqué : display grid, repeat(), fr,
+grid-column span, grid-column 1/-1, grid-row span,
+media queries (768px/480px), meta viewport, reset
+des propriétés grid dans les media queries.
+Points clés retenus : grid-column vs
+grid-template-columns, id vs class, réinitialiser
+span sur mobile.
+
+Session 12 — Révision complète JavaScript
+Blocs 1 à 5 revus et pratiqués :
+variables/types/fonctions, conditions/boucles,
+objets/tableaux, DOM, événements.
+Principe DRY appliqué. Niveau global JS : ~70%.
+Prochaine étape : mini-projet synthèse
+"Gestionnaire de montures" — HTML + CSS + JS complet.
+
+Session 12(suite) — Consolidation DOM & Événements
+Exercice "Liste de courses" réalisé en autonomie guidée.
+Pratiqué : querySelector, createElement, appendChild,
+removeChild, .value (lecture et effacement input),
+événements imbriqués, scope des variables dans les
+callbacks. Compris : différence valeur / référence
+(valeurArticle vs article.value). Erreurs corrigées
+seul avec indices. DOM : 55% / Événements : 50%.
+
+Session 13 — Mini-projet Gestionnaire de montures
+Projet complet réalisé : tableau JS, affichage dynamique,
+ajout/suppression, compteur, fonction creerSpan avec return.
+Compris mais non maitrisé : forEach + index, splice, return, arrow functions.
+CSS : flexbox, align-self, height 100vh, sélecteurs ciblés.
+Points faibles confirmés : CSS positionnement pas instinctif,
+DOM à consolider. Plan : exercices CSS + DOM ciblés avant
+prochain mini-projet de validation.
+Niveau JS global : 55% / CSS global : 60%
+
+Session 14 — Consolidation CSS + DOM + Exercice Pokédex complet
+CSS : justify-content/align-items/align-self/margin auto ancrés.
+flex-direction column + flex-wrap wrap appliqués. grid-column 1/-1 revu.
+querySelector utilisable sur n'importe quel élément HTML (pas que document).
+for...of + return préféré à forEach pour sortie anticipée — réflexe DRY.
+setTimeout compris conceptuellement, syntaxe à pratiquer.
+Projet Pokédex complet : ajout/suppression/reset/compteur/détection doublon
+avec message temporaire (setTimeout). Exercice le plus complet réalisé
+en autonomie à ce jour.
+À consolider : setTimeout, CSS Grid.
+Niveau JS global : 70% / CSS global : 70%
+
+Session 15 — Fetch API
+Compris et pratiqué : fetch(), async/await, response.json(),
+try/catch, URL d'API (structure et types). Cycle complet :
+requête → JSON → affichage DOM déclenché par l'utilisateur.
+Niveau Fetch : 50% — syntaxe comprise, manque de pratique autonome.
+
+Session 16 — Fetch API pratique
+App météo complète réalisée en autonomie : fetch avec clé API,
+async/await, try/catch, innerHTML, Math.round().
+Compris : innerHTML vs textContent, vider un conteneur avec
+innerHTML = "". Niveau Fetch : 70%.
+Prochaine étape : mini-projet Fetch complet.
+
+Session 17 — Projet World Explorer (Fetch API complet)
+App complète réalisée : recherche en français (translations.fra),
+filtre par région (filter + change), pays aléatoire (Math.random).
+Appris : Object.values(), includes(), toLowerCase(), ?fields= API,
+keydown + touche.key, filter() avec et sans arrow function.
+Niveau Fetch : 70%. Prochain : Tailwind CSS.
+
+Session 18 — Tailwind CSS Introduction & Composants
+Installation Tailwind v4 via npm, PowerShell ExecutionPolicy,
+compréhension CDN vs npm, package.json, node_modules,
+.gitignore (node_modules/ et output.css exclus).
+Commande --watch comprise et maîtrisée.
+@layer components et @apply vus mais non maîtrisés (copié/collé).
+Classes maîtrisées : bg-, text-, p-, m-, rounded-, shadow-,
+flex, flex-col, flex-wrap, items-center, max-w-, w-full,
+font-bold, italic, gap-, @apply.
+Deux composants réalisés en autonomie : carte profil et
+carte compétences avec badges colorés.
+Réflexe DRY appliqué spontanément avec @apply.
+Niveau Tailwind : 45%.
+Prochaine étape : exercice @apply from scratch + responsive Tailwind.
+
+Session 19 — Tailwind CSS approfondissement
+@apply + @layer components maîtrisés from scratch.
+Responsive mobile first ancré — breakpoints md: instinctifs.
+Architecture pro src/dist/ appliquée sur nouveau projet.
+flex-1 + min-h-screen flex flex-col compris et appliqués.
+Création projet from scratch maîtrisée (mkdir, npm init, install, git init).
+Mini-projet vitrine complet réalisé en autonomie.
+Niveau Tailwind : 65%.
+Prochain grand projet : vraie page vitrine portfolio (session dédiée).
+
+Session 20 — Vitrine Portfolio
+Structure HTML/CSS complète réalisée en autonomie guidée.
+Sections : Navbar, Hero, À Propos (photo ronde), Compétences
+(Devicons), Projets (cartes colorées), Contact (formulaire),
+Footer. Intersection Observer compris mais pas maîtrisé —
+callbacks et APIs natives JS à retravailler en session dédiée.
+Repo GitHub portfolio-fred créé et pushé.
+Niveau Tailwind : 70%. Niveau JS global : 65%.
+Prochain : session JS pure (callbacks, APIs natives) +
+navbar burger + mode jour/nuit.
+
+## Session 21 — Effets scroll navbar
+
+Durée : ~2h
+Thème : JS pur — scroll events, DOM, débogage
+Ce qui a été fait : hide/show navbar au scroll (window.scrollY,
+comparaison scrollInitial), section:not(#hero), z-50, fusion DRY
+des listeners, glassmorphism (backdrop-blur, bg-black/25),
+classList.toggle expliqué.
+Ce qui a accroché : scope let dans callback, classList.add() vs =,
+window vs élément pour le scroll.
+Niveau estimé : JS DOM 75% / DevTools 70%
+Prochaine session : Navbar burger — HTML + CSS mobile + toggle JS.
+
+## Session 22 — Navbar burger + Responsive mobile
+
+Durée : ~2h
+Thème : Burger menu JS + passe responsive complète
+Ce qui a été fait : burger HTML (3 traits CSS), md:hidden,
+classList.toggle, menu fixed sous header, passe responsive
+toutes sections, flex-col md:flex-row, tailles fixes corrigées,
+logique mobile first ancrée.
+Ce qui a accroché : tailles fixes qui cassent le layout mobile
+— réflexe à développer.
+Niveau estimé : Responsive 75% / JS DOM 75%
+Prochaine session : Retouches responsive + Dark mode toggle JS.
+
+Session 23 — Dark mode (en cours)
+Durée : ~1h
+Thème : UX mobile + fermeture menu
+Ce qui a été fait : npm run dev configuré, fermeture menu nav links,
+fermeture clic extérieur (contains()), bug burger corrigé (double &&)
+Ce qui a accroché : ! (NOT), event.target, pourquoi exclure le burger
+Niveau estimé : JS DOM 75-80%
+Prochaine session : Dark mode toggle (approche élégante en 1 ligne JS)
+
+## Session révision 23Bis — (déroulement sur plusieurs jours en parralèle)
+
+**Thème : Tableaux, Objets, filter(), reduce(), Arrow functions**
+Ce qui a été vu
+
+- Algo basique : sommeTableau, trouverMax, compterMot
+- Tableaux : index, length, push(), slice()
+- Objets : notation pointée vs crochets, for...in, propriétés dynamiques
+- Tableaux d'objets : accès tableau[0].propriété
+- filter() : syntaxe complète + version condensée + combinaison &&
+- reduce() : accumulateur nombre, string, objet
+- Arrow functions : fonction anonyme comprise, 4 formes de syntaxe
+- Ternaire : condition ? siVrai : siFaux
+- Opérateurs logiques : && / || / !
+  Niveaux
+- Tableaux : 🟡 70%
+- Objets : 🟡 70%
+- Tableaux d'objets : 🟡 70%
+- filter() : 🟡 75%
+- Arrow functions : 🟡 75%
+- reduce() nombre : 🟡 60%
+- reduce() objet : 🔴 45%
+- Ternaire : 🔴 50%
+  À approfondir
+- reduce() avec accumulateur objet — peu instinctif
+- Arrow functions — comprises, pas encore réflexe
+- Ternaire — à pratiquer régulièrement
+- for...in — vu, pas encore pratiqué
+- splice() — pas abordé
+  Exercice de synthèse
+  Gestion de stock opticien : 4 fonctions (filter, reduce, &&, ternaire)
+  Toutes réussies avec indices progressifs.
+
+## Notions à réviser — JS intermédiaire
+
+Contexte : ces notions ont été vues en pratique mais ne sont pas encore instinctives. Objectif de la session : révision express → cours ciblé sur ce qui accroche → exercices autonomes.
+Notions à couvrir dans l'ordre :
+1- ! (opérateur NOT) — inverser un booléen, usage dans les conditions
+2- :not() — sélecteur CSS, usage dans querySelectorAll
+3- IntersectionObserver — les 3 pièces (callback, options, observer.observe), threshold, isIntersecting
+4- entry vs event — deux objets créés automatiquement par le navigateur, différence de contexte
+5- .target — entry.target vs event.target, ce que ça désigne dans chaque cas
+6- event.key, event.type — autres propriétés utiles de l'objet event
+7- element.contains() — vérifier si un élément en contient un autre, usage typique : détecter un clic en dehors d'un menu
+Niveau actuel estimé : 🔴 Vu en pratique, pas encore instinctif — nécessite répétition et exercices autonomes.
+Méthode souhaitée : révision express sans les notes → cours ciblé uniquement sur ce qui accroche → exercices dans l'univers optique → correction avec indices progressifs.
+
+Session 23 — Burger croix + Cartes projets
+Durée : ~6h (midi + après-midi)
+Thème : JS DOM, CSS position, UX portfolio
+Ce qui a été fait : npm run dev, fermeture menu burger (contains(), clic extérieur),
+burger→croix animée (CSS pur, nth-child, rotate), overlay hover cartes (absolute/relative/opacity),
+lien WorldExplorer, icônes Devicons techno.
+Ce qu'il faut revisé pour intégrer : position absolute/relative, group-hover Tailwind, contains().
+Niveau estimé : JS DOM 80% / CSS position 65%
+Prochaine session : Formspree + améliorations visuelles globales (hover, profondeur, Contact)
+
+Session Vacances — Révision JS pur (mobile)
+Durée : sessions courtes sur téléphone (OnlineGDB)
+Thème : Consolidation arrow functions, filter(), reduce(), ternaire
+Ce qui a été fait :
+Exercices sur tableaux d'objets (montures, clients, verres) — arrow functions, filter() simple, filter() avec &&, reduce() nombre, reduce() objet, ternaire comme sélecteur de clé dynamique.
+Ce qui a accroché :
+
+- reduce() objet : return acc oublié, confusion acc[m.categorie] vs notation point
+- Notation crochets : acc[m.type] quand la clé est dans une variable — compris après explication
+- Ternaire dans reduce : m.mutuelle ? "avecMut" : "sansMut" — bien assimilé après correction
+  Ce qui est solide :
+- Squelette reduce objet maîtrisé de façon autonome sur le 3ème exercice
+- Réflexe m.propriété (vs tableau.propriété) en place
+- Ternaire comme sélecteur de clé compris
+  Niveaux estimés :
+- reduce() nombre : 🟡 75%
+- reduce() objet : 🟡 65% (était 45%)
+- Arrow functions : 🟡 75%
+- Ternaire : 🟡 70%
+
+## Session 24 — Reprise post-vacances
+
+**Durée** : ~3h
+**Thème** : Mini-projet synthèse — Catalogue de montures
+**Ce qui a été fait** : Catalogue complet from scratch —
+affichage dynamique (createElement, appendChild, template literals),
+ternaire stock/couleur, filter() avec ternaire "toutes",
+reduce() valeur du stock (2770€), 3 boutons filtre avec addEventListener,
+fonction DRY afficherCarte(choix). Tailwind dark theme.
+**Ce qui a accroché** : filter() (stocker résultat + boucler = 2 étapes),
+reduce() (double return), ternaire dans affectation (double =)
+**Niveau estimé** :
+
+- JS DOM : 75%
+- filter() : 🟡 70%
+- reduce() nombre : 🟡 70%
+- Ternaire : 🟡 70%
+- Arrow functions : 🟡 70%
+- Tailwind : 🟡 70%
+  **À repratiquer** : fetch, includes(), filter/reduce en autonomie
+  **Prochaine session** : À définir — fetch + includes, ou finitions portfolio, ou session JS prévue (IntersectionObserver, !, :not(), .target)
+
+## Session 25 — Observer + fetch/includes (sur 2 jours)
+
+**Durée** : ~4h (midi + soir + soir)
+**Thème** : Révision IntersectionObserver, :not(), fetch + includes
+
+**Ce qui a été fait** :
+
+- Cours complet event vs entry (callback, .target, le navigateur remplit le paramètre)
+- Observer : démo 4 sections console, exercice animation scroll (classList.add/remove "visible")
+- :not() — sélecteur CSS d'exclusion, validé premier coup
+- fetch + includes : exercice recherche users (hier), exercice recherche pays Europe (aujourd'hui)
+- Concepts ancrés : paramètre = juste un nom, new = créer un objet,
+  addEventListener vs new IntersectionObserver, className vs classList,
+  style.background en JS, let vs const, "input" vs "keydown", toLocaleString(),
+  fonction réutilisable avec paramètre (afficher(liste))
+
+**Ce qui a accroché** :
+
+- Observer : le mécanisme callback/fiches/boucle — compris après démo visuelle
+- fetch : structurer les 3 blocs (fetch, afficher, listener) séparément
+- Fonction avec paramètre réutilisable (afficher(data) vs afficher(filtre))
+- Bug \* { display: flex } sur style — compris
+
+**Niveau estimé** :
+
+- IntersectionObserver : 🟡 55%
+- fetch + async/await : 🟡 55%
+- filter + includes : 🟡 65%
+- :not() : ✅ 80%
+- event vs entry : 🟡 60%
+
+**À repratiquer** : fetch et Observer — encore 2-3 exercices chacun
+**Prochaine session** : Nouvel exercice fetch ou Observer, ou les deux combinés
+
+## Session 26 — fetch + Observer combinés (midi + soir)
+
+**Durée** : ~3h
+**Thème** : Exercice complet fetch + filter + includes + Observer + CSS avancé
+
+**Ce qui a été fait** :
+
+- Exercice recherche pays Europe (fetch + filter + includes + toLowerCase)
+- Exercice complet 100 posts : fetch, affichage grid 5 colonnes, recherche,
+  line-clamp CSS (tronquer/déplier au clic), Observer animation scroll
+- Concepts ancrés : let vs const (réassignation), fonction réutilisable avec
+  paramètre (afficher(liste)), "input" vs "keydown", toLocaleString() (pas maitrisé),
+  -webkit-line-clamp (4 propriétés : pas du tout maitrisé), .deplie .body-texte (sélecteur descendant),
+  spécificité CSS, position absolute/relative pour flotter sans pousser,
+  z-index, opacity 0→1, transition, classList.add vs classList =
+- Observer intégré sur des cartes créées dynamiquement par fetch
+- slice() expliqué (pas maîtrisé)
+
+**Ce qui a accroché** :
+
+- Observer : noms de variables mélangés (fiche/carte), placement du vigile
+  (dans vs hors de la boucle), classList = vs classList.add
+- fetch : structurer les 3 blocs séparés (encore besoin d'un modèle)
+- position absolute/relative : compris mais pas instinctif
+
+**Niveau estimé** :
+
+- fetch + async/await : 🟡 60%
+- IntersectionObserver : 🟡 55%
+- filter + includes : 🟡 70%
+- CSS position : 🔴 50%
+- -webkit-line-clamp : 🟡 45%
+
+**À faire** : exercices dédiés position CSS/Tailwind
+**Prochaine session** : Encore un exercice fetch + Observer, ou nouvelle notion
+
+## Session 27 — fetch + Observer + méthodes de tableau + position CSS
+
+**Durée** : ~3h15 (dimanche aprèm, suite midi)
+**Thème** : Consolidation JS (fetch/Observer/arrays) + intro position CSS
+
+**Ce qui a été fait** :
+
+- Exercice fetch + Observer (clients jsonplaceholder) : 3 blocs séparés en autonomie
+- .target expliqué (entry = rapport, pas l'élément)
+- Recherche temps réel : filter + includes + toLowerCase + stockage data (scope OK)
+- Arrow functions : aller-retour version longue ↔ courte maîtrisé
+- "for caché" dans filter/map/reduce : déclic
+- map / find / some / forEach : cours + exo console (4 lignes)
+- className vs classList = vs classList.add : reclarifié
+- const vs let dans for...of : nouvelle variable par tour
+- position relative/absolute : cours + exo badge dans carte + micro-test réussi
+
+**Ce qui a accroché (résolu)** :
+
+- Pourquoi .target / pourquoi const dans for...of / la syntaxe arrow .filter(element => element ...)
+
+**Niveau estimé** :
+
+- fetch + async/await : 🟡 70% (était 60%)
+- IntersectionObserver : 🟡 70% (était 55%)
+- filter + includes : 🟡 80%
+- arrow functions : 🟡 75%
+- map / find / some : 🟡 60-65% (nouveaux, à repratiquer)
+- forEach : 🟡 65%
+- position relative/absolute : 🟡 65% (était 🔴 50%)
+
+**À repratiquer** : map/find/some en autonomie, position CSS (1-2 exos),
+fixed/sticky (pas encore retravaillés), reduce()
+
+**Prochaine session** : pratique position CSS OU combo fetch+Observer+map en autonomie totale
+
+## Session 28 — Synthèse fetch + Observer + arrays + try/catch
+
+**Durée** : ~2h (soir)
+**Thème** : Exercice catalogue complet en autonomie + cours try/catch
+
+**Ce qui a été fait** :
+
+- Catalogue produits (dummyjson) from scratch : fetch, try/catch,
+  Observer, badge stock (double ternaire classe+texte), recherche live,
+  prix moyen (map → reduce → toFixed)
+- Cours complet try/catch : mécanisme du saut, objet erreur,
+  catch(e) vs catch, throw + reponse.ok (notions)
+- Piège API objet vs tableau (data.products)
+- Async compris : calcul dépendant des données → APRÈS le fetch, dans le flux
+- Refacto fonction séparée (responsabilité unique / DRY) — compris
+- Convention nommage : entry/entries réservé à l'Observer, pas ailleurs
+- VS Code : Ctrl+D (multi-curseur), F2 (renommage intelligent)
+
+**Niveau estimé** :
+
+- fetch + async/await : 🟡 75-80%
+- try/catch : 🟡 70% (cours complet)
+- IntersectionObserver : 🟢 75%
+- filter + includes : 🟢 80%
+- map : 🟡 70% / reduce : 🟡 70% (consolidé)
+- ternaire : 🟡 75%
+- position relative/absolute : 🟡 65%
+
+**À repratiquer** : reduce en isolation, position CSS, find/some,
+reponse.ok / throw (niveau pro), refacto en petites fonctions
+
+**Note** : arrêt des analogies Python (niveau dépassé)
+**Prochaine session** : roadmap + finitions portfolio (dark mode, back-to-top,
+responsive, Formspree, déploiement Vercel)
+
+## 📍 08 juin 2026 (post-session 28) — AUTO-ÉVALUATION + lancement des révisions
+
+**Bilan quiz** : 134/142 notions auto-évaluées · **moyenne globale 5.8/10**
+
+Moyennes par domaine (du plus fort au plus faible) :
+
+- JS DOM : 8.6 🟢
+- Tailwind : 6.4 · HTML : 6.2 · JS bases : 6.2 · CSS boîte : 6.0 · JS HOF : 6.0
+- JS fetch : 5.7 · CSS sélecteurs : 5.6 · Git : 5.4 · JS APIs natives : 5.2
+- CSS flex/grid : 5.0 · CSS position : 5.0 · JS événements : 5.0 · JS tableaux/objets : 4.8
+- Outils : 2.8 🔴
+
+**Décision** : réviser toute notion < 6/10 jusqu'à maîtrise, organisée en 8 blocs (A→H),
+du plus fondamental (socle React) au simple nettoyage.
+**Détail complet** : voir `revision.md`.
+**→ Démarrage Bloc A juste après.**
+
+## Session — Bloc A : fondations JS (valeur/référence + scope + closures)
+
+**Durée** : ~ 08/06/2026 — 14h00-17h30 (~3h30)
+**Thème** : valeur vs référence, scope, piège var/let dans les callbacks
+**Ce qui a été fait** : prédiction+test sur objets/tableaux partagés (référence) vs
+nombres (valeur) ; intro spread `...` pour cloner ; scope sens unique (intérieur voit
+extérieur, pas l'inverse), chaîne de scope, "lire la structure pas l'ordre d'exécution" ;
+piège var/let dans setTimeout → un tiroir partagé (var) vs un tiroir par tour (let),
+mot "closure" introduit.
+**Ce qui a accroché** : verbaliser la différence var/let (compris en images, pas encore
+en mots) ; le "4" qui existe avec var mais pas avec let.
+**Niveau estimé** :
+
+- valeur vs référence : 2 → 7/10
+- scope : 5 → 7/10
+- piège callbacks (closures) : 3 → 6/10
+- spread `...` : découvert, à pratiquer (React)
+  **À repratiquer** : spread en pratique, repérer un bug de scope seul
+  **Prochaine session** : Bloc B — l'objet event (event.target, .key/.type, contains, scrollY)
+
+## Session — Bloc B : l'objet event
+
+**Date** : 08/06/2026 — 22h00 (~... )
+**Thème** : lire et utiliser l'objet event (target, key, type, contains, scrollY)
+**Ce qui a été fait** : event = "rapport d'incident" rempli par le navigateur ;
+e.target = élément précis cliqué (auto-désigné, pas besoin d'id/if) → lu puis
+manipulé directement (style.backgroundColor, textContent) ; e.type / e.key ;
+keydown + comparaison e.key === "Enter" ; contains() (sens grand.contains(petit),
+usages généraux, un élément se contient lui-même) ; révision scrollY (OK de mémoire).
+**Ce qui a accroché (résolu)** : inversion A.contains(B) ; doublon de log (if seul
+→ if/else) ; .style = "..." (écrase tout) vs .style.propriété (camelCase) ;
+quand ternaire vs if/else (valeur vs action).
+**Bonus spontanés** : for...of + let sur NodeList (DRY + réflexe bloc A) ; ternaire
+sorti d'instinct.
+**Niveau estimé** :
+
+- event.target : 3 → 7/10
+- event.key / event.type : 3 → 7/10
+- element.contains() : 2 → 6/10
+- window.scrollY : 7/10 (stable)
+  **À repratiquer** : classList.add(classe) plutôt que .style en dur (vu, à appliquer) ;
+  contains() dans un vrai "clic dehors"
+  **Prochaine session** : Bloc C — méthodes de tableau (reduce objet, slice/splice, push, Object.values, for...in)
+
+## Sessions — Bloc C : méthodes de tableau (08-09/06/2026)
+
+**Durée** : ~2h (soir du 08) + ~1h (midi du 09)
+**Thème** : slice/splice, push, reduce (somme/objet/imbriqué), Object.values, for...in
+**Ce qui a été fait** :
+
+- slice (copie, fin exclue, n'abîme pas) vs splice (modifie en place, retire) —
+  distinction par l'INTENTION + mnémo sécurisé/sabote
+- reduce : déclic via le "=" qui CRÉE ou REMPLACE une case d'objet ; carnet/accumulateur
+  transmis par return ; filet || 0 (somme) / || [] (liste) / || {nombre,total} (imbriqué)
+- le comptage se FABRIQUE avec +1 (pas dans les données)
+- Object.values/keys/entries = pont objet → tableau (récupère les méthodes de tableau)
+- for...in (clés d'un OBJET) vs for...of (éléments d'un TABLEAU, ordonné)
+- crochets obligatoires quand la clé est dans une variable (acc[m.marque], compte[v])
+  **Ce qui a accroché (résolu)** : "comment JS compte sans quantité" → +1 fabriqué ;
+  le "=" qui crée/remplace une case (débloqué en isolant hors de reduce) ;
+  piège du reduce sur-compliqué pour une simple somme (Object.values + acc+v.montant suffit)
+  **Validation** : mini-examen 5 questions enchaînées réussi en autonomie ✅
+  **Niveaux** : slice/splice 1→7 · push 4→7 · reduce objet 5→7 · Object.values 4→7 · for...in 3→7
+  **À entretenir** : reduce en échauffement (instinct), for...in (peu intuitif)
+  **Prochaine session** : Bloc D — console.log debug F12, setTimeout, toLocaleString/toFixed
+
+## Sessions — Blocs D + E : outils JS quotidien + détails fetch/Observer (10-11/06/2026)
+
+**Durée** : ~2h (soir 10) + reprise courte (matin 11)
+**Thème** : console.log debug, setTimeout, toLocaleString/toFixed, ?fields=, threshold/isIntersecting
+
+**Bloc D :**
+
+- console.log DEBUG : étiqueter (console.log("label:", valeur)), enquêter DANS la boucle,
+  lire l'écart objet vs valeur ; undefined = propriété inexistante, NaN = calcul avec non-nombre ;
+  log de debug = temporaire (on nettoie) ; distinguer "erreur de mon code" vs bruit navigateur
+  → débogué 2 exos (1 bug simple prixHT, 1 multi-bugs articles/commande.articles)
+- setTimeout(fonction, délai_ms) : fonction d'abord, délai ensuite ; NON-BLOQUANT (A→C→B) ;
+  porte d'entrée de l'asynchrone ; effet "message qui disparaît" recréé (arrow courte spontanée)
+- toFixed(n) : fixe n décimales, RENVOIE UNE CHAÎNE (afficher only, jamais avant calcul)
+- toLocaleString("fr-FR", { style:"currency", currency:"EUR" }) : prix FR "2 770,00 €" ;
+  2e argument = objet d'options (style ≠ CSS, coïncidence de mot)
+
+**Bloc E :**
+
+- ?fields=name,capital,... : filtre les champs renvoyés par l'API (allège/obligatoire) ;
+  mécanisme universel des URLs (? démarre params, = valeur, & enchaîne) ;
+  VÉCU EN DIRECT : World Explorer cassé → API RestCountries v3.1 DÉPRÉCIÉE (à migrer v5)
+- threshold (0 à 1, seuil de visibilité qu'on règle) vs isIntersecting (booléen renvoyé)
+
+**Bonus du jour** : 1er merge Git multi-machines (git pull → auto-merge 'ort' → push) ;
+sortie de vim (Échap + :wq) ; incident API géré sans paniquer
+
+**Niveaux** : console.log debug 0→7 · setTimeout 2→7 · toFixed/toLocaleString 3→7 ·
+?fields= 1→7 · threshold/isIntersecting 2→7
+
+**Prochaine étape** : Blocs F/G/H (CSS rouillé, CSS niche, setup) — plus légers,
+OU migration World Explorer v5 comme mini-projet
+
+## Sessions — Blocs F + G + H : CSS rouillé + CSS niche + setup (12/06/2026)
+
+**Durée** : ~2-3h (midi + après-midi)
+**Thème** : finalisation de la révision globale de Phase 1
+
+**Bloc F (CSS rouillé) :**
+
+- Variables CSS : -- pour DÉCLARER, var() pour UTILISER ; :root = racine (html), portée globale
+- Media queries : @media (max-width) = petits écrans (≤), (min-width) = grands (≥) ;
+  md: Tailwind = min-width:768px ; 768px = convention iPad, pas obligatoire
+- "reset en media query" = réécrire une propriété pour mobile (ex span 3 → span 1)
+- height 100vh vs min-height (préférer min-height : peut grandir si contenu déborde)
+- margin auto : centre un BLOCK avec largeur ; inline → rien ; parent flex → centre 2 axes
+- box-shadow : x, y, flou, [étalement], couleur rgba (subtil = petit décalage + gros flou + faible opacité)
+- div (neutre/style) vs section (thématique, a un titre) vs article (autonome, réutilisable ailleurs)
+- spécificité : #id > .classe > balise (cause n°1 des "CSS qui s'applique pas")
+
+**Bloc G (CSS niche) :**
+
+- glassmorphism = effet verre : bg rgba + backdrop-filter: blur() (backdrop = floute DERRIÈRE,
+  filter = floute l'élément lui-même)
+- -webkit-line-clamp = tronquer à N lignes + "…" (syntaxe à chercher, ou line-clamp-3 Tailwind)
+- Grid brut : display:grid, grid-template-columns, fr (proportion), repeat(n, 1fr), gap ;
+  grid-cols-3 Tailwind = repeat(3,1fr) ; col-span-X = colonnes inégales ;
+  valeur arbitraire Tailwind [1fr_1fr_2fr] (crochets + \_ pour les espaces)
+
+**Bloc H (setup) :**
+
+- scaffolding complet d'un projet Tailwind from scratch (architecture src/dist) :
+  mkdir + cd → npm init -y (package.json) → npm install tailwindcss @tailwindcss/cli
+  → src/input.css (@import "tailwindcss") + dist/ → .gitignore (node_modules/ + dist/)
+  → npx @tailwindcss/cli -i ... -o ... --watch → index.html (link vers dist/output.css)
+  → git init → script "dev" dans package.json
+- on ignore tout ce qui est RÉGÉNÉRABLE (node_modules, dist) ; on versionne la source
+- npm run dev = raccourci d'un script défini dans package.json
+- Phase 2 : create-next-app automatisera tout ce scaffolding
+
+**Marché (vérifié) :** Tailwind domine (~65% des offres front, +40%/an, défaut Next.js) MAIS
+c'est du CSS déguisé → garder le CSS sous-jacent solide. Freelance = encore + exigeant en CSS.
+
+**Niveaux** : variables CSS 1→7 · media queries 2→7 · margin auto 5→7 · box-shadow 5→7 ·
+div/section/article 4→7 · spécificité 7 · glassmorphism 2→7 · line-clamp 0→6 · grid brut 3→6 ·
+scaffolding 2→7 · npm 0→6
+
+**Reste pour plus tard (optionnel)** : placement Grid (col-span, grid-column) ;
+animation burger fine ; migration World Explorer v5
+
+## 🏁 12 juin 2026 — FIN DES RÉVISIONS (Blocs A→H bouclés)
+
+**Toute la feuille de route de fin de Phase 1 est terminée.** Les 8 blocs validés en ~5 jours.
+
+**Trous comblés** (notions < 6/10 au départ → maîtrisées) :
+
+- JS conceptuel : valeur/référence 2→7 · scope 5→7 · closures var/let 3→6
+- L'objet event : target/key/type 3→7 · contains 2→6
+- Méthodes de tableau : reduce objet 5→7 · slice/splice 1→7 · Object.values 4→7 · for...in 3→7
+- Outils : console.log debug 0→7 · setTimeout 2→7 · npm/scaffolding 0-2→6-7
+- CSS rouillé : variables 1→7 · media queries 2→7 · + tout le bloc F à 7
+- CSS niche : glassmorphism 2→7 · line-clamp 0→6 · grid brut 3→6
+
+**Acquis transversaux** : méthode de debug (enquêter, lire l'écart) · distinguer
+"comprendre" vs "chercher la syntaxe" · monter un projet Tailwind de zéro · 1er merge Git multi-machines.
+
+**Reste en suspens** : entretien `...` spread / classList en React · migration World Explorer v5 ·
+Git remote à détailler · dark mode + tailwind.config (non abordés).
+
+**→ Prochaine grande étape : refaire le quiz d'auto-éval pour mesurer la nouvelle moyenne,
+puis attaquer la Phase 2 (React).**
+
+## Session 29 — Bouton back-to-top (version production)
+
+**Durée** : ~2h le 13/06/2026
+**Thème** : JS scroll + DOM + gestion de la cascade CSS (layers Tailwind)
+**Ce qui a été fait** :
+
+- Bouton back-to-top from scratch : `<button>` enfant direct de `<body>` (pas dans le header → évite le piège backdrop-filter/fixed)
+- Affichage piloté par toggle de 2 utilities (opacity-0 ↔ opacity-100) en JS, PAS par une classe @apply (qui perdait le combat de layer face à l'utility)
+- État initial géré en dur dans le HTML (opacity-0) → suppression du flash au F5
+- Refacto DRY : logique sortie dans une fonction nommée majBackToTop(), appelée au scroll ET au chargement (pattern "état initial" qui resservira en React)
+- Icône : emoji 🔼 → SVG Heroicon (currentColor conservé pour le futur dark mode, taille via classe Tailwind size-)
+- Accessibilité : aria-label="Retour en haut", vrai <button>
+- Cohérence visuelle : couleurs alignées sur le thème (carte À propos)
+  **Concepts (re)travaillés** :
+- Layers Tailwind theme → base → components → utilities : à spécificité égale, la layer la plus tardive gagne → une utility bat un @apply
+- position: fixed capturé par un parent en transform/filter/backdrop-filter
+- Ordre temporel au chargement : peinture du navigateur PUIS JS defer → cause des "flash" + rôle de la transition
+- currentColor sur un SVG
+- Devicon (logos de marques) ≠ Heroicons/Lucide (icônes d'UI)
+  **Niveau estimé** :
+- JS DOM / events : 🟢 80% (stable)
+- Cascade CSS / layers Tailwind : 🟡 70% (consolidé en conditions réelles)
+- position fixed + contexte parent : 🟡 65%
+  **Reste "plus tard" (noté, non bloquant)** :
+- z-10 → z-50 sur le bouton (cohérence, aucun bug actuel)
+  **Prochaine session (dimanche, 5h)** : WorldExplorer — 1) vérifier/réparer l'API RestCountries (dépréciée d'après le journal), 2) le rendre visuellement pro.
+
+## Session 30 — WorldExplorer : réparation API + refonte visuelle
+
+**Durée** : ~3h (après-midi)
+**Thème** : migration de source de données (API dépréciée → dataset open data) + CSS pur "version pro"
+
+**Ce qui a été fait** :
+
+- DIAGNOSTIC : RestCountries v3.1 confirmée dépréciée (lu dans la réponse brute de l'API). Analyse de la v5 : ce n'est PAS un changement d'URL — clé API obligatoire, CORS à whitelister, pagination (max 100/requête), structure data.objects, response_fields, quota 500/mois
+- DÉCISION stratégique : option "dataset open data sans clé" plutôt que v5 avec clé (évite l'exposition de clé côté client sur repo public — leçon GitGuardian) ; la v5 à clé + backend proxy est repoussée en Phase 2
+- MIGRATION vers mledoze/countries (via CDN jsdelivr) : structure quasi identique à v3.1 (c'est la source historique). 5 champs inchangés (translations.fra.common, capital[0], region, languages, currencies). 2 vrais changements : population retirée (ligne supprimée) + drapeau = construire l'URL SVG depuis cca3.toLowerCase()
+- REFONTE VISUELLE (CSS pur, pas Tailwind) : police Inter + variables CSS d'accent + ombre bleue (lueur) ; contrôles domptés (fond sombre, bordure bleue, lisibles) ; regroupement select+bouton+loupe dans un conteneur flex (même ligne, même hauteur via stretch) ; loupe centrée (button en display:flex) ; scrollbar overflow-y:auto + scrollbar-width/color ; cartes accordées au thème ; nom du pays en <h3> titre + labels en <span class="label"> gris (hiérarchie visuelle)
+- Nouvelle screenshot propre (France, 1 carte, sans scrollbar) pour la carte portfolio
+  **Concepts (re)travaillés** :
+- Migration d'API : lire l'erreur brute, comparer ancienne/nouvelle structure avant de réécrire
+- Sécurité : pourquoi une clé API n'a rien à faire dans du JS client sur repo public → backend proxy (Phase 2)
+- Propriétés CSS "inertes sans leur compagne" : border-color a besoin de border-style ; align-items a besoin de display:flex (réflexe transversal de debug)
+- Opacité couleur : pas de "/50" en CSS pur → 4e valeur du rgba (0 à 1), ≠ propriété opacity (qui affecte tout l'élément)
+- overflow-y: auto (barre au besoin) vs scroll (toujours)
+- Scrollbar : syntaxe standard (scrollbar-width/color, Firefox) vs ::-webkit (Chrome) — tester un seul navigateur ne prouve rien
+- Hiérarchie de titres HTML (h1>h2>h3) = sens/accessibilité, pas taille ; <span> = conteneur inline pour styler un bout de texte
+- Design : alignement de référence (ne pas mélanger gauche/centre sur une ligne) ; "fini = on ne peut plus rien retirer", anti-perfectionnisme
+  **Niveau estimé** :
+- CSS position / flex (centrage, alignement de groupes) : 🟡 70% (gros progrès, était le point faible)
+- fetch + structure de données : 🟢 80%
+- CSS variables / box-shadow / overflow : 🟢 80%
+- Migration / lecture de doc API : 🟡 nouveau, bien géré en autonomie
+  **Reste "plus tard" (noté, non bloquant)** :
+- min-width: 600px + cartes en width fixe 350px → casseront sur mobile : passe RESPONSIVE à faire (préférer width:100% + max-width)
+- Population : récupérable seulement en changeant de source (risque perte des traductions FR) ou en fusionnant 2 datasets → reporté en Phase 2 (backend = proxy API à clé OU fusion côté serveur, bon argument CV)
+- Bloc ::-webkit-scrollbar (cosmétique, optionnel)
+
+**Reste pour finir le livrable** : push WorldExplorer + nouvelle preview portfolio. Passe responsive WorldExplorer (prochaine session courte).
+
+## Session 31 — Dark mode portfolio (architecture Tailwind v4 sémantique)
+
+**Durée** : ~3h30 le 15/06
+**Thème** : dark mode pro avec tokens sémantiques + compréhension profonde de l'architecture Tailwind v4
+
+**Ce qui a été fait** :
+
+- Favicon ajouté (logo perso) sur les onglets + corrige l'erreur 404 favicon.ico
+- Dark mode COMPLET en architecture sémantique (pattern shadcn/ui, standard React/Next.js Phase 2) :
+  - @custom-variant dark (&:where(.dark, .dark \*)) pour piloter par classe (pas par OS)
+  - class="dark" en dur sur <html> → démarre en sombre (Cas A)
+  - Tokens sémantiques nommés par RÔLE : background, surface, text, muted, accent (pas par mode bgLight/bgDark)
+  - @theme = valeurs claires par défaut ; @layer theme { .dark {} } = override sombre
+  - HTML migré : bg-background text-text (PLUS de dark: dans le markup, tout centralisé en CSS)
+  - Toggle JS réactivé : querySelectorAll(".darkButton") + classList.toggle('dark') sur <html>
+- cursor: pointer sur tous les boutons (@layer base { button {} })
+- Tous les composants migrés vers les tokens (nav, cartes, formulaire, burger, btn-secondary)
+
+**Concepts (re)travaillés EN PROFONDEUR** (grosse session théorique, à l'initiative de Frédéric) :
+
+- Les 4 layers Tailwind : theme → base → components → utilities (ordre = priorité, le plus tardif gagne)
+- @theme = directive qui CRÉE des variables ET génère les classes utilitaires (≈ var() + usine à classes)
+- @layer = range du CSS au bon niveau de priorité, ne crée rien
+- @apply = utiliser des classes Tailwind dans une règle CSS (vs CSS natif écrit directement)
+- utilities = toutes les classes Tailwind de base, remplies auto par Tailwind, étage le plus prioritaire
+- Propriété native (font-family, cursor) ≠ variable créée (--color-x)
+- Nommer un token par RÔLE (background, accent) jamais par VALEUR (bleu) → le nom reste vrai si la teinte change
+- DEBUG : une erreur dans le terminal watch GÈLE toute la compilation → output.css figé, les changements CSS ne s'appliquent plus. TOUJOURS surveiller le terminal du watch.
+
+**Niveau estimé** :
+
+- Architecture Tailwind v4 (theme/layers/apply/tokens) : 🟢 75-80% (compréhension réelle, pas du copier-coller)
+- Dark mode sémantique : 🟢 75% (appliqué de bout en bout en autonomie)
+- Debug CSS / lecture terminal : 🟢 progrès net (réflexe terminal acquis)
+
+**Reste à faire (prochaine session ~2h)** :
+
+- Visuel section Compétences (.comp)
+- Lune en mode sombre : pattern 2 SVG (soleil dark:hidden / lune hidden dark:block) sur les .darkButton
+- Revoir/affiner la palette du mode clair (ajustements à l'œil)
+- WorldExplorer responsive (TOUJOURS en attente — min-width 600px + cartes largeur fixe cassent sur mobile)
+- localStorage pour mémoriser le choix de thème (Cas B) — bon prétexte pour apprendre localStorage
+- Favicon : renommer "logo Fredi.png" → "logo-fredi.png" (espace = fragile au déploiement) + type="image/png"
+
+**Note pédagogique** : Frédéric a exigé de comprendre toute l'architecture AVANT de coder (excellent réflexe). Session très théorique mais fondations solides pour React (shadcn/ui utilise exactement ce pattern).
+
+## Session 32 — Finitions portfolio + outillage (Prettier) — 16-19/06
+
+**Durée** : ~8h (4 sessions de 2h)
+**Thème** : refonte sections Compétences & Contact, responsive WorldExplorer, dégradés/ombres, mise en place de Prettier + plugin Tailwind
+
+**Ce qui a été fait** :
+
+- WORLDEXPLORER responsive : cause du scroll latéral trouvée = min-width:480px en dur (forçait une largeur > écran). Cartes passées en width:100% + max-width (pattern fluide). overflow-x:hidden en filet. Cadre centré w-fit. (Reste un détail mineur non isolé.)
+- COMPÉTENCES refondues : 4 catégories (Frontend / Backend / IA / Outils), HTML+CSS retirés de la liste (prérequis implicites), TypeScript ajouté, FastAPI repositionné Phase 3, pastille "à venir" sur IA uniquement. Badges = pastilles rondes uniformes (bg + dégradé radial + ombre), icônes Devicon en SVG. Cadres en w-fit (se calent sur le contenu).
+- CONTACT refondu : cartes email/localisation avec icônes Heroicons, labels + inputs stylés, focus:ring-accent + outline-none (anneau bleu propre, accessibilité préservée).
+- Sections à fond pleine largeur : pattern <section> (porte le bg, pleine largeur) + <div> intérieur (max-w + mx-auto, porte le contenu).
+- Détails visuels : drop-shadow adaptée jour/nuit (dark:), hover:scale sur logos, box-shadow (valeurs arbitraires sans espaces → underscores ou rgba collé), dégradé radial badges.
+- Favicon corrigé. Liens GitHub ajoutés (LinkedIn en attente, pas encore de compte).
+
+**OUTILLAGE (gros volet, à la demande de Frédéric)** :
+
+- Prettier : était installé mais EN ERREUR (pas inactif). Logs lus → "Unexpected closing tag div" = HTML invalide (un </div> en trop dans Compétences après ajout d'un wrapper). Corrigé → Prettier débloqué.
+- Activé : default formatter = Prettier + format on save.
+- Plugin officiel prettier-plugin-tailwindcss installé (npm i -D) → range l'ordre des classes au save.
+- .prettierrc créé : plugins + tailwindStylesheet (./src/input.css, OBLIGATOIRE en Tailwind v4 pour que le plugin connaisse les tokens custom) + printWidth:120 (sinon trop de retours à la ligne avec Tailwind).
+
+**Concepts (re)travaillés** :
+
+- gap ne marche QUE en flex/grid, pas en block (sinon margin)
+- justify-center (position du groupe) ≠ gap (espace entre éléments) — ne s'annulent pas ; piège avec justify-between qui s'additionne au gap
+- SVG en <img> : currentColor NE marche PAS (image externe, CSS n'entre pas) → monochromes invisibles selon le mode → SVG inline pour ceux-là
+- align-items inerte sans display:flex ; border-color inerte sans border-style (propriétés "compagnes")
+- Hiérarchie titres h1>h2>h3 = sens, pas taille
+- Nommer tokens par RÔLE (surface, muted, elevated) pas par valeur ; proposer une couleur seulement si elle a un rôle
+- focus: = état (élément actif) comme hover:/dark: ; outline-none SEUL = mauvais (accessibilité), outline-none + ring = bon
+- Convention web = 2 espaces d'indentation (imbrication profonde) vs 4 (Python) ; Prettier normalise tout au save
+- DEBUG : Prettier en erreur = il SIGNALE un HTML invalide, il ne range pas du code cassé → lire les logs
+
+**Niveau estimé** :
+
+- Tailwind v4 (tokens, layers, @theme, responsive) : 🟢 80%
+- CSS positionnement / flex / responsive : 🟡 75% (gros progrès sur l'ex-point faible)
+- Outils (Prettier) : 🟡 passage de 🔴 à 🟡 (Prettier compris et partiellement configuré ; ESLint volontairement reporté)
+
+**Demandes explicites de Frédéric (à retenir)** :
+
+- ESLint : à apprendre PLUS TARD, séance dédiée (pas maintenant, veut apprendre sans pour l'instant)
+- GRANDE SÉANCE "outils de travail" à caler AVANT la Phase 2 (point faible auto-éval à 2.8/10 — réglages VS Code, Prettier, ESLint, terminal, npm, debugger, raccourcis...)
+- AUDIT des outils installés : Claude doit signaler tout outil installé-mais-inutilisé, et expliquer tout outil indispensable du métier non connu (à faire pendant la séance "outils")
+
+**Reste à faire portfolio** :
+
+- Effet scroll latéral des cadres (translate-x alterné G/D à l'entrée — pas encore fait)
+- Carte IA "OpenAI/Anthropic API" toujours sans icône (Heroicons cpu-chip/sparkles prévu)
+- Formspree (formulaire non fonctionnel)
+- WorldExplorer responsive : dernier détail à isoler
+- localStorage thème (Cas B) — séance bientôt
+- Vercel + LinkedIn : fin Phase 2
+
+**À ne pas oublier (dette technique)** :
+
+- Liens "Voir le projet" / GitHub encore vides sur certaines cartes projet (Gestionnaire de montures, Vitrine Tailwind)
+
+## Session 33 — Revue de code + responsive compétences + espacement — 20/06
+
+**Durée** : ~3h
+**Thème** : revue de code complète (2 passes), homogénéisation espacement, effet reveal corrigé, responsive compétences en flex-wrap
+
+**Ce qui a été fait** :
+
+- REVUE DE CODE complète (HTML + CSS) : corrections appliquées par Frédéric
+  - favicon type="image/png" (était "png", invalide)
+  - liens vides href="" → href="#" (href="" recharge la page !)
+  - .badge nettoyé : bg-surface au lieu de #f8fafc en dur, dégradé radial entièrement en dark: (plus de code mort en clair)
+  - .champ créé pour DRY des 4 inputs du formulaire (mêmes classes répétées → 1 classe)
+  - text-text redondants retirés (hérités du body)
+  - classes MORTES retirées des wrappers non-flex : items-center/gap inertes sans display:flex (sections Compétences/Projets/Contact)
+  - mb-40 géant supprimé, id décoratifs → commentaires de section (Ctrl+/)
+- ESPACEMENT : py-20 uniforme sur toutes les sections (au lieu de py-12 + mb-40 incohérent) → rythme régulier
+- EFFET REVEAL corrigé : appliqué sur le DIV intérieur (.sectionReveal) et non la <section>, sinon le fond (bg) translatait aussi. JS observe maintenant .sectionReveal au lieu de section:not(#hero)
+- RESPONSIVE COMPÉTENCES : grid grid-cols-2 → flex flex-wrap justify-center (grid pas adapté pour des icônes de tailles variables). Largeur fixe w-24 sur .comp pour aligner les colonnes (le texte de largeur variable décalait le centrage par ligne). 3 badges/ligne sur mobile.
+- Icône carte IA ajoutée (Heroicons cpu-chip, SVG inline currentColor)
+
+**Concepts (re)travaillés** :
+
+- Échelle Tailwind : le chiffre = unité d'échelle, PAS des pixels. chiffre × 4 = px (w-24 = 96px, size-18 = 72px). Exceptions : w-full/w-1/2/max-w-5xl ont leur propre logique
+- transform (déplace/scale/rotate, le QUOI) ≠ transition (adoucit le changement, le COMMENT). transition-transform sur l'élément en permanence + transform appliqué au moment voulu (hover/scroll). transform SEUL = inutile en v4
+- flex-wrap centre chaque LIGNE indépendamment → colonnes pas alignées si largeurs différentes. Pour aligner : largeur fixe sur les cellules. grid = colonnes rigides (aligné mais orphelin), flex-wrap = souple (pas d'orphelin mais désaligné) — compromis à choisir
+- id décoratifs = mauvaise pratique (un id a une fonction technique). Pour se repérer : commentaires de section (Ctrl+/), Outline VS Code, Ctrl+Maj+O
+- Raccourcis VS Code : Ctrl+/ (commenter), Ctrl+Maj+O (navigation symboles)
+
+**Niveau estimé** :
+
+- CSS positionnement (ex-point faible) : 🟡 75-80% — gros progrès, identifie seul les classes mortes, comprend flex vs grid vs leurs limites
+- Revue/nettoyage de code : 🟢 bon réflexe (a demandé la revue lui-même, corrige en autonomie)
+- Tailwind v4 : 🟢 80%
+
+**RGPD noté** : Frédéric a identifié seul le besoin d'une case de consentement (cadre légal RGPD). À faire avec Formspree : checkbox + label + JS pour désactiver le bouton Envoyer tant que non cochée. Bon réflexe "produit/conformité".
+
+**Reste à faire portfolio** :
+
+- Formspree + case RGPD/consentement (bouton conditionnel)
+- Liens projets vides (Gestionnaire montures, Vitrine Tailwind) + LinkedIn
+- Effet translate-x au scroll (cadres alternés G/D)
+- localStorage thème (Cas B) — bientôt, avant Phase 2
+- WorldExplorer responsive (dernier détail)
+
+**Reporté Phase 2** : Vercel, LinkedIn actif, <DarkToggle /> React, grande séance "outils" + audit
+
+## Session 34 — Formulaire fonctionnel (Formspree + RGPD + fetch POST) + intro localStorage — 21/06
+
+**Durée** : ~4h
+**Thème** : rendre le formulaire de contact réellement fonctionnel + premier fetch POST + découverte de localStorage
+
+**Ce qui a été fait** :
+
+- FORMSPREE branché : distinction **constructeur visuel** (Typeform/Tally) vs **backend de formulaire** (Formspree/Web3Forms) ; endpoint créé ; `action` + `method="POST"` sur le `<form>`
+- `name` sur les **inputs** (pas le label) — leçon du colis : `id` = interne (label/JS/CSS), `name` = ce qui voyage au serveur ; valeurs en ASCII sans accent
+- CASE RGPD : checkbox (id/name/value) + label de consentement conforme (finalité + pas de cession) ; case décochée par défaut = consentement actif
+- BOUTON conditionnel : `.checked` (booléen), événement `change`, `disabled = !consent.checked` (DRY, un booléen pilote l'autre) ; attribut HTML `disabled` vs classe Tailwind `disabled:opacity-50 disabled:cursor-not-allowed`
+- PREMIER fetch POST : `preventDefault()` (couper le départ auto = quitter la page), `new FormData(form)` (ramasse les champs ayant un `name`), 2e argument de fetch (method/body/headers), `headers: { Accept: "application/json" }` (= réponds en données, pas en page) ; pas de Content-Type avec FormData
+- GESTION réponse : `try` / `if (reponse.ok)` / `else` / `catch` — 2 familles d'erreurs : serveur répond "non" (`reponse.ok` false) vs requête qui n'aboutit pas (catch)
+- MESSAGE succès/erreur dans un `<p id="formMessage">` : `className =` (remplace) vs `classList.add()` (empile) ; couleurs `text-green-500`/`text-red-500` (texte porte l'info, couleur en bonus = accessibilité daltonisme)
+- `form.reset()` (vide + décoche → bouton re-disabled) ; "Envoi en cours" + `finally` (nettoyage garanti) ; `setTimeout` non-bloquant pour effacer le message succès après 5s
+- LOCALSTORAGE entamé : `setItem`/`getItem`/`removeItem`, paires clé/valeur, **stocke que du texte**, `getItem` → `null` si clé absente, **persistance prouvée en console** (survit au F5) ; sauvegarde du thème (étape A) en if/else : `toggle` + `classList.contains("dark")` + `setItem("theme", ...)`
+
+**Concepts (re)travaillés** :
+
+- fetch n'est pas que pour LIRE une API : GET (lire) vs POST (envoyer), même outil, direction différente
+- `preventDefault()` = méthode sans argument ; parenthèses = "go" même vides
+- `headers` = métadonnées de la requête, sous forme d'objet (paires nom:valeur)
+- try/catch vs if(reponse.ok) = 2 problèmes distincts (lettre arrivée qui dit "non" vs lettre jamais arrivée)
+- `className` remplace / `classList.add()` empile (résidu)
+- Cohérence projet : Tailwind partout, pas de CSS brut isolé au milieu
+- localStorage = mémoire qui survit au rechargement (vs variable JS = effacée)
+
+**Niveau estimé** :
+
+- formulaires HTML (name/action/method) : 🟢 compris
+- fetch POST : 🟡 nouveau, bien géré en autonomie
+- try/catch/finally : 🟡 70% (finally nouveau)
+- checkbox / `.checked` / événement change : 🟢
+- localStorage : 🔴 entamé, concept pas encore instinctif (de son propre aveu — normal)
+- ⚠️ `=` vs `===` (assigner vs comparer) : revenu 3× ce soir → point de vigilance à entretenir
+
+**Reste à faire** :
+
+- localStorage **étape B** : restauration du thème au chargement (+ gérer le cas `null` du 1er visiteur) — demain
+- 1-2 **exercices de pratique** fetch POST + localStorage (demandés) — univers optique
+- Reporté Phase 2 : Vercel, refacto formulaire + dark mode en composants React, grande séance "outils"
+  **Prochaine session** : finir localStorage (étape B) + exercices pratique fetch POST / localStorage
+
+  ## Session 35 — Pratique fetch POST + localStorage (2 exercices) + event change — 22-23/06
+
+  **Durée** : ~4h réparties (30min midi + 1h30 soir + 2h midi suivant)
+  **Thème** : repratiquer en autonomie totale fetch POST et localStorage (rien n'était considéré acquis) + mini-cours event change
+
+**Ce qui a été fait** :
+
+- FINITION localStorage thème : restauration au chargement (étape B) — `getItem("theme") === "light"` → remove dark, sinon add dark ; cas null = sombre par défaut ; compris pourquoi `=== "light"` nécessaire (getItem renvoie texte/null, pas un booléen) ; le `dark` en dur dans le HTML = anti-FOUC, le JS impose le bon état (add inoffensif si déjà présent)
+- EXERCICE 1 "demande de devis" : form 2 champs + fetch POST (jsonplaceholder) + try/catch/reponse.ok + message + localStorage (mémorise le nom, pré-remplit au chargement) — recodé DE MÉMOIRE, en cherchant seul, refus du copier-coller
+- EXERCICE 2 "compteur visites + dernière recherche" : POST + 2 clés localStorage ; NOUVEAU = compteur incrémenté à chaque chargement (lire → Number → +1 → setItem → afficher)
+- MINI-COURS event change : quand il se déclenche selon le champ (checkbox/radio = au clic, select = au choix, input texte = à la perte de focus, PAS à chaque lettre) ; change (choix finalisé) vs input (chaque caractère)
+
+**Concepts (re)travaillés / clarifiés** :
+
+- `new` vs `const` : `new` FABRIQUE un objet-outil du navigateur (FormData, IntersectionObserver), `const` RANGE le résultat — pas concurrents. `new` pour objets complexes, pas pour valeurs simples (nombre, texte)
+- FormData : ramasse les champs ayant un `name`, dans le `<form>` passé — pas de `.value` à la main
+- setItem prend 2 arguments MAX (1 clé, 1 valeur) → 2 infos = 2 appels ; setItem écrase la valeur précédente d'une clé
+- getItem("clé") : clé entre guillemets (texte), pas une variable ; renvoie la valeur OU null ; pas de `.value` derrière (c'est déjà la valeur)
+- Number("5") vs parseInt("5") : convertir texte→nombre (localStorage ne stocke que du texte) ; Number(null) = 0 (gère le 1er visiteur tout seul)
+- `if (valeur)` au lieu de `=== null` + else : null/"" sont "falsy" → test d'existence d'une valeur (réflexe récurrent)
+- MÉTHODE vs PROPRIÉTÉ : action (verbe, parenthèses, prend des arguments) vs caractéristique (nom, point, pas de parenthèses) → quiz 6/6 réussi
+- headers HTTP : ne se mémorisent pas, se retrouvent (doc du service OU MDN Reference/Headers) ; Accept = format reçu, Content-Type = format envoyé (auto avec FormData)
+- usages pro de POST (CRUD : create/update/delete, auth, paiements, upload) et localStorage (préférences, brouillons, panier — JAMAIS de données sensibles)
+
+**Niveau estimé** :
+
+- fetch POST : 🟡 75% — recodé 2x de mémoire en autonomie, pas encore réflexe pur (de son propre aveu)
+- localStorage : 🟡 65-70% — était 🔴, gros progrès, setItem/getItem compris en profondeur
+- try/catch/reponse.ok : 🟡 75%
+- méthode vs propriété : 🟢 distinction comprise (quiz 6/6)
+- event change vs input : 🟡 clarifié
+- ⚠️ `=` vs `===` : encore apparu cette session → reste le point de vigilance n°1
+
+**Acquis transversaux** :
+
+- A REFUSÉ le copier-coller pour forcer la reconstruction de mémoire (excellent réflexe d'ancrage)
+- Débogue seul au console.log pour trouver une syntaxe (bonne méthode)
+- Demande systématiquement le "pourquoi" et les usages pro (curiosité = point fort)
+
+**Décisions actées (portfolio)** :
+
+- Habillage message contact → ANNULÉ (suffisant tel quel)
+- Liens projets vides → reportés (quand vrais projets dispos)
+- Effet translate-x → ABANDONNÉ (layout centré, pas zigzag)
+- Portfolio = EN PAUSE PROPRE, plus de tâche active
+
+**Reste à faire (clôture Phase 1)** :
+
+- Refaire le quiz d'auto-éval (mesurer progrès depuis 5.8/10)
+- Intro TypeScript (bases : types, interfaces) avant React
+- Reporté Phase 2 : déploiement Vercel, LinkedIn actif, WorldExplorer responsive, refacto React, grande séance "outils"
+
+**Prochaine session** : quiz d'auto-éval OU intro TypeScript
+
+## 📍 25-26/06/2026 — QUIZ D'AUTO-ÉVAL REFAIT (clôture Phase 1)
+
+Quiz complet repassé sur 2 sessions (15 domaines, de mémoire).
+**Moyenne globale : 5,8 → 7,2 (+1,4 point).** Aucun domaine en recul.
+Plus gros bonds : Outils 2,8→6,9 · APIs natives 5,2→7,8 · événements 5,0→7,75 ·
+tableaux/objets 4,8→7,4. DOM stable au sommet (8,6). Git stable (non ciblé).
+Détail des 15 scores → revision.md (photo "après").
+Phase 1 validée par la mesure. → Prochaine étape : intro TypeScript (Playground).
+
+Cloture de la phase 1 par un refonte des instructions du projet et la création d'archive progression.md phase 1.
