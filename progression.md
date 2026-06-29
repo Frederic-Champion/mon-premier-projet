@@ -102,7 +102,7 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 
 **Durée** : ~2h
 **Thème** : fondamentaux TS sur le Playground (sans outillage local) — pourquoi TS, puis les 4 briques de base
-
+**Révision éclair S36 (CSS Grid)** : carte pleine largeur → `grid-column: 1 / -1` (Tailwind `col-span-full`) + parent `repeat(3, 1fr)`. Logique d'un bout à l'autre OK, ordre `repeat()` et syntaxe `/` à raffermir — reste 🟡 (ex-3/10, réactivé).
 **Ce qui a été fait** :
 
 - POURQUOI TS : typage dynamique JS (erreurs au runtime) vs typage TS (erreurs à l'écriture/compilation). Sur-ensemble de JS, compilé vers JS, "disparaît à la compilation" (vu dans le panneau droit du Playground). Bénéfice bonus = autocomplétion.
@@ -124,3 +124,68 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 - Syntaxe de base (variables, fonctions, tableaux, interfaces) : 🟡 compris, pas encore instinctif (s'ancrera en React) — normal et attendu
 
 **Prochaine session** : à décider — soit 2e session TS (consolidation : types optionnels `?`, type alias, union en pratique), soit Tier 1 JS (déstructuration, spread, modules, JSON) juste avant React.
+
+## Session 37 — TS propriétés optionnelles + (à suivre) Tier 1 JS
+
+**Révision éclair S37 (map/find/some)** : `map` (transforme → nouveau tableau) et `find` (1er qui matche → l'élément ou undefined) solides ; `some` était la zone fragile → corrigé : renvoie un BOOLÉEN (oui/non "y en a-t-il au moins un ?"), pas un élément.
+**Durée** : dimanche, session longue (3h)
+**TS — consolidation** :
+- Propriété optionnelle `?` : `champ?: type` rend un champ facultatif (objet valide avec ou sans).
+- Champ optionnel absent = `undefined` (pas 0, pas "").
+- TS interdit d'utiliser un optionnel comme une valeur sûre (`.length`, calcul...) → erreur "possibly undefined".
+- `console.log(x)` ne déclenche PAS le rouge (accepte undefined) ; `x.length` OUI (suppose que x existe).
+- Gérer avec `if (valeur)` → narrowing : TS rétrécit `T | undefined` à `T` dans le if.
+- Lien transversal : même réflexe "peut être absent → je vérifie" pour props optionnelles React ET retour de find().
+**Niveau TS estimé** : 🟡 compris (variables, fonctions, tableaux, interfaces, optionnels), pas encore instinctif — s'ancrera en React. Intro TS considérée comme SUFFISANTE pour aborder React.
+**Tier 1 JS — Déstructuration** (session 37, suite) :
+- Objet : `const { nom, age } = client` → extrait par NOM de clé (ordre libre). Variable = nom de la clé.
+- Tableau : `const [a, b] = tab` → extrait par POSITION (nom libre, ordre capital).
+- Extraction partielle OK (on peut n'extraire qu'un champ).
+- Renommage : `const { marque: marqueMonture } = obj` (le `:` = "renomme en", à NE PAS confondre avec annotation TS).
+- Valeur par défaut : `const { promo = 0 } = obj` (se déclenche sur undefined UNIQUEMENT, pas sur tout falsy — un 0 présent est gardé).
+- Méthode d'ancrage : Frédéric traduit chaque forme vers sa version longue (accès pointé + if) → très efficace.
+**Niveau** : 🟡 compris, à pratiquer (s'ancrera en React via props).
+**Tier 1 JS — Spread `...`** (session 37, suite) :
+- Problème résolu : copier un objet/tableau SANS lien de référence (rappel valeur vs référence : `=` ne copie pas, partage le tiroir).
+- Objet : `{ ...obj }` = copie indépendante ; `{ ...obj, champ: x }` = copie + surcharge (le champ après GAGNE, ordre compte).
+- Tableau : `[ ...tab ]` = copie ; `[ ...tab, elem ]` = copie + ajout. (Remplace slice() pour copier, plus lisible.)
+- Lien React : on ne mute JAMAIS un state, on crée une copie modifiée au spread (React compare les références → mutation invisible sinon). `setState({ ...state, champ: x })`.
+- Réflexe à renforcer : toujours log l'original APRÈS pour prouver qu'il est intact.
+**Niveau** : 🟡 compris, les 2 usages (copie / copie+surcharge) appliqués juste sur objet ET tableau.
+**Tier 1 JS — `?.` / `??` + modules + JSON** (session 37, suite et fin) :
+- OPTIONAL CHAINING `?.` : accède à une propriété imbriquée SANS planter si un maillon est absent. `client?.mutuelle?.nom` → undefined au lieu de crash si mutuelle absente. Version compacte du `if (x)` de protection. Sur objets/tableaux/appels, pas sur valeurs simples.
+- NULLISH `??` : "valeur de gauche, SINON celle de droite si gauche est null/undefined". Marche sur n'importe quelle valeur.
+- `??` vs `||` (point clé) : `||` bascule à droite sur TOUT falsy (0, "", false, null, undefined) ; `??` UNIQUEMENT sur null/undefined → un 0 ou "" légitime est gardé par `??`, écrasé par `||`. Reformulé par Fred : "|| = prends le 1, ou le 2 si le 1 ne marche pas" (pas "ou au hasard").
+- Combo pro : `objet?.champ?.sous ?? défaut` → descend en sécurité + filet si absent. Standard 2026 pour données d'API/state.
+- `??` ne va PAS dans un if → il REMPLACE souvent un if de valeur par défaut (= version compacte du `=== undefined`).
+- MODULES `import`/`export` : découper le code en fichiers à responsabilité unique. `export function/const` rend dispo ; `import { x } from "./fichier.js"` récupère (accolades = noms exacts exportés, esprit proche déstructuration). Ossature de tout projet React (`import { useState } from "react"`). Théorique pour l'instant (Playground gère mal le multi-fichiers) → pratique en React.
+- JSON : localStorage et le réseau ne transportent QUE du texte, jamais des objets vivants.
+  - `JSON.stringify(obj)` → objet en texte (pour STOCKER/ENVOYER). Sans lui, objet posé brut dans localStorage = détruit en "[object Object]".
+  - `JSON.parse(texte)` → texte en objet (pour RELIRE/RECEVOIR).
+  - Analogie meuble en kit : stringify = démonter à plat, parse = remonter.
+  - Lien fetch : `response.json()` = méthode fetch qui ATTEND le texte du réseau (asynchrone, d'où `await`) PUIS le parse. Différent de `JSON.parse` (générique, texte déjà en main, pas d'await).
+**Niveau Tier 1 global** : 🟡 compris (logique pure, pas de par-cœur), PAS encore instinctif. Erreurs de la session = uniquement étourderies de recopie, jamais de compréhension.
+
+⚠️ JALON OBLIGATOIRE avant React : gros exercice de synthèse univers optique combinant TOUT (interface + `?` optionnel + déstructuration + spread + `?.`/`??` + JSON.stringify/parse) dans un seul code cohérent. 1 voire 2 exercices. À faire FRAIS en ouverture de prochaine session, pas en fin de session fatiguée.
+
+## Session 38 — Jalon de synthèse Tier 1 + clôture pré-React
+
+**Durée** : ~1h30 (à ajuster)
+**Thème** : exercice de synthèse univers optique combinant TOUT le Tier 1 JS + interfaces TS, en un seul code cohérent (jalon obligatoire avant React).
+
+**Révision éclair S38 (align/justify)** : en flex `row`, `justify-content` = axe principal (horizontal), `align-items` = axe secondaire (vertical). Mémo « justify suit l'axe principal » restitué avec le *pourquoi*. ✅ solide.
+
+**Ce qui a été fait** :
+- Exo « devis Optique Champion » construit de mémoire, sans squelette : interface `Mutuelle` + `Client` (avec `mut?: Mutuelle` → interface imbriquée), 2 clients (un avec mutuelle, un sans), fonction `calculerDevis` (déstructuration, `client.mut?.tauxRmb ?? 0`, remboursement + RAC, `return { ...client, RAC, remboursement }`), récap via fonction `recap(devis)` dédiée (DRY), preuve original intact, cycle JSON stringify/parse.
+- Concepts re-nommés/clarifiés en passant : typer le paramètre pour laisser TS débusquer le bug (`mut: string` → `Mutuelle`), une interface peut servir de type (formes imbriquées), object shorthand `{ RAC }` = `{ RAC: RAC }`, un objet `return` est anonyme → c'est l'appelant qui le nomme, `?.` uniquement là où un maillon peut manquer.
+
+**Ce qui a accroché** (vocabulaire/câblage, pas conceptuel) :
+- Le **mot** « déstructuration » ne raccrochait pas au mécanisme (qu'il maîtrise) — réglé.
+- Tentative de reconstruire un nom de variable depuis du texte (`devis${client}`) → recadré : on passe l'objet en **paramètre**, on ne fabrique pas de nom.
+
+**Niveau estimé après session** :
+- Tier 1 JS (déstructuration, spread, `?.`/`??`, JSON) : 🟡→🟢 **appliqué ensemble avec succès**, logique solide, syntaxe qui s'affinera en React.
+- Intro TS (interfaces, optionnels, typage) : 🟡 suffisant pour React, s'ancrera en contexte.
+- **Pré-requis React : COMPLETS.** ✅
+
+**Prochaine session** : démarrage **React** (Phase 2) — composants, props, useState.
