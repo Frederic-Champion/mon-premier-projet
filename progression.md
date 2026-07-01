@@ -225,3 +225,21 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 - Raccourcis clavier : 🟡 connus, à ancrer un par un (normal)
 
 **Prochaine session** : Séance outils **partie 2/2** — le **debugger** (breakpoints, inspection en direct, step-by-step ; sortir du tout-console.log) + **terminal PowerShell / npm en profondeur** + **point théorique ESLint** (sans installation). Reste aussi en réserve : Git via la barre d'activité (→ séance branches dédiée).
+
+## Session 40 (partie 1) — Debugger (DevTools Chrome) — 18h, ~1h, portable
+
+**Révision éclair** : valeur vs référence — `const copie = client` partage le tiroir (muter copie mute client) ; vraie copie = `{ ...client }`. Principe acquis, les mots "valeur/référence" reviennent à force. ✅
+**Fait** :
+- Terrain : projet Pokédex (Live Server + F12 → onglet Sources).
+- Concept debugger : mettre en pause à une ligne (breakpoint), inspecter les variables EN DIRECT (panneau Scope/Local), avancer pas à pas. Remplace l'archéologie du console.log.
+- Breakpoint posé (clic dans la marge, ligne 20 = le `if` de détection de doublon). Se déclenche seulement quand le code passe par la ligne.
+- Inspection en direct : survol d'une variable dans le code → bulle avec sa valeur. Lu `pokemonName.value` vs `laCarte.textContent` sans un seul log.
+- Scope/Local : les variables déclarées plus bas affichent `<value unavailable>` → on VOIT que le code ne les a pas encore rencontrées.
+- **Step over (⤵) vs Step into (⤓)** : over = exécute la ligne, traite un appel de fonction comme une boîte noire (résultat visible, pas le détail) ; into = ouvre la boîte, descend dans la fonction ligne par ligne. Distinction repérée par Fred lui-même.
+- Preuve visuelle marquante : le `messageStop()` déclenché a fait apparaître le bandeau rouge en temps réel.
+- Note archi : DevTools (F12) débugue dans le navigateur ; VS Code a son propre debugger intégré pour le code sans navigateur (Node/Next.js API Routes en Phase 2). Même concept des deux côtés.
+
+**Niveau** : 🟢 concept debugger compris et pratiqué (breakpoint, inspection, step over/into). À réutiliser régulièrement pour que ça devienne un réflexe au lieu du console.log.
+
+**🎹 Raccourci en cours** : `Ctrl+P` (saut de fichier) — session 2/3.
+**Reste pour ce soir (Session 40 partie 2, ~1h30)** : terminal PowerShell + npm en profondeur (dependencies vs devDependencies, package-lock.json, scripts) + point théorique ESLint (sans install). En réserve : dette OneDrive+Git (chemin du repo sur le portable), Git via barre d'activité (→ séance branches).
