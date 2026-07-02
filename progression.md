@@ -226,20 +226,57 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 
 **Prochaine session** : Séance outils **partie 2/2** — le **debugger** (breakpoints, inspection en direct, step-by-step ; sortir du tout-console.log) + **terminal PowerShell / npm en profondeur** + **point théorique ESLint** (sans installation). Reste aussi en réserve : Git via la barre d'activité (→ séance branches dédiée).
 
-## Session 40 (partie 1) — Debugger (DevTools Chrome) — 18h, ~1h, portable
+## Session 40 — Séance outils VS Code (partie 2/2) : debugger + npm + terminal + ESLint
 
-**Révision éclair** : valeur vs référence — `const copie = client` partage le tiroir (muter copie mute client) ; vraie copie = `{ ...client }`. Principe acquis, les mots "valeur/référence" reviennent à force. ✅
-**Fait** :
-- Terrain : projet Pokédex (Live Server + F12 → onglet Sources).
-- Concept debugger : mettre en pause à une ligne (breakpoint), inspecter les variables EN DIRECT (panneau Scope/Local), avancer pas à pas. Remplace l'archéologie du console.log.
-- Breakpoint posé (clic dans la marge, ligne 20 = le `if` de détection de doublon). Se déclenche seulement quand le code passe par la ligne.
-- Inspection en direct : survol d'une variable dans le code → bulle avec sa valeur. Lu `pokemonName.value` vs `laCarte.textContent` sans un seul log.
-- Scope/Local : les variables déclarées plus bas affichent `<value unavailable>` → on VOIT que le code ne les a pas encore rencontrées.
-- **Step over (⤵) vs Step into (⤓)** : over = exécute la ligne, traite un appel de fonction comme une boîte noire (résultat visible, pas le détail) ; into = ouvre la boîte, descend dans la fonction ligne par ligne. Distinction repérée par Fred lui-même.
-- Preuve visuelle marquante : le `messageStop()` déclenché a fait apparaître le bandeau rouge en temps réel.
-- Note archi : DevTools (F12) débugue dans le navigateur ; VS Code a son propre debugger intégré pour le code sans navigateur (Node/Next.js API Routes en Phase 2). Même concept des deux côtés.
+**Durée** : ~2h (session coupée midi/soir, portable puis fixe)
+**Thème** : fin de l'audit outillage avant Phase 2 — debugger, npm en profondeur, terminal, théorie ESLint.
+**Révision éclair** : valeur vs référence (`const copie = client` partage le tiroir → muter copie mute client ; vraie copie = `{ ...client }`). Principe acquis. ✅
 
-**Niveau** : 🟢 concept debugger compris et pratiqué (breakpoint, inspection, step over/into). À réutiliser régulièrement pour que ça devienne un réflexe au lieu du console.log.
+**Ce qui a été fait** :
 
-**🎹 Raccourci en cours** : `Ctrl+P` (saut de fichier) — session 2/3.
-**Reste pour ce soir (Session 40 partie 2, ~1h30)** : terminal PowerShell + npm en profondeur (dependencies vs devDependencies, package-lock.json, scripts) + point théorique ESLint (sans install). En réserve : dette OneDrive+Git (chemin du repo sur le portable), Git via barre d'activité (→ séance branches).
+**1. Debugger (DevTools Chrome)** — sur le projet Pokédex (Live Server + F12 → Sources) :
+
+- Concept : mettre en pause à une ligne (breakpoint = clic dans la marge), inspecter les variables EN DIRECT (panneau Scope/Local), avancer pas à pas. Remplace l'archéologie du console.log.
+- Breakpoint posé ligne 20 (le `if` de détection de doublon), déclenché en ajoutant 2× "Pikachu".
+- Inspection : survol d'une variable → bulle avec sa valeur, sans un seul log. Vu `<value unavailable>` sur les variables pas encore rencontrées.
+- **Step over (⤵) vs Step into (⤓)** : over = exécute la ligne, traite un appel de fonction comme une boîte noire (résultat visible, pas le détail) ; into = ouvre la boîte, descend dans la fonction. Distinction repérée par Fred lui-même.
+- Note archi : DevTools (F12) = debug dans le navigateur ; VS Code a son propre debugger intégré pour le code sans navigateur (Node/Next API Routes, Phase 2). Même concept partout.
+
+**2. npm en profondeur** :
+
+- **npm = Node Package Manager**, installé AVEC Node (pas une extension VS Code, pas dans VS Code). Programme système, utilisable depuis n'importe quel terminal. Vérifié : `npm --version` → 11.12.1.
+- **Node fait tourner du JS hors navigateur** ; tout l'outillage web moderne (Tailwind, Prettier, ESLint, React) est écrit en JS et tourne sur Node — même les outils qui produisent du CSS.
+- **Flux d'un `npm install X`** : va chercher le package sur le **registre npm** (magasin en ligne) → le dépose dans **node_modules/** (entrepôt local, lourd, ignoré par git car régénérable).
+- **package.json vs package-lock.json** : json = liste de courses (version approximative, ex. `^4.3.0` = "4.x") ; lock = ticket de caisse (version EXACTE figée + sous-dépendances). Les DEUX se versionnent. Le lock garantit que toute machine installe rigoureusement la même chose (anti "ça marche chez moi").
+- **Pourquoi `npm install` après `git pull`** : node_modules n'est pas dans git → `npm install` le reconstruit à partir du lock. Rituel 2 machines justifié : `git pull` (code + fiches) → `npm install` (reconstruit node_modules) → `npm run dev`. Réflexe systématique même si souvent rien ne change.
+- **dependencies vs devDependencies** : deps = pièces du produit (React, Tailwind) ; devDeps = outils d'atelier inutiles en prod (Prettier, ESLint). Analogie optique : verre/monture partent chez le client, tour de meulage reste à l'atelier. **npm ne devine pas le rôle** → `-D` obligatoire pour ranger en devDep (défaut = deps).
+- **scripts** : raccourcis de commandes, section `"scripts"`, lancés par `npm run <nom>` (sauf start/test/build sans `run`). Ex. `npm run dev` = le watch Tailwind.
+- **npx** = Node Package eXecute : exécute un outil (une fois) au lieu de l'installer. Ex. `npx create-next-app` en Phase 2.
+
+**3. Terminal / PowerShell** :
+
+- Concept central : le terminal est TOUJOURS posé dans un dossier ; toute commande agit depuis là. Lire le chemin avant le `>`. 90% des erreurs débutant = mauvais dossier.
+- 4 commandes : `pwd` (où suis-je), `ls` (quoi ici), `cd dossier` (entrer), `cd ..` (remonter). Tab = autocomplétion.
+- Lien transversal : `.` = ici / `..` = au-dessus, la même logique que dans les imports (`./fichier.js`) et les chemins Tailwind (`./src/input.css`).
+
+**4. ESLint (théorie seule, pas d'install — acté)** :
+
+- **Prettier = la FORME** (indentation, guillemets — c'est _joli_) ; **ESLint = le FOND** (variable inutilisée, `=` vs `===`, code inatteignable, usage avant déclaration — c'est _juste_). Complémentaires, jamais concurrents, toujours les 2 en équipe.
+- Non négociable en entreprise : impose une norme de qualité commune, garde-fou automatique avant review/prod.
+- **Report volontaire justifié** : pendant l'apprentissage, écrire la syntaxe soi-même et buter sur ses erreurs = l'ancrage. Même logique que Copilot désactivé. Bon moment = démarrage React (Next l'installe par défaut).
+
+**Niveau estimé après session** :
+
+- Debugger : 🟢 concept compris et pratiqué (breakpoint, inspection, step over/into). À réutiliser pour en faire un réflexe.
+- npm / npx / package.json / dependencies : 🟢 fonctionnement compris, sait LIRE un package.json. Syntaxe fine à ancrer en Phase 2 par l'usage.
+- Terminal navigation : 🟢 les 4 commandes de base acquises.
+- ESLint : 🟢 rôle et raison d'être compris (théorie).
+
+**🎹 Raccourci en cours d'entraînement** : `Ctrl+P` (saut de fichier) — session 2/3. À relancer au prochain début de session.
+
+**Dettes notées** :
+
+- Repo sur le portable dans **OneDrive** (`C:\Users\fred_\OneDrive\Bureau\Repo GitHub\...`) → OneDrive + Git peuvent se marcher dessus (sync de node_modules). À traiter : déplacer le repo hors OneDrive. Non urgent.
+- **Git via barre d'activité (Source Control)** + quelles options Git dans la palette → séance branches Git dédiée (avant 1er vrai projet React).
+
+**➡️ Prochaine session : DÉMARRAGE PHASE 2 — REACT** (composants, props, useState). Enfin le vif du sujet. 🚀
