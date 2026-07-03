@@ -280,3 +280,61 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 - **Git via barre d'activité (Source Control)** + quelles options Git dans la palette → séance branches Git dédiée (avant 1er vrai projet React).
 
 **➡️ Prochaine session : DÉMARRAGE PHASE 2 — REACT** (composants, props, useState). Enfin le vif du sujet. 🚀
+
+## Session 41 — Démarrage React (composants → useState) + consolidation Tier 1
+
+**Durée** : 2 sessions cumulées (~2h hier soir React + ~2h aujourd'hui débug/consolidation)
+**Thème** : premiers pas React (composant, JSX, props, export, useState) puis, après surcharge, retour consolidation Tier 1 JS par exercices.
+
+**Révision éclair (aujourd'hui)** : `?.` + `??` sur objet client (mutuelle absente) + cas où `||` diffère de `??` (valeur légitime `0` écrasée par `||`, gardée par `??`). ✅ solide, règle reformulée juste.
+
+### PARTIE 1 — React (hier soir, ~2h, sans résumé car couché fatigué)
+
+**Concepts vus** :
+
+- **Composant** = fonction qui retourne du JSX. PascalCase obligatoire (distingue d'une balise HTML). On n'appelle JAMAIS un composant (`Carte(data)` ❌), on l'utilise en balise `<Carte />` → React l'appelle et fabrique l'objet props.
+- **JSX** = syntaxe HTML-like dans le JS, compilée en JS pur (comme TS qui disparaît). `class`→`className`, un seul élément racine, `{ }` pour injecter du JS. `return (` ouvre sur la ligne du return (évite le `;` auto-inséré).
+- **React vs JSX** clarifié (grosse source de confusion) : React = la librairie (moteur), JSX = la syntaxe d'écriture. Deux choses distinctes, associées mais séparables. React installé dans node_modules (vu dans DEPENDENCIES de CodeSandbox).
+- **Props** = données passées comme attributs `<Carte marque="X" prix={129} />`, reçues déstructurées `function Carte({ marque, prix })`. Texte = `"..."`, reste = `{...}`.
+- **export default** : rend le composant App dispo pour le fichier caché (index.js) qui l'importe et le rend. Distinction export default (sans accolades) vs export nommé (`import { useState }`, avec accolades).
+- **useState** : `const [val, setVal] = useState(départ)`. Donnée surveillée par React. `val` = valeur affichée, `setVal` = "télécommande" qui change la valeur ET prévient React → re-render. Règle d'or : jamais `val = ...`, toujours `setVal(...)`.
+- **onClick** = version JSX de addEventListener. `onClick={() => setVal(...)}`, la flèche = "à exécuter au clic".
+
+**Environnement** : react.new (CodeSandbox) pour les exercices React. Projet Vite local délibérément différé (ne pas mélanger apprendre le concept / driller l'outillage).
+
+**Frictions React relevées** (câblage, pas conceptuel — normal au 1er contact) :
+
+- Appel du composant comme fonction JS (`CarteMonture(client1)` + `console.log`) au lieu de balise JSX. Recadré : React appelle, React fabrique props.
+- Virgule entre attributs JSX (réflexe objet JS) → attributs séparés par espaces, jamais virgule.
+- Nom de prop réservé `ref` utilisé → à éviter (usage spécial React).
+- Preview CodeSandbox pas ouverte → "rien ne s'affiche" pris pour un bug (2×). Bouton "Open preview".
+
+### PARTIE 2 — Mur useState puis consolidation (aujourd'hui)
+
+**Point important** : surcharge cognitive nette en fin de session React (useState présenté d'un bloc en fin de session chargée = trop). Ce matin, blocage total ("je comprends rien") → NON pas une régression, mais 2 mystères d'architecture non levés qui empêchaient tout ancrage :
+
+1. "Où est React ? on l'exporte où ?" → clarifié : React EXPORTE useState (dans node_modules), Frédéric l'IMPORTE. Ce n'est pas son fichier qui fait vivre React, c'est React qui fournit les outils. `./` = mon fichier / nom nu = package.
+2. "`const [add, setAdd] = useState(12)`, j'écris quoi ?" → clarifié via analogie post-it (variable normale, personne ne regarde) vs panneau électronique relié à l'écran + télécommande (state). Débloqué.
+   → Une fois les 2 mystères levés + traduction React↔JS pur du bouton côte à côte : compréhension rétablie. A écrit son useState complet et JUSTE de mémoire. Puis VU le compteur s'incrémenter dans la preview sans toucher au DOM.
+
+**Leçon pédagogique** : useState est un gros morceau, ne PAS le présenter en fin de session fatiguée ni d'un bloc. Réintroduire par petits pas, guidé (exercice à trou), jamais lâché seul dans le vide au 2e contact.
+
+**Consolidation Tier 1 (5 exercices, univers optique)** — décision de Frédéric : stopper l'apprentissage neuf, pratiquer jusqu'à acquis. React mis en pause explicitement ("ne me parle pas de React tant que le Tier 1 n'est pas solide").
+
+- **Exo 1** (`resumeClient`, déstructuration + `?.` + `??`) : réussi. Correction : `?.` inutile après un `if` qui a déjà vérifié (narrowing) — `?.` va LÀ où ça peut manquer, pas partout.
+- **Exo 2** (spread copie + surcharge) : réussi en 15s. Spread en voie d'automatisation.
+- **Exo 3** (`map` + spread + ternaire, MAJ d'un objet dans un tableau) : **gros point d'apprentissage**. Bug initial `x.prix = 170` dans le map (mutation + affectation qui renvoie la valeur). A soulevé la vraie question shallow/deep.
+- **⚠️ CONCEPT CLÉ ANCRÉ — copie de surface (shallow)** : le spread copie UN SEUL niveau. `[...stock]` copie le tableau (classeur) mais PAS les objets dedans (tiroirs partagés). Muter `x.prix` touche donc l'original. Solution : spreader AU BON NIVEAU = `{ ...m, prix: X }` (nouveau tiroir). Analogie classeur/pochettes/tiroirs efficace. Frédéric légitimement frustré ("à quoi sert le spread alors ?") → démontré par table que le spread protège bien tableau (push, remplacement de case) mais pas l'intérieur des objets. **Manque pédagogique reconnu de ma part : cette nuance aurait dû être posée dès l'intro spread (S37).**
+- **Exo 4** (soldes conditionnelles, `>` + double surcharge + calcul) : réussi (juste faute de frappe `<`/`>` corrigée seul). Double surcharge `{ ...x, prix: x.prix - 20, promo: true }` nickel. Point rigueur : `>` strict vs `>=` (piège de borne / off-by-one).
+- **Exo 5** (`?.`/`??` sur données imbriquées, 3 niveaux) : réussi. Ligne `traitement` = `c?.ordonnance?.verre?.traitement ?? "aucun"` EXEMPLAIRE (niveau pro). Correction : ternaire hybride qui teste `ordonnance` mais accède `verre.indice` sans protéger `verre` = faille cachée. Règle : soit `?.` partout jusqu'au bout + `??`, soit un test qui couvre TOUS les niveaux touchés — ne pas mélanger.
+
+**Niveau estimé après session** :
+
+- **Pilier `map` + spread + ternaire** : 🟢 **acquis** (4 exos, structure sort sans hésitation).
+- **Copie shallow vs deep / spread multi-niveaux** : 🟡→🟢 compris en profondeur après friction (le meilleur ancrage).
+- **`?.` / `??`** : 🟢 solide, y compris imbriqué. Reste à surveiller : cohérence test-vs-accès (ne pas tester un niveau et accéder plus bas).
+- **React (composant, JSX, props, export, useState)** : 🟡 concept compris, PAS instinctif. Syntaxe React à re-driller en douceur. **Volontairement mis en pause** au profit du Tier 1.
+
+**Fiche de révision** créée en PDF imprimable (TS + Tier 1 JS + React bases) — à garder à côté du clavier.
+
+**➡️ Prochaine session (demain)** : SUITE consolidation par exercices, jusqu'à ce que ça rentre. Ordre convenu : 1 exo `?.`/`??` de plus → puis enchaîner en remontant progressivement jusqu'à React (déjà vu). Rester sur react.new pour la partie React. Ne pas introduire de concept neuf tant que le Tier 1 + les bases React ne sont pas plus instinctifs.
