@@ -194,7 +194,9 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 
 **Prochaine session** : démarrage **React** (Phase 2) — composants, props, useState.
 
-## Session 39 — Séance outils VS Code (partie 1/2) : réglages & navigation
+## Session 39 — Séance outils VS Code (partie 1/2) : réglages &
+
+navigation
 
 **Durée** : ~2h (mardi soir, 21h35–23h37, fixe)
 **Thème** : audit du poste + maîtrise des réglages, de la Command Palette et des raccourcis. Préparation outillage avant React.
@@ -338,3 +340,140 @@ _Principe : pas une checklist à cocher en bloc avant React (piège perfectionni
 **Fiche de révision** créée en PDF imprimable (TS + Tier 1 JS + React bases) — à garder à côté du clavier.
 
 **➡️ Prochaine session (demain)** : SUITE consolidation par exercices, jusqu'à ce que ça rentre. Ordre convenu : 1 exo `?.`/`??` de plus → puis enchaîner en remontant progressivement jusqu'à React (déjà vu). Rester sur react.new pour la partie React. Ne pas introduire de concept neuf tant que le Tier 1 + les bases React ne sont pas plus instinctifs.
+
+## Session 42 — Consolidation Tier 1 (rest destructuring) + remontée vers React (liste .map + key)
+
+**Durée** : ~2h30–3h
+**Thème** : suite du plan de la S41 — 1 exo `?.`/`??` de mise en jambes, exercices combinés Tier 1, puis remontée progressive vers React (rendre une liste avec `.map()`).
+
+**Révision éclair (shallow/deep)** : `const copie = [...stock]; copie[0].prix = 999` → `stock[0].prix` vaut **999**. Mécanisme restitué juste avec ses mots (le spread copie le classeur + les étiquettes, pas les tiroirs → objets partagés). ✅ **Le point dur de la S41 a tenu la nuit — ancré.** Complément donné : `copie[0] = {...}` (remplacer la pochette) préserve l'original, vs `copie[0].prix = ...` (entrer dans le tiroir) le mute.
+
+**Ce qui a été fait** :
+
+_Tier 1 JS (consolidation) :_
+
+- **Exo `resumeCommande`** (`?.`/`??` sur 3 niveaux imbriqués, 4 commandes dont une sans client) : réussi **du premier coup**, sans aide. Ligne express `cmd?.client?.livraison?.express ? "express" : "standard"` juste (raisonnement fin : le ternaire gère `undefined` comme falsy → "standard"). `?.`/`??` = 🟢 **solide**.
+- **Définition shallow/deep posée** : shallow = superficiel (1 niveau, ce que fait le spread) ; deep = profond (tous les niveaux). `structuredClone()` = deep copy native, mais **rare en React** (on spread au niveau exact à modifier, pas de deep copy systématique).
+- **Exo `panierFinal`** (`map` + `?.`/`??` + calcul de prix remisé) : réussi, calcul juste. Question de Fred → introduction d'un **concept neuf** :
+- **🆕 REST en déstructuration** : `const { remise, ...reste } = m` → isole `remise` (utilisable) ET ramasse tout le reste sans elle. Façon propre de "retirer une clé" sans muter (jamais `delete`). **Tableau des 2 visages du `...`** : ramasse à gauche du `=` (déstructuration) / étale dans un `{ }` (construction). Vu **une seule fois** → à répéter. _(Pas encore dans la fiche PDF.)_
+
+_React (remontée) :_
+
+- **Pattern liste `.map()` → composants** : `{tableau.map((x) => <Composant key={x.id} .../>)}`. Présenté comme le prolongement direct du `.map()` de Fred (renvoie du JSX au lieu d'un objet/texte ; parallèle explicite avec `resumeClient` + `forEach`).
+- **`key`** : étiquette unique obligatoire sur tout élément généré par `.map()`. Toujours un vrai `id` ; jamais l'index si la liste bouge. Oubli = warning jaune (pas un crash).
+- **`() ` vs `{ }` après `=>`** clarifié : `{ }` = bloc → `return` explicite obligatoire ; `( )` ou rien = une seule expression → return implicite. Piège `=> { <JSX/> }` sans return = renvoie `undefined`.
+- **Règle élément racine unique** re-expliquée : `.map()` produit plusieurs frères → besoin d'un parent (`<div>` ou fragment `<>`). Le `<div>` n'est pas dû au `.map()` mais à la règle "un seul racine par return".
+
+**Point pédagogique majeur (blocage traversé)** :
+
+- Exercice `CarteClient` lâché **entier à reconstruire de mémoire** après un seul exemple → **blocage fort** ("pourquoi deux fonctions ??", "je comprends rien"). **Même erreur de dosage que useState en S41** : concept de fond (composant réutilisable) pas encore solide + syntaxe pas rodée = mur.
+- Débloqué en **deux temps** : (1) explication du POURQUOI deux fonctions via analogie **moule (`CarteClient`) + chaîne de production (`App`)** et parallèle `resumeClient` + `forEach` → le concept de fond a cliqué ; (2) passage en **mode guidé** (squelette + un seul trou à combler). Fred a demandé explicitement la correction → donnée directement (règle respectée).
+- **Puis remontée nette** : exercice similaire `CarteMonture` refait **en autonomie**, quasi complet du premier coup (manquait juste `key`). A consulté une **vidéo Grafikart** en complément → encouragé (croiser les sources = réflexe de dev sain, pas de la triche).
+
+**Niveau estimé après session** :
+
+- **`?.`/`??`** (même imbriqué) : 🟢 solide.
+- **Copie shallow/deep** : 🟢 ancré (a tenu la nuit, restitué seul).
+- **Rest destructuring** : 🟡 neuf, vu 1×, à répéter.
+- **Pattern liste `.map()` + composant + `key`** : 🟡→🟢 **acquis** (réussi en autonomie après déblocage). C'est le pattern le plus courant de React.
+- **Concept "composant réutilisable" (moule + chaîne)** : point de fond débloqué — c'était LE blocage, pas la syntaxe.
+- **`useState`** : reste 🟡 **fragile** (1 seul exo guidé en S41). **Priorité n°1 des prochaines sessions.**
+
+**Leçon de dosage confirmée (2e fois)** : ne PAS lâcher un composant React entier à reconstruire de mémoire au 1er/2e contact. Mode **guidé** (squelette + trou) obligatoire tant que la syntaxe React n'est pas posée. Bien séparer "comprendre le concept de fond" de "driller la syntaxe".
+
+**Audit de fin de session (état vs fiche)** : aucun trou de contenu non couvert. Restent : `useState`/`onClick` (fragile, priorité), rest destructuring (à répéter), **JSON** (seul coin Tier 1 jamais pratiqué — à faire en contexte localStorage/API, non bloquant), **TS** (à rebrancher via le typage des props quand useState solide). Modules `import`/`export` = ancrés en contexte réel (pas de séance dédiée).
+
+**➡️ Prochaine session (dimanche, session longue, frais)** : **priorité `useState` + `onClick`** — le vrai chaînon fragile de React — en **mode guidé** (squelette + trous, pas de reconstruction totale de mémoire). Puis combiner **liste `.map()` + state** (afficher une liste ET la modifier : ajouter/retirer une monture via `setState`). TS des props dès que useState est solide.
+
+## Session 43 — Consolidation useState + onClick (compteur, bascule) + state = tableau
+
+**Durée** : dimanche, ~3h (session frais)
+**Thème** : priorité n°1 du plan — solidifier `useState` + `onClick` en mode guidé, puis introduire le state-tableau (ajout sans mutation) jusqu'au tableau d'objets.
+
+**Révision éclair S43 (rest destructuring)** : mécanisme restitué juste (isoler une propriété pour l'utiliser + ramasser le reste sans elle, sans muter). **Erreur de vocabulaire corrigée** : Frédéric a dit « spread » pour décrire du **rest**. Recadrage via les 2 visages du `...` — **rest** = ramasse à GAUCHE du `=` (déstructuration) ; **spread** = étale à DROITE (dans un `{ }` / `[ ]`). Concept 🟡, à recroiser (vu 1× en S42).
+
+**Ce qui a été fait** :
+
+_useState + onClick (2 exercices) :_
+
+- **Exo 1 — `CompteurEssayage`** (incrément) : la logique du trou juste **du premier coup** → `onClick={() => setEssais(essais + 1)}`. Mais crash app = **2 bugs d'écosystème** (pas React) : (1) `import { useState } from "react"` laissé en commentaire par doute de syntaxe ; (2) `export default` manquant. Grosse clarification : **import nommé** (`{ useState }`, accolades, nom exact) vs **export default** (sans accolades, nom libre, 1 seul par fichier). Rôle d'`export default` : rendre le composant dispo pour `index.js` (le fichier cadre qui l'affiche).
+- **Question archi de Frédéric** : « plusieurs composants par fichier ? » → un fichier peut contenir **plusieurs composants** mais **un seul `export default`** (+ autant d'exports nommés qu'on veut). Convention pro = **1 fichier = 1 composant = 1 export default**, rassemblés par `import`.
+- **Exo 2 — `StatutMonture`** (bascule booléenne, en autonomie) : 3 corrections en chaîne, toutes JS pur :
+  - `setChange(change = false)` → le `=` **assigne**, ne bascule pas → fige `false`.
+  - `let` inutile → rappel **règle d'or du state** (S41) : on change TOUJOURS via `setX(...)`, jamais `x = ...` (sinon React n'est pas prévenu, pas de re-render). Retour à `const`.
+  - Solution : `setChange(!change)`. **Point clé verbalisé** : l'inversion `!` est du **JS pur**, il n'existe pas d'« outil magique React » pour ça. Règle générale → **React gère le QUAND redessiner, JS pur gère le COMMENT calculer** la nouvelle valeur (`+1`, `!`, spread…).
+
+_State = tableau :_
+
+- **⚠️ Erreur de dosage de ma part (3e fois)** : exercice « liste » lâché avec le `.map()` déjà écrit, MAIS sans jamais enseigner « comment ajouter à un tableau-state ». Frédéric bloqué **à juste titre** (« je ne sais pas comment faire des tableaux avec React »). → Cours ajouté après coup.
+- **Cours state-tableau** : `useState([])`. Interdit de `push` (mute l'original → React ne voit pas de nouvelle référence → pas de re-render). Ajout via **tableau neuf** : `setMontures([...montures, nouvel])` — réinvestit le **spread** (S37/41/42).
+- Exo réussi : `setMontures([...montures, "monture"])`. **Question pertinente** : « pourquoi un string, quel intérêt ? » → limite volontaire de l'exo (le `.map()` affiche par **position** `i`, contenu indifférent).
+- **Version réaliste** : tableau d'**objets** `{ marque, prix }`, affichés via `m.marque` / `m.prix` dans le `.map()`. Code **propre et complet du premier coup**. A bien identifié seul que le vrai usage viendra d'un **formulaire** ou d'une **API**.
+
+**Niveau estimé après session** :
+
+- **Rest destructuring** : 🟡 mécanisme OK, **vocabulaire spread/rest à fixer**.
+- **`useState` + `onClick`** : 🟡→🟢 **consolidé** (2 patterns : incrément + bascule). Les blocages n'ont JAMAIS porté sur le mécanisme React — uniquement sur l'écosystème JS autour (import/export, `=` vs `!`, `let` vs `const`). C'est le vrai acquis du jour.
+- **Import nommé vs `export default`** : 🟢 clarifié solidement.
+- **State = tableau (+ tableau d'objets)** : 🟡→🟢 acquis (ajout sans mutation via spread). **Neuf → à recroiser.**
+- À verbaliser prochaine fois : `onClick={maFonction}` (référence) vs `onClick={() => setX(...)}` (fléchée inline) — les 2 formes utilisées aujourd'hui sans que la distinction soit posée.
+
+**Leçon de dosage confirmée (3e fois)** : ne pas donner un exercice sur un mécanisme **non encore enseigné**, même si le reste du squelette est fourni. « Ajouter à un tableau-state » aurait dû être un mini-cours AVANT l'exo liste. Bien séparer « enseigner le mécanisme » de « driller la syntaxe ».
+
+**Restes non traités** : JSON.stringify/parse (toujours jamais pratiqué en exo — à faire en contexte localStorage/API, non bloquant) · révision éclair **Git** promise aujourd'hui mais non jouée → à passer en ouverture de S44.
+
+**➡️ Prochaine session (demain, ~3h)** :
+
+1. Révision éclair **Git**.
+2. **`useState` sur un input** (pattern formulaire) — transforme « monture fixe » en **vraie donnée saisie** (le chaînon qui rend le state-tableau utile).
+3. Combiner : **formulaire + liste** (ajouter une monture saisie) puis **retirer** un élément (`filter` + `setX`).
+4. **TS des props** dès que useState est bien solide (bientôt).
+
+## Session 44 — Controlled inputs + formulaire + liste + suppression (mini-projet complet)
+
+**Durée** : ~3h
+**Thème** : le pattern formulaire React de bout en bout — input contrôlé, ajout à une liste, suppression par `filter`. Mini-projet `GestionMontures` reconstruit page blanche.
+
+**Révision éclair S44 (Git — `.gitignore`)** : pourquoi `node_modules/` et `dist/output.css` sont exclus. Point commun **régénérable → non versionné** restitué juste (node_modules = `npm install`, output.css = généré par le watch). Nuance recalée : le critère est « reconstructible depuis la source », PAS la taille. Modèle « on versionne la recette (package.json, input.css), on ignore la sortie » ✅ solide.
+
+**Ce qui a été fait** :
+
+_Controlled input (le pattern formulaire) :_
+
+- **`value={x}` + `onChange={(e) => setX(e.target.value)}`** = les deux fils de la boucle. Le state est la SEULE source de vérité ; l'input n'est qu'un miroir. Inversion vs HTML pur (où l'input possède son texte).
+- Piège vs Phase 1 relevé : en React `onChange` se déclenche à CHAQUE frappe (comme l'`input` JS pur), pas à la perte de focus.
+- Exo `SaisiePrix` (2 trous) réussi du premier coup.
+
+_Formulaire + liste + suppression :_
+
+- Ajout : `setMontures([...montures, { id: crypto.randomUUID(), marque, prix }])` + vidage des champs via `setX("")` (le controlled input vide le champ à l'écran tout seul).
+- Suppression : `setMontures(montures.filter((m) => m.id !== id))` — nouveau tableau sans la ciblée, jamais de mutation. **`crypto.randomUUID()`** appelé UNE fois à la création (id stable) → passage de `key={i}` à `key={m.id}` (obligatoire dès que la liste bouge).
+- Distinction verbalisée (enfin) : `onClick={ajouter}` (référence, aucun argument) vs `onClick={() => supprimer(m.id)}` (flèche inline, on passe un argument).
+
+**Point pédagogique (reconstruction page blanche)** :
+
+- Le format à trou avait posé chaque pièce isolément, mais l'assemblage complet n'était pas encore automatique → reconstruction totale demandée. 1er jet en consultant les anciens exos (sain sur une 1re reconstruction), avec 3 bugs de charge de syntaxe : `setMontures({...})` (objet au lieu de tableau), `value={}` oubliés, `supprimer` incomplet. **Tous corrigés** → version finale propre.
+- Bugs typiques du jour = **charge de syntaxe et scope**, jamais incompréhension du pattern (ex. `key={id}` puis `!== key` = même question « quelle variable existe dans ce scope ? »).
+
+**3 questions de fond traitées en fin de session** (les câblages qui rendent React instinctif) :
+
+1. référence `{fn}` vs flèche `{() => fn(arg)}` — on DONNE une fonction, pas son résultat ; la flèche = fonction jetable qui transporte l'argument (ancrage forme longue).
+2. voyage de l'id — il DESCEND par l'argument dans le tiroir-paramètre (rien ne « remonte ») ; lien scope.
+3. `value={}` — controlled input ; React ré-impose le state à chaque rendu (d'où le besoin d'`onChange`) ; le `setX("")` qui vide le champ prouve le chaînage.
+
+**Méthode confirmée** : ancrage **forme longue → DRY** très efficace sur la flèche inline — à réutiliser pour toute syntaxe compressée.
+
+**Niveau estimé après session** :
+
+- **Controlled input (`value` + `onChange`)** : 🟡→🟢 acquis, pattern posé.
+- **Formulaire + ajout + suppression `filter`** : 🟢 mini-projet complet reconstruit de mémoire (avec appui sur anciens exos = normal en 1re reconstruction).
+- **`filter` + id stable (`crypto.randomUUID`)** : 🟡 neuf (introduit ce jour), à recroiser.
+- **Référence vs flèche inline** : 🟢 verbalisé et compris (câblage était le dernier flou).
+- **`useState` général** : 🟢 consolidé (plus le chaînon fragile de la S42).
+- Frédéric se sous-note (a corrigé seul la majorité des bugs) — recalibrage vers le haut.
+
+**Instructions projet** : rafraîchies à la S44 (par Frédéric dans l'interface). RAS d'obsolète côté React ; la mention « react.new » deviendra caduque après le passage Vite local.
+
+**Restes non traités** : JSON.stringify/parse (toujours jamais pratiqué en exo — à faire en contexte localStorage/API) · rest destructuring (vocabulaire rest/spread à recroiser) · TS des props (dès maintenant, useState solide).
+
+**➡️ Prochaine session (nouvelle conversation)** : **Passage react.new → projet Vite LOCAL** — `npm create vite`, porter `GestionMontures`, le **découper en fichiers** (`GestionMontures.jsx` séparé → la convention « 1 fichier = 1 composant » enfin réelle), `git init` + 1er commit. Jalon React (архi multi-fichiers) ET outillage réunis. Réactive `Ctrl+P` et le rituel deux machines.
