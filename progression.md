@@ -477,3 +477,59 @@ _Formulaire + liste + suppression :_
 **Restes non traités** : JSON.stringify/parse (toujours jamais pratiqué en exo — à faire en contexte localStorage/API) · rest destructuring (vocabulaire rest/spread à recroiser) · TS des props (dès maintenant, useState solide).
 
 **➡️ Prochaine session (nouvelle conversation)** : **Passage react.new → projet Vite LOCAL** — `npm create vite`, porter `GestionMontures`, le **découper en fichiers** (`GestionMontures.jsx` séparé → la convention « 1 fichier = 1 composant » enfin réelle), `git init` + 1er commit. Jalon React (архi multi-fichiers) ET outillage réunis. Réactive `Ctrl+P` et le rituel deux machines.
+
+## Session 45 — Exercice "Thinking in React" (tableau filtrable groupé) + Set + table sémantique
+
+**Durée** : 2 sessions cumulées (~2h + ~2h30 = 4h30). Exercice Grafikart / doc React ("Thinking in React").
+**Thème** : reconstruire de A à Z le tableau de produits filtrable — recherche, case à cocher, style conditionnel, tableau sémantique `<table>`, regroupement par catégorie (double boucle), génération des catégories via `Set`. Puis rejeu complet en autonomie sur données neuves.
+
+**Révision éclair S45 (Flexbox align/justify)** : en `flex-direction: row`, `justify-content` = axe horizontal, `align-items` = axe vertical. Restitué juste, avec le _pourquoi_ (justify suit l'axe principal → tout s'inverse en `column`). ✅ solide.
+
+### Ce qui a été fait
+
+_Exercice 1 — construction guidée (base PRODUCTS Grafikart : Apple, Dragonfruit…) :_
+
+- **Affichage liste** (`.map()` + JSX) : posé seul. `key={p.name}` (champ unique/stable, choisi seul — pas d'`id` dans les données).
+- **Recherche par nom** : controlled input (`value` + `onChange`), + prise de conscience du **state vs donnée dérivée** — la liste filtrée n'est PAS un state, elle se recalcule à chaque rendu depuis `search` + les données. Filtre : `p.name.toLowerCase().includes(search.toLowerCase())` (les DEUX côtés en minuscules).
+- **Case à cocher** : le pattern neuf. Une checkbox se lit sur **`.checked`** (booléen), pas `.value` (qui vaut la chaîne `"on"`). Paire symétrique : `checked={check}` ↔ `onChange={(e) => setCheck(e.target.checked)}`. Filtre à 2 conditions refactoré proprement : `matchNom` / `matchStock = check ? m.stocked : true` / `return matchNom && matchStock`.
+  - **Piège traversé** : première version renvoyait `p` (l'objet, truthy) dans la branche else du ternaire → cassait la recherche. Un callback `filter` renvoie **toujours un booléen**. + précédence : `&&` s'exécute avant `? :` → ternaire à placer sur le stock seul, pas sur le filtre entier.
+- **Style conditionnel (rouge sur rupture)** : `style={p.stocked ? undefined : { color: "red" }}` — posé sur le `<tr>` (la ligne), pas les `<td>`. Bug traversé : `PRODUCTS.stocked` (le tableau n'a pas cette prop → undefined → rouge partout) ; corrigé en testant `p.stocked` DANS le `.map()`, là où chaque produit existe individuellement.
+- **Table sémantique** (question spontanée de Frédéric : "`<tr>` existe, pourquoi pas appris ?") → point pro important : `<table>` = données tabulaires (ligne + colonne ont un sens), PAS du layout (anti-pattern années 2000 ; layout = Flexbox/Grid). Ici vrai tableau → `<table>` plus propre que `<div>`. Balises neuves : `<thead>`/`<tbody>`/`<tr>`/`<th>`/`<td>`. Accessibilité (lecteur d'écran annonce lignes/colonnes) = le "pourquoi". `htmlFor` (pas `for`) et `colSpan` (camelCase) notés.
+- **Regroupement par catégorie (double boucle — LE point neuf)** : `.map()` dans `.map()`. Boucle extérieure sur les catégories → un `<tbody>` + ligne-titre `<th colSpan="2">` (rappel `grid-column 1/-1` S36). Boucle intérieure = `.filter(m => m.categorie === cat).map(...)` → les `<tr>`. On filtre **listFiltrer** (déjà filtré), jamais les données brutes. `key={cat}` sur le `<tbody>`.
+  - Blocage réel sur l'imbrication présentée d'un bloc → débloqué en **décomposant** : d'abord la boucle extérieure seule (2 titres nus), PUIS réintégrer le `.map()` produit à l'intérieur. Un niveau à la fois.
+- **DRY — catégories générées via `Set`** : remplacé `const cat = ["Fruits","Vegetables"]` (en dur) par `[...new Set(PRODUCTS.map(p => p.categorie))]`. Démontré en direct : Frédéric a ajouté un produit "outils" dans les données → apparu tout seul avec sa catégorie (preuve du DRY). Chaîne : tableau avec doublons → `Set` (déduplique) → spread → tableau propre. `Set` ≠ tableau (pas de `.map()`/`.filter()`, d'où le spread obligatoire).
+
+_Exercice 2 — rejeu complet EN AUTONOMIE (données neuves : MONTURES, champs `modele`/`prix`/`enStock`/`categorie`) :_
+
+- App complète reconstruite de mémoire, du premier jet, avec noms de champs différents (impossible de copier machinalement → force la compréhension). Recherche + case + table + rouge + regroupement + `Set` : **tout juste et bien placé**. 2-3 vérifications sur l'exo précédent (sain, encouragé).
+
+### Notions neuves ancrées (fil rouge classes natives)
+
+- **`Set`** : collection à valeurs uniques (doublons refusés). Méthodes propres `.add`/`.has`/`.delete`/`.size`. Usages : dédupliquer (`[...new Set(tab)]`), test d'appartenance rapide (`.has`), suivre des sélections, compter les distinctes. N'a PAS d'index ni `.map`/`.filter`.
+- **Vocabulaire classes/instances** : `Set`, `FormData`, `IntersectionObserver` = des **classes** (moules natifs) ; `new` fabrique une **instance** (objet). PascalCase = type qu'on instancie (comme les composants React). Rappel `FormData` (ramasse les champs à `name` d'un form → body du POST). Lien vers Tier 2 "lire une classe" (conception réelle → Phase 3 Python).
+
+### Niveau estimé après session
+
+- **Pattern tableau filtrable + groupé (filter → filter+map dans map)** : 🟢 **acquis** (2 exécutions, 2e en quasi-autonomie sur données neuves). LA bascule compris → instinctif observée en direct sur la double boucle (mur hier, posée seul aujourd'hui).
+- **Controlled input texte + checkbox (`value`/`.value` vs `checked`/`.checked`)** : 🟢 solide.
+- **Filtre multi-conditions (`filter` + `&&` + ternaire bien placé)** : 🟢, avec compréhension fine (callback = booléen ; précédence `&&` vs `?:`).
+- **Table HTML sémantique (`table`/`thead`/`tbody`/`tr`/`th`/`td`, `colSpan`, `htmlFor`)** : 🟡→🟢 neuf mais posé 2×, distinction data vs layout comprise.
+- **`Set` + génération dérivée (DRY)** : 🟡 neuf, compris + appliqué seul en exo 2. À recroiser.
+- **State vs donnée dérivée** : 🟢 principe clé re-verbalisé (ne pas stocker ce qui se recalcule).
+- Frédéric se sous-note (a mené l'exo 2 quasi seul en se disant "pas à l'aise") — **recalibrage vers le haut**.
+
+### Restes / à surveiller
+
+- **Code mort** repéré dans l'exo 2 (`const dupli = [...MONTURES]` jamais utilisé) → réflexe ESLint "variable non utilisée" (S40). Non corrigé (clôture) : à nettoyer au prochain passage. Rappel : `.map()` ne mute pas la source → pas besoin de copier avant de dériver.
+- **Placement des hooks** : convention pro = `useState`/`useEffect` tout en haut du composant, avant les calculs dérivés (règles des hooks). Cosmétique, à ancrer.
+- Détail front : respecter la casse des en-têtes demandés (`Modèle`/`Prix` vs `modele`/`prix`).
+- **JSON.stringify/parse** : toujours jamais pratiqué en exo (seul coin Tier 1). Proposé cette session, reporté → à glisser en contexte localStorage/API.
+- **Rest destructuring** : vocabulaire rest/spread à recroiser (dette S43).
+- **TS des props** : à brancher (useState solide depuis un moment).
+
+### ➡️ Prochaine session (nouvelle conversation)
+
+Deux gros jalons en attente, à faire **frais** (pas en fin de session chargée) :
+
+1. **`useEffect` + vraie API (fetch)** — remplacer les données en dur par une source serveur. Anticipé par Frédéric ; mérite une **séance dédiée de ~2h**, à tête reposée. Candidat n°1.
+2. **Passage react.new → projet Vite LOCAL** — `npm create vite`, porter le projet, découper en fichiers (`.jsx` séparés → convention 1 fichier = 1 composant enfin réelle), `git init` + 1er commit. Réactive `Ctrl+P` + rituel deux machines.
