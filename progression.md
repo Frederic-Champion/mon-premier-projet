@@ -533,3 +533,65 @@ Deux gros jalons en attente, à faire **frais** (pas en fin de session chargée)
 
 1. **`useEffect` + vraie API (fetch)** — remplacer les données en dur par une source serveur. Anticipé par Frédéric ; mérite une **séance dédiée de ~2h**, à tête reposée. Candidat n°1.
 2. **Passage react.new → projet Vite LOCAL** — `npm create vite`, porter le projet, découper en fichiers (`.jsx` séparés → convention 1 fichier = 1 composant enfin réelle), `git init` + 1er commit. Réactive `Ctrl+P` + rituel deux machines.
+
+## Session 46 — Travail solo : doc React "Apprendre" + tuto Tic-Tac-Toe
+
+**Durée** : 2 sessions solo (~2h + ~1h30 = 3h30), sans Claude. Puis questions débriefées avec Claude.
+**Thème** : initiative d'autonomie — lecture de la section "Apprendre" de react.dev, puis reproduction du tuto officiel Tic-Tac-Toe. Débrief des zones d'ombre ensuite.
+
+**Révision éclair (rest/spread — dette S43, enfin réglée)** : `const { remise, ...reste } = m` → **rest**, à gauche du `=`, isole `remise` et **ramasse** le reste dans un nouvel objet (tri, pas clone). `[...montures, nouvelle]` → **spread**, à droite, copie + ajoute. Vocabulaire fixé cette fois. ✅ **Dette rest/spread close.**
+
+### Ce qui a été travaillé en solo
+
+- Lecture doc officielle react.dev (section Apprendre).
+- Tuto Tic-Tac-Toe reproduit (composants `Square` / `Board` / `Game` + `calculateWinner`), jusqu'à la version finale avec historique cliquable.
+
+### Zones d'ombre débriefées avec Claude (et éclaircies)
+
+**1. `const [a, b, c] = lines[i]`** : déstructuration de tableau **par position**. `lines` = tableau de tableaux (les 8 lignes gagnantes) ; `lines[i]` = un triplet `[0,1,2]` ; la ligne extrait ses 3 valeurs dans `a`/`b`/`c`. Version longue = `lines[i][0]`, `[1]`, `[2]`. Bon outil car la **position porte le sens**. → 🟢 compris.
+
+**2. `slice()` vs `[...tab]` pour copier** : **font la même chose** (copie de surface). `slice()` = idiome historique du tuto ; `[...tab]` = plus moderne et cohérent avec le reste de mon code → **à préférer**. Pas un "meilleur techniquement", juste une habitude d'écriture. → 🟢 compris.
+
+**3. Immutabilité à deux niveaux (LE point du tuto)** : on ne mute jamais le state, on copie + modifie + passe au setter (React compare les références). Deux niveaux imbriqués :
+
+- plateau : `const nextSquares = squares.slice(); nextSquares[i] = "X"` (copie les 9 cases, modifie la copie)
+- historique : `setHistory([...history, nextSquares])` (copie l'historique + ajoute le plateau) = mon pattern `[...tab, nouvel]` habituel, avec des tableaux comme éléments. → 🟢 compris.
+
+**4. Lifting state up (le vrai cœur du Tic-Tac-Toe)** — 🟢 **bien capté** :
+
+- Le state a "déménagé" de `Board` vers `Game` (parent commun) quand l'historique est devenu nécessaire. `Board` ne possède plus rien : il **reçoit** `squares` en **prop** (`squares={currentSquares}`), il ne le déclare pas.
+- Flux : **données descendent** (parent → props → enfant) ; **événements remontent** (enfant appelle `onPlay(...)`, une prop-fonction → `handlePlay` s'exécute dans `Game`, seul détenteur de `setHistory`).
+- Formule ancrée : **"l'enfant signale, le parent détient et décide."** Le state se modifie uniquement là où il est déclaré.
+- **Lien fait seul avec le scope (Phase 1)** : `Board` ne peut pas appeler `setHistory` car elle est enfermée dans le scope de `Game` — l'intérieur ne voit pas l'intérieur d'un autre. Belle connexion transversale.
+
+### Partiellement compris — à retravailler ENSEMBLE (version finale du tuto)
+
+La version finale (historique cliquable) a été survolée mais **pas entièrement digérée** — trop de nouveautés d'un coup. À reprendre en mode guidé, à tête reposée :
+
+- **`currentMove` comme curseur** : nouveau state (un index) ; `currentSquares = history[currentMove]` (plus "toujours le dernier", mais "celui pointé"). Permet le voyage dans le temps.
+- **Donnée dérivée `xIsNext = currentMove % 2 === 0`** : `xIsNext` retiré du state exprès → recalculé depuis le n° de coup (rappel direct S45 "ne pas stocker ce qui se recalcule" ; évite la déssynchro de 2 states). Le **modulo `%`** (reste de division : pair/impair) est neuf → à consolider.
+- **`slice` avec arguments** : `history.slice(0, currentMove + 1)` = garder le début jusqu'au coup courant, **jeter les coups "futurs"** quand on rejoue après un retour arrière (nouvelle branche). Différent du `slice()` de copie (sans argument).
+- **2e argument de `.map()`** : `history.map((squares, move) => ...)` → `move` = **l'index**. Neuf. + cas légitime de `key={index}` (historique jamais réordonné). + bouton `onClick={() => jumpTo(move)}` = flèche inline qui transporte l'argument (pattern S44).
+
+### Niveau estimé après session
+
+- **Déstructuration tableau / immutabilité 2 niveaux / slice-copie** : 🟢 solides.
+- **Lifting state up (props descendent, events remontent, state chez le parent commun)** : 🟢 **acquis** — c'est le grand enseignement du tuto, et il est passé. Connexion au scope faite seul.
+- **Autonomie / lecture de doc** : gros point positif — a lu react.dev et reproduit un tuto complet seul, en revenant avec des questions ciblées et pertinentes. Exactement le réflexe visé.
+- **Version finale (currentMove, modulo, slice à arguments, 2e arg de map)** : 🟡 **partiellement compris, à reprendre ensemble** — pas un échec, juste trop d'un coup en fin de session.
+
+### Restes / dettes (inchangés + nouveaux)
+
+- **JSON.stringify/parse** : toujours jamais pratiqué en exo (seul coin Tier 1). À glisser en contexte localStorage/API.
+- **TS des props** : à brancher (useState solide depuis longtemps) — de plus en plus prioritaire.
+- **Code mort / placement hooks** (repérés S45) : réflexes propreté à ancrer.
+- **`useEffect` + vraie API (fetch)** : toujours en attente, séance dédiée ~2h à tête reposée.
+- **Passage react.new → Vite local** : toujours en attente (découpage fichiers, `git init`, réactive Ctrl+P + rituel 2 machines).
+
+### ➡️ Prochaine session
+
+Au choix selon l'énergie (les deux à faire frais) :
+
+1. **Reprendre la version finale du Tic-Tac-Toe ensemble** — `currentMove` + donnée dérivée + `slice` à arguments + 2e arg de `.map()`, en mode guidé. Court, consolide du déjà-vu.
+2. **`useEffect` + fetch API** — le gros morceau anticipé, séance ~2h.
+3. **Setup Vite local** — jalon outillage.
