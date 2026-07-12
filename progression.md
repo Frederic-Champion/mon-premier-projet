@@ -477,3 +477,38 @@ _Formulaire + liste + suppression :_
 **Restes non traités** : JSON.stringify/parse (toujours jamais pratiqué en exo — à faire en contexte localStorage/API) · rest destructuring (vocabulaire rest/spread à recroiser) · TS des props (dès maintenant, useState solide).
 
 **➡️ Prochaine session (nouvelle conversation)** : **Passage react.new → projet Vite LOCAL** — `npm create vite`, porter `GestionMontures`, le **découper en fichiers** (`GestionMontures.jsx` séparé → la convention « 1 fichier = 1 composant » enfin réelle), `git init` + 1er commit. Jalon React (архi multi-fichiers) ET outillage réunis. Réactive `Ctrl+P` et le rituel deux machines.
+
+## Session 47 — Setup Vite local + Git (séance outillage, écourtée)
+
+**Durée** : ~2h30 (dont une large part absorbée par un détour OneDrive non planifié)
+**Thème** : passage react.new → projet Vite LOCAL, structure de fichiers, premier commit Git. Portage React entamé, non terminé.
+
+**Révision éclair S47 (Grid — placement)** : parent `grid-template-columns: repeat(3, 1fr)` / Tailwind `grid grid-cols-3` ✅ ; enfant pleine largeur `grid-column: 1 / -1` / `col-span-full` — frontière parent (définit la grille) vs enfant (occupe des colonnes, mot-clé `span`) recalée. Grid remonté 3→5/10.
+
+**Ce qui a été fait** :
+
+- **Scaffolding Vite** : `npm create vite@latest` → `projet-vite-local`, template React + JavaScript + ESLint. Projet créé dans `Repo GitHub` (à côté de `mon-premier-projet`).
+- **Dev server + HMR compris** : `npm run dev` lance un serveur local (`localhost:5173`) qui compile le JSX à la volée = équivalent React du `--watch` Tailwind (doit rester allumé). HMR = mise à jour instantanée au save sans recharger la page (testé, fonctionne).
+- **Structure de fichiers décortiquée** : chaîne de démarrage `index.html` (`<div id="root">` + `<script main.jsx>`) → `main.jsx` (point d'entrée, `createRoot(...).render(<App/>)` — le "fichier caché" enfin vu) → `App.jsx` (composant principal). `StrictMode` repéré (double-exécution en dev — à retenir pour useEffect). `public/` (servi brut) vs `src/` (compilé). `.gitignore` déjà fourni par Vite.
+- **Scaffolding compris comme concept** : `npm create vite` génère un projet React préconfiguré ; Tailwind serait un ajout séparé (v4 + plugin Vite) — reporté à une séance dédiée.
+- **Git** : `git init` → `git add .` → premier commit "Setup projet Vite React local". Vérifié : `node_modules` bien ignoré (révision éclair S44 en action). Repo distant GitHub créé (`Frederic-Champion/projet-vite-local`, vide). **Push NON terminé** (à finir demain).
+
+**Ce qui a accroché / bloqué** :
+
+- **Détour OneDrive** : tentative de désinstallation en cours de séance, abandonnée (clé USB de backup HS → pas de filet → report). A consommé énergie et temps. **Leçon : les manips système lourdes = créneau dédié, jamais en marge d'une séance de code.** OneDrive laissé en l'état (« pas de synchronisation », ne gêne pas le dev).
+- **Portage `GestionMontures` en page blanche** : blocage sur l'**assemblage** (pas les concepts isolés, tous maîtrisés). Erreurs de câblage : fonction `ajouter` écrite hors de `App` (scope), `.map()` d'affichage confondu avec la logique d'ajout, `onClick={setMontures(...)}` (appel immédiat au lieu de flèche). Fin de séance trop chargée → arrêt décidé. **Non terminé, à refaire frais.**
+
+**Niveau estimé après session** :
+
+- **Setup Vite (scaffolding, dev server, HMR, structure)** : 🟢 compris — le vrai objectif du jour, atteint.
+- **Git init + commit local** : 🟢 fait proprement.
+- **git remote + push** : 🔴 entamé, non terminé — à reprendre demain (2 commandes).
+- **Portage React** : reporté.
+
+**⚠️ Point de vigilance** : séance déséquilibrée par un hors-sujet système. Recentrer la prochaine sur UN objectif clair, frais.
+
+**➡️ Prochaine session (demain, sur le FIXE)** :
+
+1. **Rituel deux machines** : récupérer le repo. Comme le push n'est pas fini, soit on termine d'abord le push depuis le portable, soit on gère au démarrage. (Ordre à voir ensemble en ouverture.)
+2. **Finir le `git push`** (2 commandes : `git remote add origin` + `git push -u origin master`).
+3. **Reprendre `GestionMontures` à froid**, en **mode guidé** (squelette + trous, PAS page blanche — l'assemblage n'est pas encore instinctif). Puis découpage en fichiers (`GestionMontures.jsx` séparé). Réactiver `Ctrl+P`.
