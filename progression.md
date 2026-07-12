@@ -630,3 +630,63 @@ Au choix selon l'énergie (les deux à faire frais) :
 1. **Rituel deux machines** : récupérer le repo. Comme le push n'est pas fini, soit on termine d'abord le push depuis le portable, soit on gère au démarrage. (Ordre à voir ensemble en ouverture.)
 2. **Finir le `git push`** (2 commandes : `git remote add origin` + `git push -u origin master`).
 3. **Reprendre `GestionMontures` à froid**, en **mode guidé** (squelette + trous, PAS page blanche — l'assemblage n'est pas encore instinctif). Puis découpage en fichiers (`GestionMontures.jsx` séparé). Réactiver `Ctrl+P`.
+
+## Session 48 — Résolution conflit Git + finalisation setup Vite (à froid)
+
+**Durée** : ~1h30
+**Thème** : reprise à tête reposée de la séance déraillée d'hier — résolution du conflit Git en suspens, puis finalisation propre du jalon Vite (découpage en fichiers, import/export multi-fichiers, organisation des exercices).
+
+**Révision éclair** : aucune (session de reprise/déblocage, enchaînée directement sur la résolution du conflit).
+
+**Ce qui a été fait** :
+
+_Git — résolution de conflit (LA dette « conflits » enfin soldée) :_
+
+- **Compris le mécanisme** : divergence = deux branches (locale fixe + `origin/main` GitHub) parties du même point et ayant avancé en parallèle (1 commit local / 3 distants). `git pull` = `fetch` + `merge` ; le conflit survient quand la même zone d'un fichier est modifiée des deux côtés.
+- **Résolution guidée dans `progression.md`** : `git pull` (re-déclenche le conflit volontairement) → outil visuel VS Code → **Accept Both Changes** sur les 2 zones (le fichier s'accumule, on garde tout : sessions 45, 46, 47) → réordonnancement chronologique manuel → vérif `Ctrl+F` sur `<<<<<<<` = 0 marqueur.
+- **Conclusion de la fusion** : `git add progression.md` (marque comme résolu) → `git commit` (commit de merge qui réunit les deux historiques) → `git push`. Fixe ↔ GitHub synchronisés.
+- **`git merge --abort`** utilisé comme filet de sécurité (revient à l'état stable, rien perdu) — bien compris comme « bouton annuler ».
+
+_Rituel deux machines (en pratique réelle) :_
+
+- **`git clone`** de `projet-vite-local` sur le fixe (projet créé sur le portable hier, absent du fixe). Distinction `pull` (mettre à jour un repo existant) vs `clone` (télécharger un repo entier absent) posée.
+- **`npm install`** post-clone : reconstruit `node_modules` depuis `package.json` (le régénérable qu'on ne transporte pas — révision éclair S44 en action).
+
+_React — finalisation du portage + découpage (le jalon outillage) :_
+
+- **`GestionMontures` reconstruit** (en autonomie, après un départ page blanche hier qui avait échoué) : cette fois l'assemblage est passé. Fonctions bien DANS `App` (scope corrigé vs hier), `ajouter`/`supprimer`/controlled inputs/`filter`/`randomUUID` tous justes. Distinction `onClick={ajouter}` (référence) vs `onClick={() => supprimer(m.id)}` (flèche inline) : acquise.
+- **Point pro ancré — composant vs variable** : `{liste}` dans le JSX n'affiche rien (on injecte la fonction, pas son résultat) ; un composant s'appelle en balise `<Liste />`. + anti-pattern « composant défini dans un composant » signalé → version clean = `.map()` inline dans le `<ul>`, adoptée.
+- **Découpage multi-fichiers** : composant sorti dans `src/components-exercices/GestionMontures.jsx` (+ `export default`), importé dans `App.jsx` (`import ... from "./components-exercices/GestionMontures"` — chemin écrit seul). **`import`/`export` entre SES fichiers, enfin en contexte réel** (react.new ne le permettait pas).
+- **`App.jsx` = composant racine / chef d'orchestre** : réduit à `return <GestionMontures />`, système commenter/décommenter préparé pour les futurs exos. Compris qu'App **assemble** les composants (ne les contient pas) — reproduit le système « plusieurs exercices » de `mon-premier-projet`, version React propre.
+
+_CSS en React (déduit en partie seul) :_
+
+- `index.css` (importé dans `main.jsx`) = styles **globaux** (toute l'app) ; `App.css` = convention « styles du composant » MAIS **plus importé** depuis le nettoyage → code mort à vider.
+- **Point clé compris** : le CSS React est **global par défaut** (le fichier d'import ne scope PAS au composant — un `h1 {}` s'applique partout). Solutions pro mentionnées (CSS Modules, Tailwind) pour plus tard. Frédéric a repéré seul que `GestionMontures` hérite du style de `index.css`.
+
+**Niveau estimé après session** :
+
+- **Résolution de conflit Git (merge, Accept Both, commit de merge, push)** : 🟡→🟢 **dette soldée**, fait en autonomie guidée. À recroiser 1× pour instinctivité.
+- **`git clone` + rituel deux machines** : 🟢 fait en pratique réelle.
+- **`GestionMontures` (assemblage complet)** : 🟢 reconstruit seul, l'assemblage est passé (mur d'hier franchi).
+- **Découpage fichiers + `import`/`export` multi-fichiers** : 🟢 acquis en contexte réel.
+- **App = composant racine / assembleur** : 🟢 compris.
+- **CSS global par défaut en React** : 🟢 compris (partiellement déduit seul).
+- Recalibrage vers le haut : Frédéric a mené presque tout en autonomie ce matin, y compris la sortie d'un état Git emmêlé — nette montée en confiance vs la veille.
+
+**⚠️ Leçon transversale (hier + aujourd'hui)** : les manips système lourdes (OneDrive) ne se font JAMAIS en marge d'une séance de code. Séance dédiée, avec backup vérifié. Confirmé douloureusement hier.
+
+**Restes / dettes** :
+
+- **Nettoyer `App.css`** (code mort de la démo Vite) — micro-tâche cosmétique.
+- **Réactiver `Ctrl+P`** (saut de fichier) — pertinent maintenant qu'il y a plusieurs fichiers, à ancrer.
+- **JSON.stringify/parse** : toujours jamais pratiqué en exo.
+- **TS des props** : à brancher (useState solide depuis longtemps) — prioritaire.
+- **Tailwind avec React** (v4 + plugin Vite) : à installer, séance dédiée bientôt.
+- **Tic-Tac-Toe version finale** (currentMove, modulo, slice à arguments, 2e arg de map) : à reprendre en mode guidé.
+
+**➡️ Prochaine session (nouvelle conversation)** — au choix selon l'énergie, tous à faire frais :
+
+1. **`useEffect` + vraie API (fetch)** — le gros morceau anticipé, séance dédiée ~2h à tête reposée. Candidat n°1.
+2. **Installer Tailwind dans le projet Vite** (v4, `@tailwindcss/vite`) — jalon outillage, permettrait de styliser `GestionMontures`.
+3. **Tic-Tac-Toe version finale** en mode guidé — plus léger, consolide du déjà-vu.
