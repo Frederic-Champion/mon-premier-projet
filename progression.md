@@ -27,6 +27,7 @@
 _Ce ne sont plus des notions incomprises, mais des **règles sues qui ne se déclenchent pas au clavier**. Le remède est la pratique en contexte, pas le réenseignement._
 
 **Réflexes non déclenchés à l'écriture**
+
 - **Union de valeurs sur une prop optionnelle** 🔴 — `type?: string` accepte n'importe quoi ; la notion est acquise depuis S80, le réflexe absent (S90).
 - **`Record<A, B>`** 🔴 — la **virgule** sépare deux tiroirs, l'**union** vit dedans. Confusion avec `Omit<X, "a" | "b">`, accrochée S86 et retombée S90.
 - **Annotation portée sur ce qui est extrait au lieu de ce qui arrive** 🟡 — `({ isActive }: boolean)`. La déstructuration ne change pas ce qui est reçu (S93).
@@ -34,14 +35,17 @@ _Ce ne sont plus des notions incomprises, mais des **règles sues qui ne se déc
 - **Déstructuration de tableau** 🟡 — connue, remplacée par un accès par index (S88).
 
 **Familles récurrentes à surveiller**
+
 - **Contrat `void` / setter mal placé / `return` nu** 🔴 — 5 occurrences (S64, S67, S71, S74, S84), plus les `return` nus de S78, S89 et S90. Le setter va **dans** une fonction appelée par un événement · une fonction utilitaire renvoie · un `return` nu laisse une branche silencieuse. **Exception acquise S93** : dans un effet, le `return` nu est légitime.
 - **`useParams` — correspondance `path` ↔ déstructuration** 🟡 — cassée en révision de sortie S90.
 
 **Neuf, un seul passage — ne pas surévaluer**
+
 - **`as`** (assertion, S93) 🟡 · **nettoyage du `state` d'historique** 🟡 (exige la copie dans un `useState` d'abord).
 - **`useLocation` + `pathname`** 🟡 (2 usages).
 
 **Jamais pratiqué malgré la procédure**
+
 - **Debugger Chrome** 🔴 — procédure donnée S73, jamais repratiquée. Réflexe à installer.
 
 ---
@@ -51,6 +55,7 @@ _Ce ne sont plus des notions incomprises, mais des **règles sues qui ne se déc
 _Liste **complète**, triée par importance. Elle traînait recopiée à l'identique depuis la S73 sans jamais bouger — le tri lui rend son utilité. À croiser avec `dettes-apprentissage-socle.md` lors de sa refonte._
 
 ### 🔴 Groupe 1 — prérequis réels de la suite (à programmer)
+
 - **`children`** — montré en passant S68, jamais enseigné. **Arrive mécaniquement avec les layouts Next.js.** À poser avant, pas pendant.
 - **`useRef`** (+ `IntersectionObserver` version React) — mentionné S72 et S85. Séance dédiée déjà identifiée ; bloque la version React de l'observer, qui est un morceau du socle Phase 1 non transposé.
 - **Exercices de typage TS réguliers** — demande explicite S86. Ce n'est pas une dette à solder mais un axe de travail continu, à glisser dans les séances.
@@ -58,6 +63,7 @@ _Liste **complète**, triée par importance. Elle traînait recopiée à l'ident
 - **Utility types au-delà des quatre** — décision S81/S86 : **en lecture uniquement**, avant la phase de candidature.
 
 ### 🟡 Groupe 2 — confort différable (ne pas encombrer l'ouverture de séance)
+
 - `<table>` — souhait exprimé S70, jamais recroisé. À caler sur un exercice à vraies données tabulaires.
 - `useReducer` — mentionné S82 et S85 comme hors périmètre.
 - `useMemo` / `useCallback` / `React.memo` (+ **React Compiler**, à réévaluer une fois ces trois vus).
@@ -69,6 +75,7 @@ _Liste **complète**, triée par importance. Elle traînait recopiée à l'ident
 - `@keyframes` · CSS d'impression (`@media print` / `print:`) — écarté volontairement S88, réservé à un autre projet.
 
 ### 🗑️ Item mort — à retirer
+
 - **« Projet CSS Grid, dette n°1 du socle »** — recopié depuis S73, mais le **placement Grid a été soldé S74→S78** (`col-span`, `row-span`, `auto-rows`, la case dimensionne l'élément). L'item n'a plus d'objet.
 
 ---
@@ -78,7 +85,9 @@ _Liste **complète**, triée par importance. Elle traînait recopiée à l'ident
 Tirage pondéré, **jamais sur le sujet du jour**. Une révision éclair est une **question** à laquelle on répond de mémoire, pas un exercice de construction (leçon S92 : 25 min consommées sur 120).
 
 ### 🆕 React Router Declarative — entre en rotation (décision S93)
+
 Inventaire à répartir sur plusieurs séances, un point à la fois :
+
 1. **Montage et structure** — paquet `react-router`, `BrowserRouter` dans `StrictMode`, un seul `<Routes>`, ce qui doit survivre à la navigation vit au-dessus.
 2. **`path` vs `to`** — motif d'URL inventé vs adresse réelle, `/` absolu, minuscules.
 3. **`<Link>` vs `<button>`** — critère sémantique, ce que le `href` porte.
@@ -90,13 +99,16 @@ Inventaire à répartir sur plusieurs séances, un point à la fois :
 9. **`NavLink`** — `className` en fonction, `{ isActive }`, `end`.
 
 ### Également en rotation
+
 - **`setInterval` / `clearInterval`** 🔴 — non ressorti seul S92 (`setTimeout` sortait à la place).
 - **`fetch` POST / `FormData` / `Content-Type`** — à recroiser, sorti S72 mais non retiré depuis longtemps.
 
 ### Sortis de rotation (à surveiller, ne plus tirer)
+
 `inline` vs `block` (sorti S92) · `Object.entries` (S89) · `sort()` non mutant (S88) · `position: fixed` (S79) · `IntersectionObserver` (S80) · `slice`/`splice` · `rem`/`px` · échelle Tailwind · `map`/`find`/`some` · closures / valeur-référence / scope · `fn` vs `fn()` (ancré, rechute possible en position inhabituelle).
 
 ### 🚫 Interdit de tirage
+
 **`reduce` accumulateur objet** — sorti définitivement en S68 après 4 passages à froid sans ancrage et un coût moral réel. Ne reviendra que porté par un exercice produisant un vrai chiffre à l'écran.
 
 ---
@@ -181,6 +193,7 @@ Motif complet reproduit sans modèle 20 min après avoir reçu le code : route p
 **Niveaux** : route paramétrée `:id` 🟢 · `useParams` + déstructuration par nom 🟡 — **code donné sur le 1er exercice, reproduit seul sur le 2e ; un seul passage autonome, ne pas surévaluer** · correspondance `to` ↔ `path` 🟢 · `find` + test d'existence 🟢 · `return` nu dans une branche 🔴 (récurrence S78) · export nommé vs défaut 🟢 · `<Link>` enveloppant son contenu 🟡 (rechute) · `Object.entries` 🟢.
 
 **⚠️ Mes erreurs** :
+
 1. **Consigne du 1er exercice dispersée** — livrable pas énoncé clairement, ce qui a pesé sur un mécanisme déjà neuf. Reformulée en « voici les deux composants à produire, voici le résultat attendu », efficace immédiatement.
 2. **Annonce d'un exercice à deux paramètres** puis retrait — j'allais ajouter du neuf alors que le premier exercice n'avait pas été produit seul.
 3. Recommandation d'organisation des dépôts moins bonne que la sienne.
@@ -254,13 +267,14 @@ Oui pour le guichet, non pour le mécanisme. Next.js déclare ses routes par l'*
 
 **Prop optionnelle + défaut** 🟢 : interface et signature justes du premier coup. **Point manqué** : `type?: string` accepte n'importe quelle chaîne → union de valeurs `"info" | "erreur"` non déclenchée, alors que la notion est connue depuis S80. Même schéma que `T[]` vs `T | null` en S82 : règle sue, réflexe absent.
 
-**Utility types** : `Omit<Commande, "id">` 🟢 · `Partial<Commande>` 🟢 · **`Record<string|number>` 🔴** — union écrite à la place de la virgule séparant les deux arguments. Repère donné : ce qui est *dans* un tiroir peut être une union, ce qui *sépare* deux tiroirs est toujours une virgule. Confusion venant de `Omit<X, "a" | "b">`, déjà accrochée en S86.
+**Utility types** : `Omit<Commande, "id">` 🟢 · `Partial<Commande>` 🟢 · **`Record<string|number>` 🔴** — union écrite à la place de la virgule séparant les deux arguments. Repère donné : ce qui est _dans_ un tiroir peut être une union, ce qui _sépare_ deux tiroirs est toujours une virgule. Confusion venant de `Omit<X, "a" | "b">`, déjà accrochée en S86.
 
 ---
 
 **Niveaux** : socle `useEffect`/`fetch` 🟢 (intact, page blanche) · `?.` + `??` 🟢 · trajet de la donnée par l'URL 🟢 (**c'était le maillon manquant, débloqué par le déroulé complet**) · `useParams` — correspondance avec le `path` 🟡 (cassée en révision de sortie) · `[id]` en dépendance 🟢 · test dans l'effet vs dans le corps 🟡 · ordre des early returns 🟡 · `catch` + `instanceof` 🟡 (donné, non enseigné) · union de valeurs sur prop optionnelle 🔴 (connue, non déclenchée) · `Record` 🔴 · `Omit`/`Partial` 🟢 · inline vs block 🟡.
 
 **⚠️ Mes erreurs** :
+
 1. **Rafraîchissement sur la mauvaise notion** — `useEffect` au lieu de `useParams`. Recadré par lui, à raison.
 2. **Diagnostic construit sans avoir vu l'écran** : j'ai déduit d'un message que deux composants étaient montés en même temps et lancé une enquête sur ses routes, qui étaient correctes. **Récurrence directe du §9 bis** — pas de diagnostic sans la source.
 3. **Premier énoncé sur PokéAPI** alors que l'univers optique est son terrain par défaut. Corrigé à sa demande.
@@ -294,9 +308,10 @@ Cours : le hook renvoie une fonction, appelée en haut ; la fonction navigue, ap
 **✅ Exercice page blanche réussi** : deux boutons ajoutés à `FicheMonture` (`naviguer("/liste-monture")` et `naviguer(-1)`), import et hook corrects. **Résumé du mécanisme produit seul et exact.**
 
 **🎓 Trois questions posées, toutes traitées** :
-- *`replace: true` ?* → l'historique est une pile ; empiler une redirection automatique piège l'utilisateur (Retour → page invalide → re-redirection → boucle). Critère donné : **l'utilisateur a choisi d'aller là → on empile · le code l'y a envoyé → `replace`**.
-- *`state` sert à quoi ?* → donnée transportée hors URL (message de confirmation après enregistrement), lue par `useLocation`. Ne survit ni au rechargement ni au partage de lien — cohérent avec ce qu'elle transporte.
-- *`<Navigate />` c'est autre chose ?* → non, **même action, forme déclarative**. Ne produit aucun DOM (rapprochement fait avec son observation sur `<Routes>` en S68). Critère : redirection issue d'un rendu conditionnel → `<Navigate>` · issue d'un événement ou d'un calcul → `useNavigate`.
+
+- _`replace: true` ?_ → l'historique est une pile ; empiler une redirection automatique piège l'utilisateur (Retour → page invalide → re-redirection → boucle). Critère donné : **l'utilisateur a choisi d'aller là → on empile · le code l'y a envoyé → `replace`**.
+- _`state` sert à quoi ?_ → donnée transportée hors URL (message de confirmation après enregistrement), lue par `useLocation`. Ne survit ni au rechargement ni au partage de lien — cohérent avec ce qu'elle transporte.
+- _`<Navigate />` c'est autre chose ?_ → non, **même action, forme déclarative**. Ne produit aucun DOM (rapprochement fait avec son observation sur `<Routes>` en S68). Critère : redirection issue d'un rendu conditionnel → `<Navigate>` · issue d'un événement ou d'un calcul → `useNavigate`.
 
 **🎓 Question de fond : « on pourrait presque remplacer tous les `<Link>` par des `<button onClick={naviguer}>` ? »** — cours donné sur ce que le `href` porte et qu'un bouton perd : clic droit / Ctrl+clic / nouvel onglet, copier l'adresse, favoris, annonce « lien » au lecteur d'écran, indexation. Critère sémantique redonné (`<a>` = destination, `<button>` = action). **Règle retenue : si l'adresse peut s'écrire dans le JSX, c'est un `<Link>`.** Son bouton « Retour à la liste » identifié comme un cas où le `<Link>` serait plus juste en production ; `naviguer(-1)` légitimement un bouton.
 
@@ -317,6 +332,7 @@ Deux remarques données : `<p>` au lieu de `<h1>` pour le titre de la page · pl
 **🔴 Premier exercice page blanche non produit** — a écrit un **second `<Routes>` à l'intérieur du layout**, avec les chemins complets réécrits. Geste connu appliqué là où le mécanisme neuf demandait autre chose. **Reprise en version guidée et commentée à sa demande** (« j'efface tout, on recommence de zéro »), qui a fonctionné.
 
 **Points posés** :
+
 - Les routes enfants s'écrivent **dans le même `<Routes>`**, imbriquées dans la `<Route>` parente. Une route parente n'est plus auto-fermante — c'est l'imbrication JSX qui déclare la relation au routeur.
 - **Un seul `<Routes>` par application.** Le cas de plusieurs existe mais est rare.
 - Chemins **relatifs** : l'enfant écrit `clients` sans `/`, le routeur compose avec le parent. Rattaché au `/` absolu de la S69.
@@ -328,8 +344,9 @@ Deux remarques données : `<p>` au lieu de `<h1>` pour le titre de la page · pl
 **🌟 Anticipé sans consigne** : a demandé de lui-même s'il fallait un lien d'entrée et un lien de retour. Critère de la S70 réappliqué correctement — le retour de section vit **dans le layout**, pas répété dans chaque page.
 
 **Questions de fond posées en fin de bloc, toutes pertinentes** :
-- *`<Outlet>` et `index` sont-ils deux moitiés du même mécanisme ?* → non. `<Outlet>` = **où** (un par layout, obligatoire, sert tous les enfants) · `index` = **quel** enfant quand l'URL s'arrête au parent (facultatif, son absence laisse un layout à moitié vide). Test proposé : supprimer `index` (seule `/use-params` casse) vs supprimer `<Outlet>` (plus rien ne s'affiche).
-- *Différence avec `path="/"` ?* → même rôle, deux niveaux. La racine n'a pas de parent auquel se coller, donc elle nomme son URL entière ; un enfant ne le peut pas sans répéter celle du parent.
+
+- _`<Outlet>` et `index` sont-ils deux moitiés du même mécanisme ?_ → non. `<Outlet>` = **où** (un par layout, obligatoire, sert tous les enfants) · `index` = **quel** enfant quand l'URL s'arrête au parent (facultatif, son absence laisse un layout à moitié vide). Test proposé : supprimer `index` (seule `/use-params` casse) vs supprimer `<Outlet>` (plus rien ne s'affiche).
+- _Différence avec `path="/"` ?_ → même rôle, deux niveaux. La racine n'a pas de parent auquel se coller, donc elle nomme son URL entière ; un enfant ne le peut pas sans répéter celle du parent.
 - Alternative `<Route index element={<Navigate to="clients" replace />} />` donnée pour les sections sans page d'accueil propre.
 
 **🔴 Diagnostic final — `<Link>` inline** : bouton « retour au menu » chevauchant le contenu de l'`<Outlet>`. Cause = `p-2` sur un `<a>` inline (peint, ne pousse pas). **4ᵉ rencontre du même point** (S75-77, S82, S86) ; il a d'abord attribué le comportement à `<Outlet>`. `inline-block` redonné, avec le rappel que son bouton maison le porte déjà.
@@ -338,13 +355,15 @@ Deux remarques données : `<p>` au lieu de `<h1>` pour le titre de la page · pl
 
 **Niveaux** : generics — mécanisme `<T>` déclare un nom 🟢 (**c'était le chaînon manquant, 3 signatures écrites seules ensuite**) · union de valeurs 🟢 · `useNavigate` + `naviguer(-1)` 🟢 · `<Link>` vs `<button>` (critère sémantique) 🟢 · route `path="*"` 🟢 · routes imbriquées + chemins relatifs 🟡 — **non produit en page blanche, livré en guidé commenté ; un seul passage** · `<Outlet />` 🟡 · `index` 🟢 (compris, distinction avec `<Outlet>` produite seule après reformulation) · `<Link>` inline + `inline-block` 🔴 (4ᵉ occurrence, attribué à la mauvaise cause).
 
-**🆕 Dettes ouvertes ce jour — mentionnées, non pratiquées** *(signalé par lui : « je ne m'en souviendrai pas dans 2 jours »)* :
+**🆕 Dettes ouvertes ce jour — mentionnées, non pratiquées** _(signalé par lui : « je ne m'en souviendrai pas dans 2 jours »)_ :
+
 - **`replace: true`** — le repère minimal à garder : redirection automatique → `replace`. Le bug qu'il évite est difficile à diagnostiquer sans connaître la cause.
 - **`state` + `useLocation`**
 - **`<Navigate />`**
 - **`NavLink`** — jamais ouvert.
 
 **⚠️ Mes erreurs** :
+
 1. **Consigne de l'exercice routes imbriquées trop vague** — « crée un petit composant, deux liens suffisent » sans nommer ni situer, d'où un `ts(2304)` sur un composant inexistant. Récurrence directe de la S89.
 2. Exercice page blanche posé sur un mécanisme vu une seule fois, en fin de bloc dense. La version guidée commentée aurait dû venir en premier.
 
@@ -379,6 +398,7 @@ Résultat de l'exercice lui-même, malgré tout : **code entièrement juste** (l
 **✅ Écrit seul** (en partie de mémoire, en partie en s'inspirant de la structure de la veille) : route parente non auto-fermante, `<Route index>`, **chemins relatifs** (`"1"`, `"2"`), `<Outlet />` dans le layout, `PageIntrouvable` + `path="*"`, tableau `CALCULATRICES` + `.map()` avec `key`. Fonctionnel.
 
 **Corrections signalées, toutes traitées** :
+
 - **Lien « Retour Accueil » du layout pointant vers la page courante** — repéré par lui au moment de l'écrire (« c'est exactement ce que je pensais »). Point posé : un lien vers la page courante est un lien mort.
 - **Titre du layout nommant une page particulière** (« Accueil Exercice Calculatrice ») alors qu'il s'affiche sur tous les enfants. Ce qui est permanent ne nomme pas une page.
 - Chemins absolus dans le tableau → `<Link to="1">` relatif, possibilité qu'il ne connaissait pas.
@@ -407,6 +427,7 @@ Résultat de l'exercice lui-même, malgré tout : **code entièrement juste** (l
 **🔄 Rotation** : `setInterval`/`clearInterval` **entre**. Toujours dedans : `<Link>` inline vs block. Sortis : `Ctrl+Maj+F` (raccourci).
 
 **⚠️ Mes erreurs** :
+
 1. **Exercice de construction posé en révision éclair** — 25 min sur 120, séance amputée. Relevé par lui.
 2. Remarque « source unique » formulée de façon à contester sa structure alors qu'elle portait sur le rangement du tableau.
 
@@ -433,9 +454,10 @@ Résultat de l'exercice lui-même, malgré tout : **code entièrement juste** (l
 **✅ Exercice réussi** : trois `NavLink` dans le layout calculatrices, `end` posé sur le lien de section (le piège annoncé, manqué au premier jet puis corrigé), `to` relatifs, chaîne factorisée en `const` puis fonction `lienClasse` extraite.
 
 **🎓 Questions posées** :
-- *`isActive` sert à quoi d'autre que Tailwind ?* → rien d'imposé, c'est un booléen ; `children` accepte aussi une fonction.
-- *Où va la barre de navigation ?* → **dans le layout**, critère S70 réappliqué. `isActive` n'a de sens que là où le composant survit au changement de page.
-- *Faut-il `@layer components` / `@apply` ?* → cours donné sur les trois niveaux : `const` (répétition locale) · composant (classes + balisage + comportement) · `@apply` (CSS de balises nues en `@layer base`). Position S68 réaffirmée : **en React on factorise par le composant**.
+
+- _`isActive` sert à quoi d'autre que Tailwind ?_ → rien d'imposé, c'est un booléen ; `children` accepte aussi une fonction.
+- _Où va la barre de navigation ?_ → **dans le layout**, critère S70 réappliqué. `isActive` n'a de sens que là où le composant survit au changement de page.
+- _Faut-il `@layer components` / `@apply` ?_ → cours donné sur les trois niveaux : `const` (répétition locale) · composant (classes + balisage + comportement) · `@apply` (CSS de balises nues en `@layer base`). Position S68 réaffirmée : **en React on factorise par le composant**.
 
 **🔴 `({ isActive }: boolean)`** — annotation portée sur ce qui est extrait au lieu de ce qui arrive. Point redonné : la déstructuration ne change pas ce qui est reçu ; React Router passe **un objet**. Même contrat que les props React. Boussole du `:` (S60) réappliquée.
 
@@ -472,7 +494,7 @@ Cours par contraste sur son propre code : sans le délai de 2 s, les 9 lignes d'
 
 ### 4. `state` — dette fermée
 
-Cours : les props et le lifting state up ne peuvent pas servir (les deux composants ne se connaissent pas, c'est le routeur qui les monte). `state` transporte une donnée hors URL. **Critère posé** : *si quelqu'un ouvrait cette URL demain, cette information aurait-elle un sens ?* Oui → URL · Non → `state`. Survit au retour arrière, pas au rechargement, pas au partage.
+Cours : les props et le lifting state up ne peuvent pas servir (les deux composants ne se connaissent pas, c'est le routeur qui les monte). `state` transporte une donnée hors URL. **Critère posé** : _si quelqu'un ouvrait cette URL demain, cette information aurait-elle un sens ?_ Oui → URL · Non → `state`. Survit au retour arrière, pas au rechargement, pas au partage.
 
 **✅ Circuit complet écrit seul** : `naviguer("/catalogue", { state: { … } })` dans la fiche, `useLocation` + `?.` + `&&` dans le catalogue. Deux composants sans lien de parenté qui communiquent.
 
@@ -494,6 +516,7 @@ Cours : les props et le lifting state up ne peuvent pas servir (les deux composa
 Toujours en rotation : `setInterval`/`clearInterval` ·
 
 **⚠️ Mes erreurs** :
+
 1. **Consigne floue, 3ᵉ fois cette semaine** — arrêt explicite de Frédéric. Objectif donné sans livrable énoncé.
 2. **Consigne écrite sur le mauvais fichier** (fetch inexistant dans `projet-examen-blanc`).
 3. **Nettoyage du `state` livré sans sa condition de fonctionnement** (la copie en `useState`), ce qui a fait disparaître le bandeau.
@@ -517,3 +540,745 @@ Le mode Declarative est **complet**. Cap Phase 2 à reprendre.
 ---
 
 <!-- Les nouvelles entrées de session commencent ici -->
+
+## Session 94 — Chantier documentaire
+
+**Durée** : ~3h (mercredi). Aucun apprentissage — remise à plat des documents du projet, au moment où React Router se ferme et où Next.js n'est pas encore ouvert.
+
+**Fait** : instructions refondues et datées S93 (§7 réécrit, §9 bis dissous dans §1/§5/§6/§9, règle « écrire des consignes claires » ajoutée au §9, §5 et §10 réalignés) · `Archive-progression-Phase2-bis.md` créée (S60→S93) · `progression.md` restructuré (en-tête refondu + S89→S93, file d'attente triée en deux groupes) · `dettes-apprentissage.md` refondu et **élargi** (15 dettes soldées et retirées, paliers React / TypeScript / Git-Outils créés, plan de remboursement reconstruit).
+
+**🎓 Règle posée par Frédéric — la ligne de front.** Le registre des dettes liste ce qui a été **dépassé sans être fait**, pas ce qui reste à apprendre. Derrière la ligne = dette · devant = programme. `this`/POO et `@keyframes` sont des dettes ; Next.js, Prisma et les tests n'en sont pas. Formulée après deux propositions de ma part qui partaient à côté.
+
+**🎓 Deuxième règle** : la mesure, c'est ce qu'on fait ensemble. Une notion croisée seule (vidéo, article) reste classée « non vue » dans le registre.
+
+**📌 Reste ouvert** : statut de `audit-croise.md` (ré-export `.md`, retrait, ou mention au §10) · `Roadmap_actuelle_S56` en doublon `.md`/`.pdf` et `ficherevisionreact.pdf`, non cités au §10.
+
+**⏭️ Prochaine étape** : nettoyage du `state` (S93, code cassé, créneau court, zéro neuf), puis **Next.js** sur séance longue et fraîche — en posant `children` avant, c'est la seule dette du registre qui bloque réellement la suite.
+
+## Session 95 — Nettoyage du `state` d'historique + `children`
+
+**Durée** : ~2h (jeudi soir). Énergie bonne.
+
+**Révision éclair (`fetch` POST)** 🟢 : objet d'options complet et juste à froid (`method`, `headers` + `Content-Type`, `body` sérialisé). Rôle du header juste. Une erreur d'inattention : `JSON.stringify('data')` (chaîne littérale au lieu de la variable). **Sort de rotation.**
+
+**🎹 Raccourci** : `Ctrl+Maj+\` — usage non renseigné, **à demander** en ouverture.
+
+---
+
+### 1. Nettoyage du `state` d'historique — dette S93 soldée ✅
+
+Circuit réparé dans `projet-examen-blanc` (`Catalogue`) : copie dans `useState(location.state?.message)` + effet qui remplace l'entrée d'historique (`naviguer(location.pathname, { replace: true })`) + JSX qui ne lit plus que la copie. Trois scénarios vérifiés à l'écran (Retour → bandeau · F5 → rien · Précédent → rien).
+
+**Accroches, toutes corrigées** : `?.` oublié dans la valeur initiale · garde inversée et testant la copie au lieu de la source · condition du JSX lisant encore `location.state` (le texte avait migré, pas la condition). Dépendance en trop (`message`) retirée.
+
+**Questions posées** : à quoi sert `naviguer` ici (seul outil qui écrit dans l'historique) · `useState` sans setter (mémoriser une valeur initiale d'un rendu à l'autre, là où une `const` est recalculée) · pourquoi autant de dépendances (le tableau décrit ce que l'effet **lit**).
+
+**Niveaux** : source volatile / copie stable 🟢 · `useState` sans setter 🟡 (neuf, un passage) · `replace` sur la même adresse 🟢.
+
+---
+
+### 2. `children` — dette du registre enseignée
+
+**Blocage réel au premier exercice** : `{children}` introuvable alors que l'interface et la déstructuration étaient justes. Ligne donnée après deux tentatives. **Cause** : rupture avec le modèle mental « le composant connaît son contenu, les props apportent des données ». Débloqué par le contraste `CarteMonture` (données brutes) / `Carte` (zone libre) et l'analogie monture / drageoir.
+
+**Exercice de refacto** ✅ : trois `<section>` répétées extraites en `Encadre`, frontière cadre / contenu identifiée seul. Test de l'utilité fait (1 ligne modifiée au lieu de 3) — **c'est ce qui a rendu l'intérêt concret**.
+
+**`children: any`** puis question de fond : comment trouver un type que le survol ne donne pas ? Critère posé : **type imposé par un outil → survol · type décidé par soi → source**. Geste F12 sur `StrictMode` → `index.d.ts` → lecture de la seule ligne d'arrivée. `ReactNode` vérifié dans ses `@types/react`.
+
+**Exercice de choix props de données / `children`** : 3 cas justes (`PrixMonture`, `Modale`, `Rubrique`). Interfaces non écrites faute de temps, correction donnée. Précision : la `Modale` demande une **prop fonction** (`onFermer`), pas une donnée.
+
+**Questions posées** : `children` est-il un nom imposé ? (oui, réservé par React, comme `key`) · fait-il autre chose ? (non — n'importe quelle prop peut transporter du JSX ; une 2ᵉ zone libre passe par une prop nommée).
+
+**Niveaux** : critère props de données / `children` 🟢 · mécanisme `{children}` 🟡 (**ligne donnée, un seul passage autonome sur la refacto — ne pas surévaluer**) · `React.ReactNode` 🟡 · F12 vers un `.d.ts` 🟡 (neuf).
+
+**Registre** : `children` **sort de `dettes-apprentissage.md`** (enseigné) et devient **dette chaude** ici jusqu'à la page blanche.
+
+---
+
+**🔄 Rotation** : `fetch` POST **sort**. Toujours dedans : React Router Declarative (9 points) · `setInterval` / `clearInterval`.
+
+**⏭️ Prochaine étape — décidée avec lui, suite dans la même conversation**
+
+1. Révision éclair (hors `children`).
+2. **Page blanche : `children` + TypeScript des séances précédentes + `<table>`** (dette type B du registre, réactivée par la pratique). Ordonnance OD/OG comme terrain.
+3. **`useRef`** si le temps le permet, sinon séance suivante.
+4. Puis **Git branches + Pull Request** (séance dédiée), puis **Next.js**. Les autres dettes (coercion + hoisting, `@keyframes`, accessibilité) se calent en créneaux courts pendant la suite.
+
+## Session 96 — Page blanche `children` + TypeScript + `<table>`
+
+**Durée** : ~2h45 (vendredi). Énergie bonne, séance tenue en entier.
+
+**Révision éclair (`setTimeout` / `setInterval`)** 🟡 : différence de comportement juste. **Identifiant renvoyé par l'appel non connu** (question non comprise) · critère de nettoyage non énoncé (outil cité, pas la règle « trace active »). **Reste en rotation.**
+
+**🎹 Raccourci** : `Ctrl+Maj+\` — pas encore utilisé, « je n'y pense pas ». **Reconduit.**
+
+---
+
+### Page blanche — fiche ordonnance (`projet-vite-local`, `ExerciceOrdonnance.tsx`)
+
+**⚠️ Première consigne rejetée à raison** : découpage en composants, noms de props et code appelant fournis — une recette, pas une page blanche. Refaite en **livrable + contraintes**. La seconde version restait ambiguë (« deux blocs », « sémantique », origine des valeurs) : trois questions de clarification nécessaires.
+
+**Produit seul** :
+
+- **`Rubrique`** (`titre` + `children`), cadre écrit une seule fois 🟢 — **le mécanisme qui bloquait en S95 est sorti sans aide.** Titre placé dans la rubrique et non dans le `<thead>` : question posée, bonne distinction.
+- **Modélisation** : OD/OG en **clés d'objet** plutôt qu'une liste avec union (plus stricte : un seul OD, un seul OG), `OD?`/`OG?` tranché par le métier, puis yeux regroupés dans un sous-objet pour sortir l'addition de la boucle. **Choix défendus avec des arguments métier, et meilleurs que ma modélisation de départ.** 🟢
+- **`TableauCorrections`** extrait avec l'ordonnance en prop, pensé « comme si la donnée venait d'une API » ; a conclu seul qu'aucun state n'était nécessaire. 🟢
+- **Tableau sémantique** (`thead`/`tbody`, `th` d'en-tête de ligne, `colSpan`) revenu sans rappel. 🟢
+
+**Avec aide** :
+
+- **`Object.entries` + `.map()`** : 1ᵉʳ jet en accès par index (`data[0][0]`), puis déstructuration par crochets **sortie après indice**, avec une accolade parasite (`[oeil, {c}]`). Question de fond posée : comment intégrer l'élément de nature différente (`add`) ? → on corrige la forme des données, pas la boucle. 🟡
+- **Union de valeurs sur prop optionnelle** (`variante?: "normal" | "alerte"` + défaut) : **donnée, non déclenchée seule.** Reste 🔴.
+- Alignement de la ligne Add (cellule vide fusionnée) : donné.
+
+**Neuf** : `scope="col"` / `scope="row"` 🟡.
+
+**🎓 Règle métier posée par Frédéric** : une addition à 0 n'existe pas en optique (minimum 0,75). Donc 0 ou absent → pas de ligne. Mon `!== undefined` était faux pour ce cas. Point technique qui reste : `addition && …` afficherait le chiffre `0` → forme retenue : `addition ? (…) : null`.
+
+**📌 Point ouvert** : survol de `sphere` dans le `.map()` non fait. Probable `any` (`Object.entries` sur une `interface` sans signature d'index) et `oeil` typé `string` — *non vérifié*. Bon support pour un exercice de typage.
+
+**Niveaux** : `children` 🟢 (page blanche réussie) · critère props de données / `children` 🟢 · `<table>` sémantique 🟢 · modélisation objet vs liste 🟢 · déstructuration de tableau 🟡 · union sur prop optionnelle 🔴 · `scope` 🟡. **Exercice réussi au prix d'un effort long : fragile côté TS.**
+
+**Registre** : **`<table>` soldée** (type B, réactivée par la pratique) · **`children` soldée** (enseignée S95, tenue en page blanche).
+
+---
+
+**⚠️ Mes erreurs** :
+
+1. **Page blanche rédigée comme une recette** — architecture fournie. Correctif : une page blanche donne **le livrable et les contraintes**, jamais le découpage ni le code appelant.
+2. **Seconde consigne encore ambiguë** (deux blocs, « sémantique » non défini, valeurs non précisées). Récurrence §9.
+
+**🔄 Rotation** : `setInterval` / `clearInterval` (identifiant + critère) · React Router Declarative (9 points) · union de valeurs sur prop optionnelle.
+
+**⏭️ Prochaine étape**
+
+1. Révision éclair.
+2. **`useRef`** — séance fraîche, notion neuve (+ `IntersectionObserver` version React).
+3. Puis **Git branches + Pull Request** (séance dédiée), puis **Next.js**.
+
+## Session 97 — Typage `Object.entries` : `interface` vs `type`
+
+**Durée** : ~1h (samedi). Énergie bonne. Créneau court annoncé, séance coupée en fin de parcours par un client.
+
+**Révision éclair (`useParams` — route paramétrée)** 🔴 : trois points sur quatre manqués.
+- **Origine du nom inversée** : annoncé comme inventé dans le composant, repris ensuite dans `App`. C'est l'inverse — le nom naît dans le `path`, une seule fois, et devient ensuite une clé d'objet lue à l'identique. **Même point que la révision de sortie S90, non corrigé depuis.**
+- `useParams` **sans parenthèses** dans la ligne écrite (déstructure la fonction, pas son résultat) + clé inventée (`eclair`) absente de l'objet.
+- Type donné `string`, sans `| undefined` — c'est la moitié qui oblige à la garde.
+- **Remarque fondée de sa part** : l'énoncé ne disait pas si la donnée venait d'une API ou d'une liste en dur. Juste pour la suite, sans effet sur la ligne `useParams()` elle-même, identique dans les deux cas.
+
+**🎹 Raccourci** : `Ctrl+Maj+\` **abandonné**. Trois causes cumulées : la commande ne saute qu'entre délimiteurs (`{}`, `()`, `[]`) et **jamais entre balises JSX** — or je l'avais posé sur un besoin de circulation dans un JSX long, donc sur le besoin où il ne répond pas · le curseur doit être collé au délimiteur · `\` en AltGr sur AZERTY. **Geste retenu, utile au-delà du cas** : `Ctrl+Maj+P` → nom de la commande → lire le raccourci réellement assigné à droite. Aucun nouveau raccourci posé, on attend un besoin réel.
+
+---
+
+### 1. Cours — pourquoi `Object.entries` perd le type sur une `interface`
+
+Parti du point ouvert en fin de S96 (survol de `sphere` non fait). **Constat vérifié au survol** : `corrections` en `[string, any][]`, `sphere` en `any` — le tableau d'ordonnance n'avait aucun filet TS.
+
+Cours donné : `Object.entries` a deux signatures, une précise (exige une **signature d'index**) et un filet de secours en `any`. Une `interface` est **ouverte** (rouvrable, fusion de déclarations) → TS ne peut jamais promettre que toutes ses clés mènent au même type → retombe sur `any`. Un `type` est **fermé** → il peut le déduire.
+
+**Point à noter : question reposée à l'identique après l'explication** (« je n'ai pas compris pourquoi `interface` ne fait pas le travail »). Reprise nécessaire, en partant du mot-clé (déclaration ouverte démontrée par l'exemple de la double `interface Yeux`) plutôt que du comportement d'`Object.entries`. **C'est la seconde formulation qui est passée.**
+
+**Repère posé** : boucler sur les clés (`Object.entries`, `Object.keys`, `Record`) → `type` · lire par propriétés nommées (props de composant) → `interface`. Complément de la convention S86, qui reste valable partout ailleurs.
+
+---
+
+### 2. Exercice de réparation — **non produit, cours et réponse donnés**
+
+Demande de réécrire `Yeux` en combinant deux utility types. **Arrêt immédiat : « je n'arrive pas l'exercice, je ne crois pas l'avoir déjà fait ».** Exact — la **combinaison** d'utility types n'a été vue qu'une fois (S86), sur un énoncé très cadré. Briques acquises, assemblage non. Erreur de dosage de ma part.
+
+Cours donné : l'empilement se lit de l'intérieur vers l'extérieur, comme des fonctions imbriquées. `Record<"OD" | "OG", Correction>` puis `Partial<...>`.
+**Le cas rend la confusion S86 lisible** : la virgule sépare les deux tiroirs, l'union vit **dans** le premier — et `Omit<X, "a" | "b">` suit exactement la même structure.
+
+`type Yeux = Partial<Record<"OD" | "OG", Correction>>` appliqué. **Typage vérifié au survol : fonctionne.**
+
+**⚠️ Fausse annonce de ma part** : j'avais annoncé une erreur rouge attendue sur le `.map()` (raisonnement sur le `| undefined` ajouté par `Partial`). **Aucune erreur** — hypothèse non vérifiée présentée comme certaine. Corrigé en séance, son écran fait foi.
+
+---
+
+### 3. Exercice `BadgeStock` — interrompu par un client, partiellement produit
+
+Terrain neuf (`Brouillon.tsx`), notions déjà vues uniquement. Deux composants demandés (`BadgeStock` recevant des props + `ListeStock` appelant), pour provoquer une erreur de typage au passage de props.
+
+**Produit** : un seul composant faisant tout, `.map()` + `key` sur id stable, `<ul>`/`<li>`, tableau annoté, interface nommée.
+
+**🔴 `etat?: string`** — union de valeurs non déclenchée, **3ᵉ occurrence** (S90, S96, S97). La notion est acquise depuis S80 ; le réflexe ne part pas. **Repère donné, à tester la prochaine fois** : devant tout `?: string` / `?: number`, se demander « n'importe quelle chaîne a-t-elle un sens ici ? » — nom de modèle oui, état/statut/variante/rôle non.
+
+**🟡 Défaut non posé dans la déstructuration** (`{!m.etat && "disponible"}` dans le JSX, qui affiche l'inverse du besoin) alors que le mécanisme est sorti seul trois fois sur `Rubrique`. Traduction en libellé non faite.
+
+**🔴 Architecture à un seul composant** → pas de passage de props → **l'erreur rouge cible de l'exercice n'a pas pu apparaître**. L'apprentissage principal n'a pas eu lieu.
+
+**Correction complète non donnée** (lecture à la volée après interruption = zéro ancrage). **Exercice reconduit en ouverture de la prochaine séance.**
+
+---
+
+**Niveaux** : `interface` ouverte vs `type` fermé 🟡 (question reposée après la 1ʳᵉ explication) · `Partial<Record<...>>` 🔴 (**non produit, donné**) · repère `type` pour boucler sur les clés 🟡 · `useParams` — origine du nom dans le `path` 🔴 (récurrence S90) · `useParams()` vs `useParams` 🔴 · `string | undefined` 🟡 · union sur prop optionnelle 🔴 (3ᵉ occurrence) · prop optionnelle + défaut 🟡 (rechute sur terrain neuf) · `.map()` + `key` 🟢.
+
+**⚠️ Mes erreurs** :
+1. **Exercice posé sur un assemblage vu une seule fois** — combinaison d'utility types demandée en page blanche. Récurrence du §9 (exercice sur mécanisme insuffisamment enseigné).
+2. **Erreur rouge annoncée comme certaine, inexistante** — hypothèse non vérifiée présentée comme un fait. Récurrence de la règle « qualifier la source ».
+3. **Raccourci `Ctrl+Maj+\` posé en S93 sur un besoin auquel il ne répond pas** (circulation dans du JSX).
+4. Première explication `interface`/`type` construite depuis `Object.entries` au lieu du mot-clé — a nécessité une reprise complète.
+
+**🔄 Rotation** : **`useParams` — correspondance `path` ↔ déstructuration** revient en priorité haute (2 échecs, S90 et S97) · **union de valeurs sur prop optionnelle** (3 échecs) · `setInterval`/`clearInterval` · React Router Declarative (9 points).
+
+**⏭️ Prochaine étape**
+
+1. **Reprise de `BadgeStock`** en ouverture (~20 min) — court, cible la dette 🔴 qui résiste, et l'erreur de typage au passage de props n'a jamais été rencontrée.
+2. **`useRef`** (+ `IntersectionObserver` version React) — séance fraîche, notion neuve.
+3. Puis **Git branches + Pull Request** (séance dédiée), puis **Next.js**.
+
+## Session 98 — `useRef` (deux usages) + règle d'ancrage
+
+**Durée** : ~3h40 (dimanche, en deux blocs : 2h20 le matin, 1h20 le soir). Énergie bonne.
+
+**🎹 Raccourci** : aucun en cours depuis l'abandon de `Ctrl+Maj+\`. Nouveau posé sur un besoin réel de la séance (union écrite deux fois à l'identique) : **`Ctrl+Maj+L`** (toutes les occurrences de la sélection d'un coup). Distinction donnée : `Ctrl+D` une par une · `Ctrl+Maj+L` toutes · **`F2` ne renomme que des symboles, jamais du texte dans une chaîne, une classe Tailwind ou un commentaire** — c'est le trou que `Ctrl+Maj+L` comble.
+
+---
+
+### 🎓 LE POINT DE LA SÉANCE — règle d'ancrage posée par Frédéric
+
+**Constat qu'il a formulé** : rythme d'ouverture trop soutenu par rapport au rythme de reprise. Déclencheur : `NavLink` intégralement perdu 5 jours après son cours, `end` non ressorti.
+
+**Sa nuance, meilleure que ma proposition** : j'avais proposé un **quota** d'une notion neuve par séance. Il l'a refusé à raison — « apprendre de nouvelles choses n'est pas le problème, il le faut pour tenir l'objectif ». Le problème n'est pas le débit d'entrée, c'est l'**absence de reprise**. **Règle retenue** : une notion neuve est **ouverte**, pas acquise ; priorité sur l'**ordre**, pas plafond sur le neuf.
+
+**Acté et intégré aux instructions (§6)** : notion ouverte / cycle de reprise N+2 puis N+5 · demander son ressenti avant de reprendre une notion · révision éclair **15 min, 2-3 questions** · **deux exercices courts en ouverture**, à écrire · projet canonique par quinzaine (sources vérifiées : freeCodeCamp, The Odin Project).
+
+**Écarté par lui** : le paragraphe « ratio clavier / discussion ». Constat sous-jacent à garder en tête malgré tout — beaucoup de cours et de questions de fond, peu de code écrit.
+
+**📌 Chantier ouvert** : `audit-exercices-types.md` à **vérifier item par item** (une recommandation vérifiée en S79 s'est révélée fausse). ~30 min, à caler un jour sans énergie pour coder. Tant que ce n'est pas fait, ne pas s'appuyer dessus.
+
+---
+
+### 1. Reprise `BadgeStock` (exercice S97 interrompu) ✅
+
+Refait seul avant la séance. **`etat?: "disponible" | "commande" | "rupture"` écrit d'emblée** — la dette 🔴 union de valeurs sur prop optionnelle, trois échecs depuis S80, **tombe**. Défaut dans la déstructuration, `switch` exhaustif, deux composants séparés, `key` sur id stable.
+
+**Corrections, toutes appliquées** : une `interface` pour deux rôles (le `id?` facultatif trahissait le pliage de l'interface à la donnée alors que `key={m.id}` en dépend) → `Monture` + `type BadgeStockProps = Omit<Monture, "id">`, **`Omit` appliqué spontanément à un cas réel** · `<ul>` disparu à la séparation en deux composants · fonction pure sortie du composant + renommée (`testEtat` annonçait un booléen) · union nommée une fois en `type EtatStock`.
+
+**⚠️ Mon erreur, relevée par lui** : consigne disant « **deux composants et une interface** ». Il a appliqué le chiffre à la lettre — comportement correct, contrainte fautive. **4ᵉ relevé consignes**, cette fois en chiffrant ce qui ne devait pas l'être.
+
+**Niveaux** : union sur prop optionnelle 🟢 (**dette soldée**) · `Omit` sur un cas réel 🟢 · interface de props vs interface de donnée 🟡.
+
+---
+
+### 2. Révisions éclair
+
+**`useParams` (matin)** 🟢 : ligne juste avec les parenthèses, nom repris à l'identique du `path`, narrowing identifié seul (« il faut tester avec un `if`, TS ne dira plus rien »). **Le point cassé en S90 et S97 ressort seul.** Précision donnée : le nom naît dans le `path`, pas « dans App.tsx ».
+
+**`NavLink` (soir)** 🔴 : `className={isActive ? …}` — **la fonction manquante** (`isActive` n'existe pas sans le paramètre déstructuré). **`end` non ressorti**, y compris après reformulation ; a répondu sur la route `index`, qui traite un autre problème. Vu en S93, soit 5 jours. C'est ce résultat qui a déclenché la règle d'ancrage ci-dessus.
+
+⚠️ **Ma question était incomplète** : piège du préfixe posé sans donner les URL, donc indevinable. Relevé par lui.
+
+---
+
+### 3. `useRef` — notion neuve
+
+**Cours** : troisième tiroir (survit aux rendus, ne déclenche aucun rendu) · tableau variable locale / `useState` / `useRef` · critère « est-ce que ça apparaît à l'écran ? » · ne jamais lire une ref pour afficher · les **deux usages** (valeur vs élément DOM) · `.current` rempli par React quand `ref={}` est posé sur une balise · ref DOM jamais lue dans le corps du composant (`null` au 1er passage) · typage par le survol.
+
+**Critère validé à l'oral** dès la question de contrôle (compteur non affiché → ref).
+
+**Exercice 1 (guidé, focus sur un `<input>`)** ✅ **3/3 du premier coup** : type dans le tiroir, `null` initial, garde, `ref={champRef}`. Frontière du `return` nu posée à cette occasion — **légitime dans un handler et dans un effet** (personne n'attend de valeur), illégitime dans un composant ou une fonction utilitaire.
+
+**Exercice 2** — **⚠️ énoncé fautif, relevé par lui avant de commencer** : « le compteur ne s'affiche jamais seul » n'imposait pas `useRef`, le compteur pouvant vivre dans le message. Objection juste, énoncé refait avec un bouton « Voir le total » qui rend la ref nécessaire.
+
+Puis **question « j'utilise comment ? `ref.current.value` ? »** → confusion entre les deux usages. Repère donné : **`.current` contient ce que tu y mets** — un nœud DOM si `ref={}` est posé sur une balise, un nombre si on a écrit `useRef(0)`. Pas de `.value` sur une ref de valeur.
+
+Code produit : ref juste, mais **deux booléens (`defaut`, `afficher`) pour un état à trois valeurs** → 4 combinaisons, message affiché au chargement, aucun retour possible à l'état vide. Correction donnée : un seul `useState("")` portant le message. **Correction complète demandée faute de temps (fils à nourrir) — pas de mesure valable sur ce point, retiré des niveaux à sa demande, à raison.**
+
+**Contraste posé** : une **ref est à jour dès la ligne suivante**, un **state non** (photo figée du rendu). D'où : incrémenter avant de composer la phrase.
+
+---
+
+### 4. Page blanche `useRef` (soir, ~20 min)
+
+Terrain neuf (`ExerciceUseRefBis`), les deux usages + champ contrôlé.
+
+**✅ Produit seul** : les trois déclarations exactes et bien nommées (`champRef` DOM, `totalRef` valeur, `message` state), garde avant usage, deux refs de natures différentes sans confusion. **Question posée avant de coder** : plusieurs `useRef` par composant ? (oui, comme `useState`).
+
+**🔴 Champ non contrôlé** — lecture **et** écriture par le DOM (`champRef.current.value`, puis `= ""` pour vider). JS pur greffé dans React : React ignore le contenu du champ. **Rechute sur un acquis S79.** Le critère est le point à travailler : **une ref DOM sert à ce que React ne sait pas faire (`focus`, `scrollIntoView`, mesurer) ; toute donnée passe par le state.**
+
+**🔴 « Saisis un modèle. » branché sur `onClick` du champ** au lieu d'un test dans `ajouter` → message dès le clic dans l'input, et le total compte les ajouts vides (pas de `return`).
+
+**🟡** : `focus()` avant le vidage (ordre inverse) · `if (!totalRef.current) return;` = `return` nu silencieux sur panier vide · message hors du `<p>` et sans garde · `useState<string | number>` inutile · `type="submit"` hors `<form>`.
+
+**Niveaux** : `useRef` — deux usages, déclaration et typage 🟢 · **frontière state / ref DOM 🔴** · champ contrôlé 🔴 (rechute S79) · `useRef` DOM appliqué 🟡 (guidé + page blanche partielle).
+
+---
+
+**🆕 Notions ouvertes ce jour** (cycle de reprise à tenir) : `useRef` valeur · `useRef` DOM · frontière state / ref DOM. **Reprise prévue N+2.**
+
+**🔄 Rotation** : **`NavLink` + `end` passe en priorité haute** (🔴 à froid). Toujours dedans : React Router Declarative (8 autres points) · `setInterval`/`clearInterval`. **Sortis** : `useParams` + correspondance `path` (🟢 seul) · union de valeurs sur prop optionnelle (dette soldée).
+
+**⚠️ Mes erreurs** :
+1. **Consigne chiffrant les types à produire** (« deux composants et une interface ») — a induit une modélisation fausse. 4ᵉ occurrence consignes.
+2. **Énoncé d'exercice n'imposant pas la notion visée** — relevé par lui avant de commencer.
+3. **Question de révision éclair incomplète** (piège du préfixe sans les URL).
+4. **Quota de notions neuves proposé** — mauvais diagnostic, corrigé par sa nuance.
+
+**⏭️ Prochaine étape — demain, ~1h30**
+
+1. Deux exercices courts en ouverture (nouveau format) : **`NavLink` + `end`**, et **frontière state / ref DOM** (reprise de la page blanche de ce soir, champ contrôlé).
+2. Révision éclair 15 min, 2-3 questions, sur les points React Router jamais rejoués (`state`, `<Navigate>`, `replace`).
+3. **Pas de notion neuve.** `IntersectionObserver` version React repoussé — il ajouterait une transposition par-dessus un `useRef` d'un jour.
+4. Ensuite : **Git branches + Pull Request** (séance dédiée), puis **Next.js**.
+
+## Session 99 — Reprises : `useRef`, `NavLink`, navigation React Router
+
+**Durée** : ~1h45 (lundi). Énergie bonne. **Première séance au nouveau format** (deux exercices courts en ouverture, révision éclair étendue, zéro notion neuve).
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — pas encore d'occasion, **reconduit**.
+
+---
+
+### 1. Exercices d'ouverture — nouveau format ✅
+
+**`NavLink` + `end`** (🔴 la veille) : **`end` ressorti seul et posé uniquement sur le lien qui en a besoin.** Structure de la fonction juste (`({ isActive }) => …`).
+**🟡 Corps-bloc au lieu de corps-expression** : `=> {isActive && "font-bold"}` — les accolades ouvrent un bloc d'instructions, la valeur est calculée puis jetée, la fonction renvoie `undefined`. Même famille que le `return` nu. Piège spécifique au JSX : les accolades de `className={}` disent « voici du JS » ; une seconde paire ne les prolonge pas.
+Point secondaire : `className` attend une **chaîne** → ternaire avec `""`, pas `&&` (le `&&` est pour afficher ou non du JSX).
+
+**Frontière state / ref DOM — 5/5 à l'oral**, critère formulé seul (« si ça touche au visuel, React doit être informé »). Affinage donné : le focus et le défilement touchent au visuel mais **ne s'écrivent pas en JSX** — c'est ça le critère. **Test opérationnel : « est-ce que je peux l'écrire dans mon JSX ? »** Le cas discriminant (vider un champ = donnée, donc state) est sorti juste.
+
+---
+
+### 2. Page blanche `useRef` — reprise N+1 ✅
+
+Réécrite entièrement. **Les deux 🔴 de la veille corrigés seuls** :
+- **champ contrôlé** (`value` + `onChange`), vidage par `setChamp("")` et focus par la ref — la frontière s'est déclenchée au clavier, pas seulement à l'oral ;
+- **early return de validation** dans le handler, avec le `return` qui protège l'incrément.
+
+**Portée d'une garde** comprise et appliquée : l'incrément remonté **avant** la garde du focus (le comptage est la donnée, le focus un confort), `?.` substitué à la garde sur une instruction unique.
+
+Rangement des trois exercices `useRef` dans un fichier avec composant de regroupement — bonne application de « 1 fichier = 1 exercice » à une famille.
+
+**⚠️ Ma consigne, encore** : « je clique avec le champ vide » ne disait pas **où**. Il l'a lue comme un clic dans l'input, deux fois de suite. **5ᵉ occurrence cette semaine, toujours la même cause : j'écris l'intention au lieu du geste.**
+
+---
+
+### 3. Révision éclair React Router (points S93 jamais rejoués)
+
+**`replace`** 🟢 : repère juste et reformulé seul (éviter la chaîne retour → page invalide → re-redirection). **Sa remarque, juste** : reconnu à la lecture du mot ≠ produit seul en contexte — la mesure reste à faire.
+
+**`<Navigate>` vs `useNavigate`** 🟢 : critère exact (action supplémentaire, message, délai → `useNavigate`). Avantage non cité, redonné : `<Navigate>` **n'affiche jamais le contenu protégé**, même une fraction de seconde.
+
+**`state`** — **critère 🔴, mécanisme 🟡** : a décrit ce qu'il avait codé en S93 sans retrouver la règle de décision (« si quelqu'un ouvrait cette URL demain, cette information aurait-elle un sens ? »). Deux confusions levées : le `state` de React Router ≠ `useState` · pas de « double `useNavigate` » — un seul appel, une fonction appelée autant de fois que voulu. Les deux lignes du circuit redonnées (`{ state: { … } }` en option de `naviguer`, `location.state?.message` à l'arrivée).
+
+**Question posée : différence `<Navigate>` / `<Link>` ?** → `<Link>` produit un `<a>` et attend un clic · `<Navigate>` ne produit aucun DOM et part au rendu. **Repère : `<Link>` = l'utilisateur décide · `<Navigate>` = le code décide.**
+
+---
+
+### 4. Exercice `ExerciceNavigation` — commencé, **non terminé**
+
+**Produit seul, sans modèle** : routes imbriquées avec `<Route index>` et chemin relatif, `useParams` + `find` + garde, `<Link>` en template literal avec `key`, interface de donnée. **Mécanisme revenu « à 80 % » selon lui**, une seule vérification dans `App.tsx` pour le branchement.
+
+**Reste à faire** : `<Navigate>` sur identifiant inconnu (a mis un `<p>`, comportement correct mais hors consigne) · bouton « Enregistrer » + circuit `state` complet.
+
+**📌 Demande explicite** : **revoir `<Outlet>`**, non mémorisé. Noté qu'il n'apparaît pas dans son exercice parce que sa route parente n'a pas d'`element` — simple regroupement de chemins, sans layout. Terrain idéal pour la reprise (ajouter un layout à cette section).
+
+---
+
+**Niveaux** : `useRef` (3 usages) 🟢 · frontière state / ref DOM 🟢 (oral **et** clavier) · champ contrôlé 🟢 · early return de validation dans un handler 🟢 · portée d'une garde 🟢 · `end` 🟢 · fonction dans `className` 🟡 · `replace` 🟢 · `<Navigate>` vs `useNavigate` 🟢 · `<Navigate>` vs `<Link>` 🟢 · `state` — critère 🔴 / mécanisme 🟡 · routes imbriquées + `index` 🟢 · `<Outlet>` 🔴 (oublié).
+
+**🔄 Cycle de reprise — le format fonctionne.** Deux notions rejouées à N+1, toutes deux redressées : `useRef` (🔴 → 🟢) et `NavLink`/`end` (🔴 → 🟢). Sans la reprise, elles étaient perdues.
+**À programmer** : `useRef` **N+5 → ~S103** · `NavLink` **N+5 → ~S103** · `state` et `<Outlet>` **N+2 → séance suivante** (déjà au programme).
+
+**⚠️ Mes erreurs** : consigne écrivant l'intention au lieu du geste (« je clique avec le champ vide ») — **5ᵉ occurrence de la semaine**, et la seule qui reste vraiment récurrente.
+
+**⏭️ Prochaine étape (~demain)**
+
+1. **Finir `ExerciceNavigation`** : `<Navigate>` + circuit `state` complet. ~20 min.
+2. **`<Outlet>`** — reprise demandée, en ajoutant un layout à cette même section. Terrain déjà en place.
+3. Puis **Git branches + Pull Request** (séance dédiée), puis **Next.js**.
+
+## Session 100 — Reprises React Router : `<Navigate replace>`, `state`, `<Outlet>`
+
+**Durée** : ~2h15 (mardi). Énergie bonne. Zéro notion neuve.
+
+**Ressenti en ouverture** : `state` flou · `<Outlet>` très flou (« je vois le fonctionnement, la mise en place je m'en souviens à peine »).
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — peu utilisé, **reconduit**.
+
+---
+
+### Révision éclair (3 questions)
+
+- **`setInterval` / `clearInterval`** 🟢 : écrits justes dans un `useEffect`, identifiant capturé. Était 🔴 en S92 et S96.
+- **Critère de nettoyage d'un effet** 🟡 : cas reconnus, règle non formulée (**3ᵉ fois**) → cours complet donné (règle de la trace active + tableau démarrer/arrêter + deux moments du nettoyage). Appliqué ensuite 3/3 sur trois cas, puis **au clavier en fin de séance** (`clearTimeout`). Reste à l'**énoncer** seul.
+- **Conversions aux frontières** 🟢 : `e.target.value` toujours chaîne, `Number()` à l'entrée. Précision : le résultat est `"31"`, la chaîne.
+- **Déstructuration de tableau** 🟢 : crochets du premier coup, sans index.
+
+---
+
+### 1. Finir `ExerciceNavigation` (guidé)
+
+- **`<Navigate>` vs `useNavigate`** : question posée avant d'écrire, critère redonné. `<Navigate replace>` 🟢 (`replace` ajouté après correction).
+- **`<Outlet>` natif ou lié à `useParams` ?** → deux outils indépendants : `<Outlet>` = **où** afficher l'enfant, `useParams` = **quelle valeur** dans l'URL.
+- **`state`** : 1ᵉʳ jet transportant une phrase figée + `?.` sur `location` au lieu de `state`. **Point « donnée brute, pas phrase » non compris à la 1ʳᵉ explication** → reformulé par contraste (qui envoie / qui rédige) et analogie ordonnance, appliqué ensuite. 🟢
+- **Layout + `<Outlet>`** en étapes numérotées 🟡. Faute de frappe dans le `to` trouvée seul après indice. Test « `<Outlet>` commenté » : layout affiché, enfants absents — compris.
+
+### 2. Page blanche `<Outlet>` sur terrain neuf ✅
+
+Section montures avec layout + `<Outlet>` + `index` + `useParams` + `find` + `<Navigate>`, **sans rouvrir l'exercice précédent**. Circuit `state` ajouté spontanément. `replace` à nouveau oublié au 1er jet.
+
+**Bonus conçu et écrit seul** (question posée : « est-ce faisable en React ? ») : effacement du message après 3 s → copie de `location.state` dans un `useState` avec setter, test dans l'effet, `setTimeout` + `clearTimeout`. Obstacle expliqué : `location.state` appartient au routeur, on ne peut pas l'effacer directement. Seul écart : dépendance manquante (`[montureSave]`).
+**Limite F5 constatée** (message qui revient). Remède `naviguer(location.pathname, { replace: true })` non appliqué.
+
+---
+
+**Niveaux** : `<Outlet>` 🟢 (**« très flou » en ouverture, produit en page blanche 1h plus tard**) · `<Navigate replace>` 🟢 (`replace` oublié deux fois au 1er jet) · `<Navigate>` vs `useNavigate` 🟢 · circuit `state` + donnée brute 🟢 · copie du `state` + effacement temporisé 🟢 · critère de nettoyage 🟡 · `setInterval` / `clearInterval` 🟢 · conversions 🟢 · déstructuration de tableau 🟢.
+
+**🎓 Règles posées par Frédéric**
+- **Nommage libre dans les exercices.** Claude peut proposer une convention quand elle apporte quelque chose, mais ne renomme pas ce qu'il a choisi. Les conventions strictes valent pour un projet sérieux.
+- **Ne pas exiger ce qui n'est pas l'objet de l'exercice** (ex. : interface sur un tableau en dur dans un exercice de routage).
+- Un simple oubli reconnu comme tel n'a pas à être consigné.
+
+**⚠️ Mes erreurs**
+1. **Affirmé de mémoire que `state` ne survit pas au F5 — faux**, contredit par son écran. Règle corrigée : `state` survit au Précédent/Suivant **et au F5 dans le même onglet** (entrée d'historique conservée) ; pas au lien partagé ni au nouvel onglet. *Source : observation + reconstruction MDN `History.pushState()`, non vérifiée dans la doc.*
+2. Corrections de nommage insistantes sur des exercices.
+
+**🗑️ Instruction obsolète** : §7 React Router, ligne `state` — « survit au retour arrière, pas au rechargement » est **faux** (même erreur dans les entrées S91 et S93).
+
+**🔄 Cycle de reprise** : `state`, `<Outlet>`, `<Navigate replace>` rejoués → **N+5 ≈ S105**. `useRef` et `NavLink` toujours attendus **≈ S103**.
+**📌 À travailler (demande explicite)** : **`location.pathname`**, avec le nettoyage du `state` par `replace` sur la même adresse.
+
+**Rotation** : `setInterval` / `clearInterval` **sort**. Restent : critère de nettoyage (à énoncer) · React Router Declarative (points non rejoués : montage, `path`/`to`, `<Link>` vs `<button>`, 404).
+
+**⏭️ Prochaine étape**
+1. **Git branches + Pull Request** — séance dédiée, longue et fraîche.
+2. Puis **Next.js**.
+3. En ouverture des prochaines séances : reprises `useRef` et `NavLink` (≈ S103), `location.pathname` + nettoyage du `state`.
+
+## Session 101 — Nettoyage du `state` par `pathname` + Git branches et Pull Request + cadrage Memory Card
+
+**Durée** : ~3h (mercredi, 2h prévues puis prolongées). Énergie bonne.
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — non utilisé, **reconduit**.
+
+---
+
+### Révision éclair (3 questions)
+
+- **Critère de nettoyage d'un effet** 🟢 : règle **énoncée seule, sans exemple** (« reste-t-il une trace après ? »). Précision donnée : trace **active** (quelque chose tourne ou écoute). Sort de rotation.
+- **404 écrite en premier** 🟡 : bonne page, mais explication hors sujet. L'ordre n'intervient pas, React Router garde la route la plus spécifique.
+- **`margin: auto` vertical** : centrage horizontal/vertical 🟢 · `flex` sur le parent 🟢 · **raison 🔴** (attribuée à la hauteur de la div ; c'est la spécification qui calcule `margin: auto` vertical à zéro en flux normal).
+
+---
+
+### 1. Reprise `location.pathname` + nettoyage du `state` ✅
+
+Sur l'exercice montures (`ListeMonturesExo`). Second effet séparé, garde sur `location.state` justes du premier coup. Premier jet : adresse écrite en dur et sans `replace`. Corrigé avec `naviguer(location.pathname, { replace: true })`. Dépendances complétées. **3 tests passés** (disparition après 3 s, F5, Précédent/Suivant).
+
+**Question posée** : `pathname` ne sert-il qu'à ça ? → usages donnés (masquer selon la page, `startsWith` pour une section, dépendance d'effet pour réagir à un changement de page, se désigner soi-même).
+
+**Niveaux** : `location.pathname` 🟢 · nettoyage du `state` par `replace` sur la même adresse 🟢.
+
+---
+
+### 2. Git branches + Pull Request — dette la plus ancienne du parcours
+
+**⚠️ Premier passage raté de ma part** : principe en quelques lignes puis liste de commandes sans explication. **Arrêt de Frédéric** (« tu me dis de taper du code sans expliquer ce que ça fait »). Repris depuis zéro : commit = photo, `main` = suite de photos, branche = deuxième suite, lecture d'une commande Git morceau par morceau, **une étape à la fois avec son pourquoi**. Ce format a fonctionné jusqu'au bout.
+
+**Cycle complet fait en guidé sur `projet-vite-local`** : branche → commit → publication → PR → relecture (commentaire *Pending* puis *Submit review*) → fusion → suppression de la branche (GitHub puis locale) → pull sur `master`.
+
+**Reformulation juste de sa part** : un fichier créé sur une branche n'existe pas sur la branche principale, et on peut abandonner l'essai. Nuances données : une branche ne copie rien (historique partagé) ; pas de retour en arrière nécessaire, `master` n'a jamais bougé.
+
+**Questions posées** : équivalents souris (sélecteur de branche dans la barre d'état, Publish Branch) → **fait à la souris au quotidien, savoir nommer la commande** · utilité seul (essais, chantiers parallèles, relecture de son propre travail, Checks, visibilité recruteur).
+
+**📌 Constaté** : `projet-vite-local` utilise **`master`**, pas `main`. Non renommé.
+
+**🎓 Décision de Frédéric** : Memory Card se fera **sur une branche de `projet-examen-blanc`**, fusionnée à la fin — reprise du cycle en conditions réelles.
+
+**Niveaux** : branches (principe, création, changement, suppression) 🟢 · cycle PR complet 🟡 (**un seul passage guidé, notion ouverte**).
+
+**Registre** : **Git branches + PR sort de `dettes-apprentissage.md`** (enseignée) → dette chaude ici jusqu'à la reprise autonome sur Memory Card.
+
+---
+
+### 3. Questions de fond et cadrage du projet canonique
+
+- **Les tests** : cours d'aperçu (unitaire / composant / end-to-end, Vitest, React Testing Library, Playwright). Programme d'après 9 mois, **pas une dette**.
+- **`useOutletContext`** : fait passer une valeur à travers un `<Outlet>`, qui ne transmet aucune prop. **Mentionné, non enseigné, non nécessaire** aux projets prévus.
+- **Trouver une API** : répertoire **public-apis** (colonnes Auth / HTTPS / CORS), mot-clé **`free fake REST API`** plutôt que le thème, lire la liste des catégories dans la doc. Recherche « API Lunettes » infructueuse : les catalogues optiques sont privés.
+
+**🎓 Ordre décidé avec lui** : **Memory Card → Shopping Cart** (ordre du parcours Odin). Proposition acceptée comme cap : Memory Card → séance coercion + hoisting → Next.js, sans attendre de solder tout le registre (aucune dette ne bloque Next.js).
+
+**Énoncé Memory Card vérifié sur theodinproject.com** (et non de mémoire). Adaptations : page routée dans `projet-examen-blanc` sur branche · **pas de déploiement** · **pas de tests**.
+**Données retenues** : DummyJSON, **10 cartes = 5 montres femme + 5 montres homme**, récupérées par **`Promise.all`** (dette d'entretien, jugée floue — réactivée par la pratique). `sunglasses` écartée (5 articles seulement).
+
+**Structure mise en place en fin de séance** : branche, page, route, entrée d'accueil, score et meilleur score en dur.
+
+---
+
+**⚠️ Mes erreurs**
+1. **Git : commandes données sans expliquer ce qu'elles font** — arrêt net. Correctif : pour un outil entièrement neuf, le modèle mental d'abord, puis **une commande à la fois avec son pourquoi**.
+2. **Énoncé Memory Card donné de mémoire avec des écarts** (12 cartes présentées comme imposées, mélange au montage oublié). Corrigé après vérification à sa demande.
+3. **`sunglasses` recommandée sans vérifier le nombre d'articles.**
+
+**🔄 Cycle de reprise**
+- **`useRef`** : plus situé en fin de séance (« je ne sais même plus à quoi ça sert »), **revenu à la relecture de ses cours**. Noté 🟢 en S99 : compris en séance ≠ ancré, même après une reprise à N+1. **Reprise maintenue en S103, priorité haute.**
+- `NavLink` ≈ S103 · `state`, `<Outlet>`, `<Navigate replace>` ≈ S105 · **cycle Git PR** → rejoué sur Memory Card.
+
+**Rotation** : critère de nettoyage **sort**. Entrent : **`margin: auto` vertical (raison)** · **404 et spécificité des routes**. Restent : React Router Declarative (montage, `path`/`to`, `<Link>` vs `<button>`).
+
+**⏭️ Prochaine étape**
+1. **Memory Card, séance 1** : `Promise.all` sur les deux catégories de montres, grille de cartes avec chargement et erreur, CSS. Commits sur la branche.
+2. **Séance 2** : clic, score réel, meilleur score, mélange (au montage et au clic — le mélange aléatoire d'un tableau est **neuf**, cours court au moment venu). Puis PR et fusion en autonomie.
+3. **S103** : reprises `useRef` et `NavLink` en ouverture.
+4. Puis séance **coercion + hoisting**, puis **Next.js**.
+
+## Session 102 — Memory Card : `Promise.all` et récupération des montres
+
+**Durée** : ~2h30 (mercredi). Énergie bonne. **Séance écourtée en urgence, sans clôture** — entrée rédigée le lendemain.
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — pas d'occasion, **reconduit**.
+
+---
+
+### ⚠️ Format de révision éclair — refusé par Frédéric, corrigé
+
+**Deux des trois questions posées étaient celles de la veille**, à l'identique. Relevé immédiatement (« pas normal »). Au-delà de la répétition, le fond du reproche porte sur le format : **des devinettes et des définitions, jamais de code**. Or ses trous sont au clavier, pas à l'oral — une révision sans code ne mesure rien.
+
+**Nouveau format proposé et accepté** (à intégrer au §6, point 1) : 2 à 3 items, **tous avec du code**, en trois formes — **écrire** (3 à 15 lignes à froid, résultat attendu donné), **déboguer** (code cassé fourni), **prédire** (dire ce que ça affiche). Un « pourquoi » ne se pose jamais seul, uniquement sur du code qu'il vient d'écrire ou de lire. **Une réponse juste formulée avec ses mots est une réponse juste.** Jamais la même question d'une séance à l'autre : reprendre une notion, c'est la même notion sur **un autre code**.
+
+**Points de révision malgré tout** : `<Link>` vs `<button>` 🟢 (**sort de rotation**) · spécificité des routes 🟡 (bonne réponse, explication hors sujet) · `margin: auto` vertical 🔴 sur la raison (2ᵉ fois) → règle donnée : la spécification calcule `margin: auto` vertical à zéro **en flux normal**, faute d'espace restant calculable ; flex et grid en fabriquent un. **Les deux sortent de rotation** (posées deux jours de suite, ce qui n'est plus de la rotation).
+
+---
+
+### 1. Deux exercices de typage ✅
+
+- **`Record<Marque, number>`** 🟢 juste du premier coup — **la dette `Record` (virgule vs union) tombe.**
+- **Interface `Verre` + signature** 🟢 : union de valeurs sur prop optionnelle, défaut dans la déstructuration, annotation sur ce qui **arrive**. Trois pièges passés d'un coup.
+
+---
+
+### 2. Memory Card — mise en place de la branche et du fetch
+
+Structure (branche, page, route, entrée d'accueil) posée la veille en 15 min ; le projet commence réellement ici.
+
+**Cours `Promise.all` demandé** (rappel + comparaison `await` / `.then`) : séquentiel vs parallèle, `fetch` lance et `await` attend, un tableau entre et un tableau sort dans le même ordre, deux passages (réponses puis `.json()`), `res.ok` + `throw` toujours nécessaires.
+
+**Trois questions de fond posées** :
+- *pourquoi les `fetch` sont-ils dans un tableau ?* → un seul argument, un conteneur pour un nombre variable de Promises.
+- *est-on obligé de déstructurer en deux `const` ?* → non, mais `const [resMontres] = ...` ne récupère que la position 0 et **perd la seconde réponse en silence**. Alternative : garder le tableau et travailler avec `some` / `map`.
+- *`throw new Error` et `e instanceof Error`* → cours complet donné : `throw` accepte n'importe quelle valeur, d'où `catch (e: unknown)` et le narrowing par `instanceof`. Question de suite (« faut-il stocker `const stockage = new Error` ? ») → confusion classe / instance levée : `instanceof` compare à la **classe**, pas à un objet.
+
+**✅ Écrit seul** : les deux `Promise.all`, déstructuration par position, `res.ok` sur les deux réponses, `instanceof` dans le `catch`, `finally`, fusion des deux listes par double spread dans **un seul** state, `useState<Montre[]>` typé, `interface Reponse` appliquée au résultat de `.json()` (annotation portée sur **ce qui arrive** 🟢).
+
+**Corrections** : `chargement` initialisé à `false` → flash de page vide avant le message de chargement (au montage, la page **est déjà** en train de charger) · `dataH["products"]` en crochets alors que la clé est écrite en dur (les crochets servent quand le nom est **dans une variable**) · `setErreur("")` inutile dans un effet qui ne tourne qu'une fois.
+
+**🌟 A trouvé `limit` seul dans la doc DummyJSON** après que j'aie recommandé `?limit=5` sans l'avoir vérifié. Capture de la page officielle à l'appui. Même réflexe que sur le nom de paquet React Router.
+
+**Question posée : intérêt de `git commit` sans `git push` ?** → cours donné (commit local, push publie). Contrainte deux machines rappelée : **push obligatoire avant de changer de poste**.
+
+**Niveaux** : `Promise.all` 🟢 · `instanceof` + `unknown` 🟡 (enseignés, plus donnés) · `throw new Error` 🟢 · annotation d'un résultat de `.json()` 🟢 · `Record` 🟢 (**dette soldée**) · union sur prop optionnelle 🟢 (confirmée) · état initial de chargement 🟡.
+
+**⚠️ Mes erreurs** :
+1. **Deux questions de révision éclair identiques à celles de la veille.**
+2. **Format de révision sans code**, qui ne mesure pas ce qui le fait échouer.
+3. **`?limit=5` recommandé sans vérification** — corrigé par sa capture de la doc.
+
+---
+
+## Session 103 — Reprises N+5 (`useRef`, `NavLink`, `.then`) + Memory Card : mélange et grille
+
+**Durée** : ~2h30 (jeudi). Énergie bonne.
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — toujours pas d'occasion, **reconduit**.
+
+**Ressenti en ouverture** (demandé) : `useRef` « à réactiver de mémoire » · `NavLink` « plutôt bien en tête ».
+
+---
+
+### 1. Reprises — l'écart ressenti / mesuré, dans les deux sens
+
+**`useRef`, exercice complet en page blanche** (deux usages + champ contrôlé) : **code juste, mais 25 min pour 15 annoncées, avec recherche en mémoire.** Les deux 🔴 de la fois précédente corrigés seuls : **champ contrôlé** et **early return de validation** protégeant l'incrément. Reste 🟡 : le signal est l'**effort**, pas le résultat.
+Corrections : `useEffect(() => {}, [])` vide (réflexe de frappe) · **garde `if (myRef.current !== null)` englobant le comptage et le message**, qui ne dépendent pas de la ref → une garde protège **la seule instruction qui en a besoin**, d'où `myRef.current?.focus()` · `return setMessage(...)` mélangeant sortir et renvoyer.
+
+**`NavLink`, question courte** 🔴 — **et il le sentait acquis.** A reconstruit à la main avec `useLocation` ce que `NavLink` fait seul, avec un ternaire sur `location.pathname` (chaîne non vide, donc toujours vrai : les trois liens en gras partout). **La fonction dans `className` n'est pas ressortie**, 2ᵉ échec à froid. Réécriture après rappel : fonction juste sur les trois, mais **`end` posé sur les trois liens** — appliqué mécaniquement, pas par le raisonnement du préfixe. Repère donné : *quelle autre adresse commence par celle-ci ?* Si aucune, pas de `end`.
+
+**Révision éclair `.then`** 🔴 — **« je n'y arrive pas »**, jamais écrit lui-même, seulement lu. Cours complet donné : `.then` renvoie une nouvelle Promise, d'où le **`return res.json()`** obligatoire · correspondance terme à terme avec `await` · `throw` identique · `.catch` / `.finally` · piège du corps-bloc sans `return` (même famille que son `className` de `NavLink`). Réécrit ensuite. **Reste en rotation à sa demande — non ressorti seul.**
+
+**🎓 L'information de la séance** : le ressenti ne prédit pas la restitution, **dans les deux sens**. `useRef` annoncé flou est sorti juste ; `NavLink` annoncé solide était perdu. Le cycle de reprise a rattrapé trois notions qui auraient été perdues.
+
+---
+
+### 2. Memory Card — mélange et grille
+
+**Question posée : quel outil pour faire varier les positions ? `Math.random` avec la position ?** → non : tirer un index par carte produit doublons et oublis. C'est un **réordonnancement**, pas un tirage. Cours **Fisher-Yates** donné (parcours de la fin vers le début, échange avec un index tiré parmi les positions non encore fixées, `(i + 1)` pour inclure `i`, copie obligatoire sinon React ne voit pas le changement). Raccourci `sort(() => Math.random() - 0.5)` écarté et expliqué (distribution biaisée).
+
+**🎓 Question importante : « je ne sais même pas comment j'aurais pu la trouver seul »** → réponse : personne ne réinvente Fisher-Yates. Réflexe à installer : **quand une opération n'existe pas nativement sur un tableau, elle a un nom** — on cherche `javascript shuffle array`, puis on vérifie pourquoi l'implémentation retenue est la bonne.
+
+Deux questions de suite : faut-il repasser la boucle ? (non, chaque tour fixe définitivement une position) · remélange-t-on le tableau précédent au clic ? (oui, même fonction, avec `(prev) =>`).
+
+**✅ `melanger` écrite seule et juste** après le déroulé à la main. Placement corrigé : fonction **pure** → hors du composant.
+
+**Grille et cartes produites** : `<button>` (choix juste, la carte déclenche une action), `key` sur id stable, `alt` sur l'image, `gap`, dégradé, `hover`, mélange appliqué dès la réception des données.
+
+**🔴 Logique de score à reprendre en ouverture** : dans `onAjouter`, l'`id` est rangé dans la ref **avant** le test `some`, donc le score retombe à 0 à chaque clic. L'ordre (tester → compter → mémoriser) est le cœur du jeu. Non traité faute de temps.
+
+**Niveaux** : `useRef` 🟡 (juste, mais effort long) · portée d'une garde 🟡 (rechute) · champ contrôlé 🟢 · `NavLink` + fonction dans `className` 🔴 (2ᵉ échec à froid) · `end` 🔴 · `.then` 🔴 (donné) · Fisher-Yates 🟢 (écrit seul après cours) · fonction pure hors composant 🟡 · `<button>` vs `<Link>` 🟢.
+
+**🎓 Règle posée par Frédéric** : la présentation visuelle des exercices lui appartient — cadrer le **comportement**, pas l'habillage.
+
+**🔄 Cycle de reprise**
+- **`NavLink` + `end`** → reprise **rapprochée (N+2)**, priorité haute. Échec à froid avec ressenti d'acquis.
+- **`useRef`** → **N+5 ≈ S108**, toujours ouvert.
+- `.then` **reste en rotation**.
+- `state`, `<Outlet>`, `<Navigate replace>` ≈ S105 · cycle **Git PR** → à rejouer sur la fusion de la branche Memory Card.
+
+**🔄 Rotation** : **entre** — `.then` (fetch classique et `Promise.all`) · `NavLink` / `end`. **Sortent** — `<Link>` vs `<button>` · `margin: auto` vertical · spécificité des routes (posés deux jours de suite). Restent : React Router Declarative (montage, `path`/`to`).
+
+**⚠️ Mes erreurs** : aucune relevée par lui cette séance. Point d'attention maintenu : ne pas cadrer la présentation quand l'objet de l'exercice est le comportement.
+
+**⏭️ Prochaine étape**
+
+1. **Ouverture : `NavLink` + `end`** (N+2, ~10 min, sur un autre code).
+2. **Memory Card, fin du jeu** : ordre tester → compter → mémoriser dans `onAjouter`, remise à zéro de la mémoire des cartes cliquées, meilleur score conservé, message de victoire à 10. Puis **PR et fusion en autonomie** (reprise du cycle Git).
+3. Puis **Shopping Cart** (Odin), séance **coercion + hoisting**, puis **Next.js**.
+
+## Session 104 — Révisions `.then` + fin de Memory Card + Pull Request en autonomie
+
+**Durée** : ~2h30 (vendredi). Énergie bonne, séance prolongée à sa demande.
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — **commence à servir**, reconduit.
+
+**Demande d'ouverture** : au moins une partie des révisions sur `.then`.
+
+---
+
+### 1. Révision éclair — **premier vrai test du nouveau format** (~1h, trop long)
+
+**Item 1 — Prédire (`.then`)** 🔴 : chaîne avec `res.json();` sans `return`. A répondu « affiche le titre, le catch est ignoré ». La console affiche **`échec`** : `data` vaut `undefined`, `data.title` lève une `TypeError`, que le `.catch` attrape. Piège reconnu et compris après coup.
+
+**Item 2 — Écrire (`.then`)** : a **demandé lui-même** un fetch simple avant la version `Promise.all` pour vérifier qu'il suivait. Bonne démarche, accordée.
+- **Fetch simple** 🟢 : `return res.json()` posé, `throw` dans le premier `.then`, `.catch` et `.finally` en fin de chaîne, corps-expression bien employés. `async` résiduel.
+- **Version `Promise.all`** 🟡 : la partie difficile est juste — **déstructuration dans le paramètre** `([resM, resV]) =>` et **`return Promise.all([...])`** pour enchaîner. A dérapé en fin de chaîne : `Promise.all(setArticles(...))`, réflexe « deux données donc `Promise.all` ». Repère donné : **on n'écrit `Promise.all` que quand on lance plusieurs opérations asynchrones à attendre** — ici les deux `fetch`, puis les deux `.json()`, et plus rien après.
+
+**Cours `instanceof Error` redonné** à sa demande (« pas encore clair ») : reconstruit depuis le problème (`throw` accepte n'importe quoi → `e: unknown` → TS interdit l'accès) et non depuis la syntaxe. Narrowing rattaché à `if (!client)`. Analogie marque / exemplaire pour la distinction classe / instance.
+
+**Item 3 — Déboguer (React)** 🔴 **trois erreurs, aucune repérée** : composant avec `setTotal(montures.length)` dans le corps.
+- **Setter dans le corps** non repéré → boucle infinie. Famille la plus récurrente du parcours.
+- **State vs donnée dérivée** non repéré : `total` se calcule depuis une prop, il ne se stocke pas. Le réflexe « déplacer dans un `useEffect` » aurait aussi été faux.
+- **🔴 Régression introduite** : a modifié la signature correcte `{ montures }: { montures: Monture[] }` en `{ montures }: Monture[]`. **4ᵉ occurrence** de l'annotation portée sur ce qui est extrait au lieu de ce qui arrive.
+
+---
+
+### 2. Reprise `NavLink` + `end` (N+2) 🟡
+
+**Progrès réel** : la **fonction** dans `className` est ressortie **seule** (🔴 deux jours avant), déstructuration juste, `end` non posé partout.
+
+**🔴 Le `end` reste faux** : posé sur le lien de section (`/mon-compte/commandes`), ce qui l'éteint dès qu'on ouvre `/mon-compte/commandes/42`. Les deux tests de l'énoncé échouaient. A aussi écrit un 4ᵉ lien avec `:id` dans un `to` (motif réservé au `path`).
+
+**Objection fondée de sa part** : « pas compris, 2 et 3 sont presque identiques ». Juste — la différence n'est pas dans l'adresse. **Reformulation qui est passée** : ce lien désigne-t-il **une page** ou **une section** ? Page → `end` (il doit s'éteindre quand on descend plus profond) · section → pas de `end` (il doit rester allumé). Tableau des trois URL donné à l'appui.
+Réécriture non faite, séance basculée sur Memory Card à sa demande (1h déjà consommée en révisions).
+
+---
+
+### 3. Memory Card — jeu terminé et fusionné ✅
+
+**`onAjouter` restructuré seul** : le test `some` remonté **avant** la mémorisation (le bug qui remettait le score à zéro à chaque clic), puis **early return** séparant les deux branches — perdre (score 0, mémoire vidée) ou marquer (score, record, mémorisation). `setBest(best)` inutile supprimé, `(prev) =>` posé sur le mélange.
+
+**Fin de partie écrite seule** : ternaire grille / écran de victoire, bouton Rejouer remettant score, mémoire et mélange à zéro, `best` préservé.
+
+**Corrections** : le `10` en dur → `score === dataMontre.length` (nombre magique, casse si `limit` change) · classes Tailwind inexistantes (`from`, `to`, `blue-100`) → **repère permanent réappliqué : une classe mal orthographiée ne produit ni erreur ni warning** · handler de 3 instructions dans le JSX → fonction nommée.
+
+**🌟 Deux désaccords exprimés, tous deux fondés** :
+1. **`some` vs `includes`** — sa version est correcte et lisible, `includes` n'était qu'une préférence. Retiré.
+2. **`dataH["products"]`** — syntaxe valide, plus lisible pour lui dans cet exercice. Retiré. *(Règle S100 réappliquée : ne pas imposer de convention hors de l'objet de l'exercice.)*
+
+**⚠️ Mon erreur, relevée par lui** : j'ai présenté son `useRef` des cartes cliquées comme un mauvais choix (« c'est fragile ») alors qu'il **avait appliqué le critère correctement** — la liste n'apparaît pas à l'écran, donc ref. C'était une remarque d'anticipation (le jour où on voudra l'afficher), formulée comme une correction. Retirée.
+
+### 4. Pull Request et fusion — **en autonomie** 🟢
+
+Cycle complet refait seul, sans consigne : 5 commits sur la branche, PR avec message descriptif, fusion dans `main`, suppression de la branche distante. **Le cycle Git PR passe de 🟡 à 🟢** (1 passage guidé S101 + 1 autonome).
+**📌 Noté** : `projet-examen-blanc` est sur `main`, `projet-vite-local` sur `master`.
+
+---
+
+### 5. Tour des dettes — demandé en fin de séance
+
+Registre relu (fichier, pas de mémoire). **Quatre entrées déjà périmées** : `children`, `useRef`, `<table>`, **Git branches + PR** — les séances 3 et 5 du plan de remboursement sont faites.
+
+**Top 5 établi** : 1. coercion + hoisting · 2. event loop · 3. debugger (coût nul, à imposer au prochain vrai bug) · 4. dark mode sémantique en React (réveille `@theme` + `localStorage` JS pur) · 5. `@keyframes`, **qui a enfin un support : le retournement de carte de Memory Card**.
+
+**Comparaison demandée avec le sommaire Grafikart React** (page officielle récupérée, 33 chapitres) : chapitre 1 intégralement acquis, React Router acquis et plus complet que sa vidéo. **Cinq des sept manques restants figuraient déjà au registre** — la liste le confirme, elle ne révèle rien de caché. À ajouter : **portails** et **ErrorBoundary** (🟠 ⚡). **Render props = motif déjà pratiqué** (`NavLink`, `children` en fonction), seul le nom manque. Chapitre 4 (Framer Motion, react-query, Zustand) = écosystème, pas du React, et la roadmap fait autrement.
+Point relevé : le seul chapitre « bonnes pratiques » de Grafikart porte sur **muter l'état dans un `useEffect`**, soit exactement l'erreur non repérée à l'item 3.
+
+---
+
+**Niveaux** : `.then` fetch simple 🟢 · `.then` + `Promise.all` 🟡 · `instanceof` / `unknown` 🟢 (2ᵉ cours, appliqué) · setter dans le corps 🔴 · state vs donnée dérivée 🔴 · annotation d'un paramètre déstructuré 🔴 (4ᵉ) · `NavLink` fonction 🟢 / `end` 🔴 · early return dans un handler 🟢 · nombre magique 🟡 · classe Tailwind inexistante 🟡 · cycle Git PR 🟢.
+
+**⚠️ Mes erreurs**
+1. **Correction infondée sur son `useRef`** — critère correctement appliqué de sa part, présenté comme une faiblesse.
+2. **Deux corrections de préférence présentées comme des corrections** (`includes`, notation en crochets).
+3. **Bloc de révision trop long** : 1h sur 2h30, alors que le format vise 15 min. Le nouveau format est bon, le **volume** ne l'est pas — 3 items dont un cours complet, c'est une séance, pas une ouverture.
+
+**🔄 Cycle de reprise**
+- **`NavLink` / `end`** → reprise **maintenue**, réécriture non faite. Le mécanisme est acquis, le critère `end` non.
+- **Setter dans le corps + donnée dérivée + annotation déstructurée** → 🔴 à rejouer ensemble, même famille.
+- `useRef` ≈ S108 · `state`, `<Outlet>`, `<Navigate replace>` ≈ S105.
+
+**🔄 Rotation** : `.then` **reste** (juste après rappel, pas à froid). Restent : `NavLink`/`end` · React Router Declarative (montage, `path`/`to`).
+
+**🗑️ À corriger au registre** : `children`, `useRef`, `<table>`, **Git branches + PR** soldées · `unknown`/`instanceof` soldée · ajouter **portails** et **ErrorBoundary**.
+
+**⏭️ Prochaine étape**
+
+1. **Consolidation avant Next.js** — c'est un très gros morceau, on ne l'ouvre pas sur une base tiède. Reprises `NavLink`/`end` et la famille setter / donnée dérivée / annotation.
+2. **Top 5 des dettes** à traiter au fil des prochaines séances, en commençant par **coercion + hoisting**.
+3. Puis **Next.js** : séance longue et fraîche (week-end ou midi).
+
+## Session 105 — Reprises React Router + coercion, hoisting, `var` + Debugger Chrome
+
+**Durée** : ~2h30 en deux blocs (dimanche 1h30, lundi 1h). Énergie bonne.
+
+**🎹 Raccourci** : `Ctrl+Maj+L` — reconduit.
+
+---
+
+### Révision éclair (2 items, format code)
+
+- **Prédire `.then`** 🟢 : ordre et `.catch` ignoré justes. Précision : la valeur affichée est celle **retournée** par le `.then` précédent (`19.98`, pas le prix).
+- **Écrire le montage React Router** 🟢 : structure juste. `path` fixe au lieu de paramétré — **pas une rechute selon Frédéric, consigne floue** (deux fichiers demandés sans nécessité). **Montage / `path` / `to` sortent de rotation à sa demande**, retour bien plus tard.
+
+---
+
+### 1. Reprises
+
+- **`NavLink` + `end`** 🟢 : fonction dans `className` sortie seule (2ᵉ fois), `end` posé sur le seul lien qui en a besoin, absent là où il serait inutile. **Redressé après deux échecs à froid.**
+- **Famille setter / donnée dérivée / annotation** 🟢 à l'**écriture** (composant `ResumePanier`) : annotation sur ce qui arrive, setter dans un handler, total et longueur dérivés. Restent : `(prev) =>` non déclenché 🟡 · paramètre de fonction inutile 🟡. **Le format débogage (échec S104) reste à remesurer.**
+- **`state` / `<Outlet>` / `<Navigate replace>` (N+5)** — exercice SAV en page blanche : layout + `<Outlet>` + `index` 🟢 · `<Navigate replace>` après les hooks 🟢 · circuit `state` 🟢 · `state` transportant une phrase au lieu d'une donnée brute 🟡 · chemin enfant absolu 🟡. Garde `?.` oubliée : **oubli, pas rechute**. Ressenti « moyen » en ouverture : bien calibré.
+
+### 2. Coercion — dette n°1 du registre, enseignée
+
+1ʳᵉ série 5/8, 2ᵉ série sur autre code 4/5. `+` et l'ordre de lecture 🟢 · `Number("")` = 0 🟢 · `Boolean()` renvoie toujours un booléen 🟢 · `==` vs `===` 🟢 · chaînes truthy (`"0"`, `" "`) 🟡.
+
+### 3. Hoisting + `var`
+
+Déclaration de fonction vs `const` fléchée 🟢 · `let`/`const` et TDZ 🟢 · **`var` : difficulté réelle signalée par lui** → cours complet (portée fonction, redéclaration, boucle + `setTimeout`). 🟢 après explication.
+
+### 4. Debugger Chrome — pratiqué pour la première fois
+
+Guidé sur la boucle `var` / `let` : points d'arrêt, F8, Scope, Closure, Call Stack, `debugger;`. Survol, console en pause, Watch vus. 🟡 (un passage). **À entretenir et refaire ensemble au prochain vrai bug.**
+
+---
+
+**🎓 Règle posée par Frédéric** : **des encouragements quand un point est réussi.** Il en avait avant, c'était motivant. Le « couper les félicitations » du §1 visait les récapitulatifs longs, pas ça.
+
+**🎓 Décisions** : **Next.js repoussé** (pas prêt) · **Shopping Cart Odin avant** · **React Developer Tools à installer avant Shopping Cart**.
+
+**Registre** : **coercion + hoisting soldée** (enseignée) · **Debugger soldé** (pratiqué) · **ajout `trim()`** (non urgent, à recroiser au prochain formulaire). Top restant : event loop · dark mode sémantique React · `@keyframes` (retournement de carte Memory Card).
+
+**⚠️ Mes erreurs** : consigne du montage floue (livrable en deux fichiers inutile) · `path` fixe qualifié de rechute alors que la consigne était en cause.
+
+**🗑️ Instruction à ajuster** : §1 « Couper : les félicitations détaillées » → préciser que les encouragements sur un point réussi restent attendus.
+
+**🔄 Cycle de reprise** : `NavLink` / `end` → N+5 ≈ S110 · `state` / `<Outlet>` / `<Navigate replace>` → cycle fermé (donnée brute à surveiller) · `useRef` ≈ S108 · **coercion + hoisting → N+2 ≈ S107**.
+
+**🔄 Rotation** : **sortent** — montage, `path` / `to`, `NavLink` / `end` (priorité haute levée). **Entrent** — chaînes truthy · `var`. **Reste** — `.then` en écriture (`Promise.all`).
+
+**⏭️ Prochaine étape**
+
+1. Ouverture : reprise coercion / hoisting (N+2) + famille setter / donnée dérivée **en format débogage**.
+2. Installer React Developer Tools.
+3. **Shopping Cart (The Odin Project)** — énoncé à vérifier sur theodinproject.com avant de cadrer. Sur branche, PR en fin de projet.
+4. Puis **Next.js**, quand tu te sentiras prêt.
